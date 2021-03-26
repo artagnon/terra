@@ -1,9 +1,13 @@
-\documentclass[12pt]{amsart}
+\documentclass[a4paper, 12pt]{amsart}
 
-\usepackage{latexsym, amscd, amsfonts, mathrsfs, amsmath, amssymb, amsthm, xy, stmaryrd, amsxtra, hyperref, url, verbatim}
+\usepackage{latexsym, amsmath, hyperref, url, verbatim, lmodern}
+\usepackage[all]{xy}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \newcommand{\8}{\infty}
+\newcommand{\Horn}[2]{\Lambda^{#1}_{#2}}
+\newcommand{\Simplex}[1]{\boldsymbol{\Delta^{#1}}}
+\newcommand{\SSet}[1]{\text{Set}_\boldsymbol{\Delta^{#1}}}
 
 \title{An exposé on the $\8$-category of $\8$-categories}
 
@@ -16,14 +20,38 @@
 
 \begin{document}
 \begin{abstract}
-  This is an exposé on Chapter III of Lurie's first book~\cite{lurie09}. It is meant to be an aid to studying the chapter. We begin with an introduction of Quasi-categories, and orient the reader towards cartesian fibrations. Then, after a brief motivation, we delve into properties of $\textrm{Cat}_\8$. The work was done as a part of the course Catégories supérieures, taught by Muriel Livernet.
+  This is an exposé on Chapter III of Lurie's first book~\cite{lurie09}. It is meant to be an aid to studying the chapter. We begin with an introduction of Quasi-categories, and orient the reader towards cartesian fibrations. Then, after a brief section on fibrations of simplicial sets, we delve into the main propositions and theorems on $\text{Cat}_\8$. The work was done as a part of the course Catégories supérieures, taught by Muriel Livernet.
 \end{abstract}
 \maketitle
 \tableofcontents
 
 \section{Introduction}
-We start with a definititon of $\8$-categories.
 
+We start with the definititon of quasi-categories, or what will henceforth referred to as $\8$-categories. $K$ is an $\8$-category if inner horns can be filled ($0 < k < n$):
+
+$$
+  \begin{xy}
+    \xymatrix{
+      \Horn{n}{k}\ar[r]\ar@{^{(}->}[d] & K \\
+      \Simplex{n}\ar@{.>}[ur]|\exists &
+    }
+  \end{xy}
+$$
+
+\section{Fibrations of simplicial sets}
+\subsection{Left fibrations}
+\subsection{Straightening and unstraightening, in the unmarked case}
+\subsection{Simplicial categories, and their \texorpdfstring{$\8$-categories}{∞-categories}}
+\subsection{The Joyal model structure}
+\subsection{Cartesian fibrations}
+
+\section{\texorpdfstring{$\text{Cat}_\8$}{Cat∞}}
+\subsection{Marked anodyne extensions}
+\subsection{The Cartesian model structure}
+\subsection{Quillen adjunctions between model structures}
+\subsection{Straightening and unstraightening, revisited}
+\subsection{Relative nerve}
+\subsection{Some applications}
 
 \bibliographystyle{amsalpha}
 \begin{thebibliography}{99}
