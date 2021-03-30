@@ -54,16 +54,6 @@ Let's start by defining certain classes of fibrations on simplicial sets, and se
 Let's detail the Grothendieck construction, that gives us an equivalence between functors $\xi:\mathcal{D}\rightarrow Gpd$ and the categories cofibered in groupoids over $\mathcal{D}$ (where Gpd is the category of groupoids).
 
 \begin{definition}
-<<<<<<< HEAD
-Let $F:\mathcal{C}\rightarrow \mathcal{D}$ be a functor between categories. We say that $\mathcal{C}$ is cofibered in groupoids over $\mathcal{D}$
-if the following conditions are satisfied:
-\begin{itemize}
-\item[(1)] For every object $C\in\mathcal{C}$
-and every morphism $\eta:F(C)\rightarrow D$ in $\mathcal{D}$ , there exists a morphism $\tilde{\eta}:C\rightarrow \tilde{D}$$\ such that $F(\tilde{\eta) = \eta$.
-\item[(2)] For every morphism $\eta: C\rightarrow C'$ in $\mathcal{C}$ and every object $C''\in\mathcal{C}$, the map
-\[Hom_\mathcal{C}(C',C'')\rightarrow Hom_\mathcal{C}(C,C'')\times_{Hom_\mathcal{D}(F(C),F(C''))}Hom_\mathcal{D}(F(C'),F(C'')))\] is bijective.
-\end{itemize}
-=======
   Let $F:\mathcal{C}\rightarrow \mathcal{D}$ be a functor between categories. We say that $\mathcal{C}$ is cofibered in groupoids over $\mathcal{D}$
   if the following conditions are satisfied:
   \begin{itemize}
@@ -74,7 +64,6 @@ and every morphism $\eta:F(C)\rightarrow D$ in $\mathcal{D}$ , there exists a mo
           $$
           is bijective.
   \end{itemize}
->>>>>>> master
 \end{definition}
 
 Let $\mathcal{D}$ be a small category and suppose we are given a functor $\xi:\mathcal{D}\rightarrow Gpd$. We can extract a new category $\mathcal{C}_X$ via the classical Grothendieck construction:
@@ -86,12 +75,11 @@ Let $\mathcal{D}$ be a small category and suppose we are given a functor $\xi:\m
 
 There is a forgetful functor $F:\mathcal{C}_X \rightarrow\mathcal{D}$, which carries an object $(D,\eta)\in\mathcal{C}_X$ to the underlying object $D\in\mathcal{D}$. It is possible to reconstruct $\xi$ from the category $\mathcal{C}_X$ up to equivalence: if $D$ is an object of $\mathcal{D}$, then the groupoid $\xi(\mathcal{D})$ is canonically equivalent to the fiber product $\mathcal{C}_X\times_\mathcal{D}\{D\}$.
 
-<<<<<<< HEAD
 It so happens that this construction provides an equivalence between functors $\xi:\mathcal{D}\rightarrow Gpd$ and the categories cofibered in groupoids over $\mathcal{D}$. Let's see how the theory of left fibrations is an $\8$-categorical generalization of cofibered groupoids.
 
 \begin{prop}
   Let $F:\mathcal{C}\rightarrow\mathcal{D}$ be a functor between categories. Then $\mathcal{C}$
-    is cofibered in groupoids over $\mathcal{D}$  if and only if the induced map $N(F):N(\mathcal{C})\rightarrow N(\mathcal{D})$ is a left fibration of simplicial sets.\end{prop}
+  is cofibered in groupoids over $\mathcal{D}$  if and only if the induced map $N(F):N(\mathcal{C})\rightarrow N(\mathcal{D})$ is a left fibration of simplicial sets.\end{prop}
 
 Let's consider the structure of a general left fibration $p:X\rightarrow S$. When $S$ has a single vertex, $p$ is a left fibration if and only if $X$ is a Kan complex. By stability under pullback, we deduce that for any left fibration $p:X\rightarrow S$ and any vertex $s$ of $S$, the fiber $X_s = X\times_S\{s\}$ is a Kan complex. Now, if we take $f:s\rightarrow s'$ to be an edge of the simplicial set $S$
 and consider the inclusion $i:X_s\simeq X_s\times\{0\} \subset X_s\times \Delta^1$. We can prove that $i$ is anodyne, and therefore solve the lifting problem:
@@ -103,29 +91,24 @@ Restricting the dotted arrow to $\{1\}\times X_s$, we obtain a map $f_!:X_s\righ
 
 
 Therefore, if we take $q:X\rightarrow S$ to be a left fibration of simplicial sets, we can assign to each "object" of $S$ a Kan complex $X_s$, as well as a map $f_!:X_s\rightarrow X_{s'}$ for each edge $s\rightarrow s'$. Higher dimensional simplexes of $S$ provide coherence data for these morphisms. A left fibration therefore gives us something like a functor from a simplicial set into the $\8$-category of spaces. Given a simplicial set $S$, we'd like to specify the relationship between left fibrations over $S$ and functors from $S$ into spaces by exhibiting left fibrations over $S$ as the class of fibrant objects in a particular model category. This category will turn out to be $(\SSet)/S$.
-=======
->>>>>>> master
 
 
 It so happens that this construction provides an equivalence between functors $\xi:\mathcal{D}\rightarrow Gpd$ and the categories cofibered in groupoids over $\mathcal{D}$, and the theory of left fibrations is an $\8$-categorical generalization of cofibered groupoids.
 
-<<<<<<< HEAD
 \begin{definition}[Model structure]. Let $S$ be a simplicial set. A map $f:X\rightarrow Y$ in $(\SSet)_{/S}$ is a
   \begin{itemize}
-   \item covariant cofibration if it is a monomorphism of simplicial sets.
-   \item covariant equivalence if the induced map \[X^{\triangleleft}\displaystyle \cup_X S \rightarrow Y^{\triangle}\]
-  
+    \item covariant cofibration if it is a monomorphism of simplicial sets.
+    \item covariant equivalence if the induced map \[X^{\triangleleft}\displaystyle \cup_X S \rightarrow Y^{\triangle}\]
+
   \end{itemize}
 \end{definition}
 
-=======
 \begin{proposition}
   Let $F:\mathcal{C}\rightarrow\mathcal{D}$ be a functor between categories. Then $\mathcal{C}$ is cofibered in groupoids over $\mathcal{D}$  if and only if the induced map $N(F):N(\mathcal{C})\rightarrow N(\mathcal{D})$ is a left fibration of simplicial sets.
 \end{proposition}
 
 Let's consider the structure of a general left fibration $p:X\rightarrow S$. When $S$ has a single vertex, $p$ is a left fibration if and only if $X$ is a Kan complex. By stability under pullback, we deduce that for any left fibration $p:X\rightarrow S$ and any vertex $s$ of $S$, the fiber $X_s = X\times_S\{s\}$ is a Kan complex. More precisely, suppose that $f:s\rightarrow s'$ is an edge of the simplicial set $S$
 and consider the inclusion $i:X_s\simeq X_s\times\{0\} \subset X_s\times \Delta^1$. We can prove that $i$ is anodyne, and therefore solve the lifting problem:
->>>>>>> master
 
 $$
   \begin{xy}
