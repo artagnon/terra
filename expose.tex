@@ -31,16 +31,45 @@
 
 \section{Introduction}
 
-We start with the definititon of quasi-categories, or what will henceforth referred to as $\8$-categories. $K$ is an $\8$-category if inner horns can be filled ($0 < k < n$):
+We start with the definition of the never functor.
+
+\begin{defintion}
+Given a small category $\mathscr{C}$ a simplex category $\Delta$, and a map $i : \Delta \rightarrow \mathscr{C}$, there exists a functor $N :\mathscr{C} \rightarrow \Set^{\op{\Delta}}$, or $\mathscr{C} \hookrightarrow \SSet$ called the nerve of the category, which is a simplicial set associated to the category. Applying Yoneda lemma to the Yoneda embedding $N$ yields:
 
 $$
-  \begin{xy}
-    \xymatrix{
-      \Horn{n}{k}\ar[r]\ar@{^{(}->}[d] & K \\
-      \Simplex{n}\ar@{.>}[ur]|\exists &
-    }
-  \end{xy}
+  N(\mathscr{C})_i = Hom(\Simplex{n}, N(\mathscr{C}))
 $$
+\end{definition}
+
+\begin{lemma}
+  The nerve can also be expressed as a kind of simplicial set $K$ if inner horns can be filled uniquely ($0 < k < n$):
+
+  $$
+    \begin{xy}
+      \xymatrix{
+        \Horn{n}{k}\ar[r]\ar@{^{(}->}[d] & K \\
+        \Simplex{n}\ar@{.>}[ur]|\exists! &
+      }
+    \end{xy}
+  $$
+\end{lemma}
+
+This simplicial nerve will play a crucial role in studying $\8$-categories.
+
+We now define quasi-categories, or what will henceforth referred to as $\8$-categories.
+
+\begin{definition}
+  $K$ is an $\8$-category if inner horns can be filled ($0 < k < n$):
+
+  $$
+    \begin{xy}
+      \xymatrix{
+        \Horn{n}{k}\ar[r]\ar@{^{(}->}[d] & K \\
+        \Simplex{n}\ar@{.>}[ur]|\exists &
+      }
+    \end{xy}
+  $$
+\end{definition}
 
 \section{Fibrations of simplicial sets}
 
