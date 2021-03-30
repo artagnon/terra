@@ -121,9 +121,19 @@ We can identify $S$ with a subset of $C^{\triangleleft}f$. With this identificat
 \begin{definition}[Model structure]. Let $S$ be a simplicial set. A map $f:X\rightarrow Y$ in $(\SSet)_{/S}$ is a
   \begin{itemize}
     \item covariant cofibration if it is a monomorphism of simplicial sets.
-    \item covariant equivalence if the induced map \[X^{\triangleleft}\displaystyle \cup_X S \rightarrow Y^{\triangleleft}.\]
+    \item covariant equivalence if the induced map \[X^{\triangleleft}\displaystyle \cup_X S \rightarrow Y^{\triangleleft}\cup_Y S\] is a categorical equivalence.
+    \item covariant fibration if it has the right lifting property with respect to every map which is an acyclic covariant cofibration.
   \end{itemize}
+  These maps determine a left proper combinatorial model structure on $(\SSet)_{/S}$. Combined with the natural simplicial structure, this gives us a simplicial model category structure on $(\SSet)_{/S}$.
 \end{definition}
+
+This model strucutre depends functorially on $S$:
+\begin{proposition}
+  Let $j:S\rightarrow S'$ be a map of simplicial sets. Let $J_!: (\SSet)_{/S}\rightarrow (\SSet)_{/S'}$ be the forgetful functor and let $j^*$ be its right adjoint given by $j^*X' = X'\times_{S'} S$. Then we have a Quillen adjunction 
+  \[(\SSet)_{/S}\underset{j^*}{\overset{j_!}{\overset{\rightarrow}{\leftarrow}}}.\]
+\end{proposition}
+
+This model structure has nice properties: for instance, every left anodyne map in $(\SSet)_{/S}$ is a covariant equivalence, every left anodyne map is a trivial cofibration, and most importantly: every covariant fibration is a left fibration of simplicial sets, and every fibrant object of $(\SSet)_{/S}$ determines a left fibration $X\rightarrow S$.
 
 \subsection{Kan fibrations}
 Kan fibrations are a subclass of left fibrations. They turn out to be exactly the ones for which the edge maps $f_!:X_s\rightarrow X_{s'}$ are isomorphisms in the category of spaces.
