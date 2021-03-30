@@ -1,6 +1,6 @@
 \documentclass[a4paper, 12pt]{amsart}
 
-\usepackage{latexsym, amsmath, hyperref, url, verbatim, lmodern}
+\usepackage{latexsym, amsmath, amsthm, hyperref, url, verbatim, lmodern}
 \usepackage[all]{xy}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -57,6 +57,7 @@ if the following conditions are satisfied:
 and every morphism $\eta:F(C)\rightarrow D$ in $\mathcal{D}$ , there exists a morphism $\tilde{\eta}:C\rightarrow \tilde{D}$$\ such that $F(\tilde{\eta) = \eta$.
 \item[(2)] For every morphism $\eta: C\rightarrow C'$ in $\mathcal{C}$ and every object $C''\in\mathcal{C}$, the map
 \[Hom_\mathcal{C}(C',C'')\rightarrow Hom_\mathcal{C}(C,C'')\times_{Hom_\mathcal{D}(F(C),F(C''))}Hom_\mathcal{D}(F(C'),F(C'')))\] is bijective.
+\end{itemize}
 \end{definition}
 
 Let $\mathcal{D}$ be a small category and suppose we are given a functor $\xi:\mathcal{D}\rightarrow Gpd$. We can extract a new category $\mathcal{C}_X$ via the classical Grothendieck construction:
@@ -70,7 +71,7 @@ There is a forgetful functor $F:\mathcal{C}_X \rightarrow\mathcal{D}$, which car
 It so happens that this construction provides an equivalence between functors $\xi:\mathcal{D}\rightarrow Gpd$ and the categories cofibered in groupoids over $\mathcal{D}$. Let's see how the theory of left fibrations is an $\8$-categorical generalization of cofibered groupoids.
 
 \begin{prop}
-  Let $F:\mathcal{C}\rightarrow\mathcal{D}$ be a functor between categories. Then $\mathcal{C}
+  Let $F:\mathcal{C}\rightarrow\mathcal{D}$ be a functor between categories. Then $\mathcal{C}$
     is cofibered in groupoids over $\mathcal{D}$  if and only if the induced map $N(F):N(\mathcal{C})\rightarrow N(\mathcal{D})$ is a left fibration of simplicial sets.\end{prop}
 
 Let's consider the structure of a general left fibration $p:X\rightarrow S$. When $S$ has a single vertex, $p$ is a left fibration if and only if $X$ is a Kan complex. By stability under pullback, we deduce that for any left fibration $p:X\rightarrow S$ and any vertex $s$ of $S$, the fiber $X_s = X\times_S\{s\}$ is a Kan complex. Now, if we take $f:s\rightarrow s'$ to be an edge of the simplicial set $S$
@@ -90,10 +91,14 @@ Therefore, if we take $q:X\rightarrow S$ to be a left fibration of simplicial se
 
 We can identify $S$ with a subset of $C^{\triangleleft}f$. With this identification, there is only one vertex of $C^{\triangleleft}f$ that isn't in $S$. We call it the cone point of $C^{\triangleleft}f$.
 
-\begin{definition}[Model structure]. Let $S$ be a simplicial set.
+\begin{definition}[Model structure]. Let $S$ be a simplicial set. A map $f:X\rightarrow Y$ in $(\SSet)_{/S}$ is a
+  \begin{itemize}
+   \item covariant cofibration if it is a monomorphism of simplicial sets.
+   \item covariant equivalence if the induced map \[X^{\triangleleft}\displaystyle \cup_X S \rightarrow Y^{\triangle}\]
+  
+  \end{itemize}
 \end{definition}
 
-\subsection{Kan fibrations}
 
 Kan fibrations are a subclass of left fibrations. They turn out to be exactly the ones for which the edge maps $f_!:X_s\rightarrow X_{s'}$ are isomorphisms in the category of spaces.
 
