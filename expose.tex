@@ -4,6 +4,7 @@
 \usepackage[all]{xy}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{tikz-cd}
 \newcommand{\8}{\infty}
 \newcommand{\Horn}[2]{\Lambda^{#1}_{#2}}
 \newcommand{\Simplex}[1]{\boldsymbol{\Delta^{#1}}}
@@ -39,8 +40,55 @@ $$
 $$
 
 \section{Fibrations of simplicial sets}
-We
+
 \subsection{Left fibrations}
+Let's start by defining certain classes of fibrations on simplicial sets, and see where that takes us in the $\8$-categorical world.
+\begin{definition}
+A morphism $f:X\rightarrow S$ is a left fibration if $f$ has the right lifting property with respect to the horn inclusions $\Lambda_i^n\subset \Delta^n, 0\leq i < n$.
+\end{definition}
+
+Let's detail the Grothendieck construction, that gives us an equivalence between functors $\xi:\mathcal{D}\rightarrow Gpd$ and the categories cofibered in groupoids over $\mathcal{D}$ (where Gpd is the category of groupoids).
+
+\begin{definition}
+Let $F:\mathcal{C}\rightarrow \mathcal{D}$ be a functor between categories. We say that $\mathcal{C}$ is cofibered in groupoids over $\mathcal{D}$ 
+ if the following conditions are satisfied:
+ \begin{itemize}
+ \item[(1)] For every object $C\in\mathcal{C}$
+ and every morphism $\eta:F(C)\rightarrow D$ in $\mathcal{D}$ , there exists a morphism $\tilde{\eta}:C\rightarrow \tilde{D}$$\ such that $F(\tilde{\eta) = \eta$.
+ \item[(2)] For every morphism $\eta: C\rightarrow C'$ in $\mathcal{C}$ and every object $C''\in\mathcal{C}$, the map 
+ \[Hom_\mathcal{C}(C',C'')\rightarrow Hom_\mathcal{C}(C,C'')\times_{Hom_\mathcal{D}(F(C),F(C''))}Hom_\mathcal{D}(F(C'),F(C'')))\] is bijective.
+ \end{definition}
+ 
+ Let $\mathcal{D}$ be a small category and suppose we are given a functor $\xi:\mathcal{D}\rightarrow Gpd$. We can extract a new category $\mathcal{C}_X$ via the classical Grothendieck construction:
+ \begin{itemize}
+ \item the objects of $\mathcal{C}_X$ are pairs $(D,\eta)$, where $D\in\mathcal{D}$ and $\eta$ is an object of the groupoid $\xi(D)$.
+ \item a morphism from $(D,\eta)$ to $(D',\eta')$ in $\mathcal{C}_X$ is given by a pair $(f,\alpha)$, where $f:D\rightarrow D'$ is a morphism in $\mathcal{D}$ and $\alpha:\xi(f)(\eta)\simeq \eta'$ is an isomorphism in the groupoid $\xi(D')$. 
+ \end{itemize} 
+ 
+ There is a forgetful functor $F:\mathcal{C}_X \rightarrow\mathcal{D}$, which carries an object $(D,\eta)\in\mathcal{C}_X$ to the underlying object $D\in\mathcal{D}$. It is possible to reconstruct $\xi$ from the category $\mathcal{C}_X$ up to equivalence: if $D$ is an object of $\mathcal{D}$, then the groupoid $\xi(\mathcal{D})$ is canonically equivalent to the fiber product $\mathcal{C}_X\times_\mathcal{D}\{D\}$.
+ 
+ It so happens that this construction provides an equivalence between functors $\xi:\mathcal{D}\rightarrow Gpd$ and the categories cofibered in groupoids over $\mathcal{D}$, and the theory of left fibrations is an $\8$-categorical generalization of cofibered groupoids.
+ 
+ \begin{prop}
+ Let $F:\mathcal{C}\rightarrow\mathcal{D}$ be a functor between categories. Then $\mathcal{C}
+ is cofibered in groupoids over $\mathcal{D}$  if and only if the induced map $N(F):N(\mathcal{C})\rightarrow N(\mathcal{D})$ is a left fibration of simplicial sets.\end{prop}
+
+Let's consider the structure of a general left fibration $p:X\rightarrow S$. When $S$ has a single vertex, $p$ is a left fibration if and only if $X$ is a Kan complex. By stability under pullback, we deduce that for any left fibration $p:X\rightarrow S$ and any vertex $s$ of $S$, the fiber $X_s = X\times_S\{s\}$ is a Kan complex. More precisely, suppose that $f:s\rightarrow s'$ is an edge of the simplicial set $S$
+ and consider the inclusion $i:X_s\simeq X_s\times\{0\} \subset X_s\times \Delta^1$. We can prove that $i$ is anodyne, and therefore solve the lifting problem:
+ \begin{tikzcd}
+ \{0\}\times X_s \arrow[r] \arrow[d]&&X\arrow[d,"p"]\\
+ \Delta^1\times X_s \arrow[r]\arrow[ur] &\Delta^1 \arrow[r,"f"] &S.
+ \end{tikzcd}
+ Restricting the dotted arrow to $\{1\}\times X_s$, we obtain a map $f_!:X_s\rightarrow X_{s'}$, which is uniquely determined up to homotopy.
+ 
+ \begin{lemma}
+ Let $q:X\rightarrow S$ be a left fibration of simplicial sets. The assignment $s\inS_0\mapsto X_s$, $f\inS_1\mapsto f_!$ determines a functor from the homotopy category h$S$ into the homotopy category $\mathcal{H}$ of spaces.
+  \end{lemma}
+
+Stability? TO DO or maybe skip.
+
+
+
 \subsection{Straightening and unstraightening, in the unmarked case}
 \subsection{Simplicial categories, and their \texorpdfstring{$\8$-categories}{∞-categories}}
 \subsection{The Joyal model structure}
