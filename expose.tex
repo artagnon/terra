@@ -7,7 +7,7 @@
 \newcommand{\8}{\infty}
 \newcommand{\Horn}[2]{\Lambda^{#1}_{#2}}
 \newcommand{\Simplex}[1]{\boldsymbol{\Delta^{#1}}}
-\newcommand{\SSet}[1]{\text{Set}_\boldsymbol{\Delta^{#1}}}
+\newcommand{\SSet}{\text{Set}_\boldsymbol{\Delta}}
 \newcommand{\HCal}{\mathcal{H}}
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
@@ -109,7 +109,7 @@ Restricting the dotted arrow to $\{1\}\times X_s$, we obtain a map $f_!:X_s\righ
   Let $q : X \rightarrow S$ be a left fibration of simplicial sets. The assignment $s \in S_0 \mapsto X_s$, $f \in S_1 \mapsto f_!$ determines a functor from the homotopy category $\text{hS}$ into the homotopy category $\HCal$ of spaces.
 \end{lemma}
 
-Therefore, if we take $q:X\rightarrow S$ to be a left fibration of simplicial sets, we can assign to each "object" of $S$ a Kan complex $X_s$, as well as a ma p $f_!:X_s\rightarrow X_{s'}$ for each edge $s\rightarrow s'$. Higher dimensional simplexes of $S$ provide coherence data for these morphisms. A left fibration therefore gives us something like a functor from a simplicial set into the $\8$- category of spaces. Given a simplicial set $S$, we'd like to specify the relatio nship between left fibrations over $S$ and functors from $S$ into spaces by exhi biting left fibrations over $S$ as the class of fibrant objects in a particular model category. This category will turn out to be $(\SSet)/S$.
+ Therefore, if we take $q: X\rightarrow S$ to be a left fibration of simplicial sets, we can assign to each "object" of $S$ a Kan complex $X_s$, as well as a ma p $f_{!}: X_s \rightarrow X_{s'}$ for each edge $s\rightarrow s'$. Higher dimensional simplexes of $S$ provide coherence data for these morphisms. A left fibration therefore gives us something like a functor from a simplicial set into the $\8$- category of spaces. Given a simplicial set $S$, we'd like to specify the relationship between left fibrations over $S$ and functors from $S$ into spaces by exhibiting left fibrations over $S$ as the class of fibrant objects in a particular model category. This category will turn out to be $(\SSet)_{/S}$.
 
 \begin{definition}
   Let $f:X\rightarrow S$ be a map of simplicial sets. The left cone of $f$ $C^
@@ -121,7 +121,7 @@ We can identify $S$ with a subset of $C^{\triangleleft}f$. With this identificat
 \begin{definition}[Model structure]. Let $S$ be a simplicial set. A map $f:X\rightarrow Y$ in $(\SSet)_{/S}$ is a
   \begin{itemize}
     \item covariant cofibration if it is a monomorphism of simplicial sets.
-    \item covariant equivalence if the induced map \[X^{\triangleleft}\displaystyle \cup_X S \rightarrow Y^{\triangle}\]
+    \item covariant equivalence if the induced map \[X^{\triangleleft}\displaystyle \cup_X S \rightarrow Y^{\triangleleft}.\]
   \end{itemize}
 \end{definition}
 
