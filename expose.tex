@@ -21,6 +21,7 @@
 \newcommand{\Gpd}{\ensuremath{\text{Gpd}}}
 \newcommand{\Map}{\ensuremath{\text{Map}}}
 \newcommand{\Fun}{\ensuremath{\text{Fun}}}
+\newcommand{\Hom}{\ensuremath{\text{Hom}}}
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
@@ -225,7 +226,7 @@ The Joyal model structure on \SSet is not compatible with the usual simplicial s
 \begin{definition}[Marked simplicial set]
   A marked simplicial set is a pair $(X, \epsilon)$, where $X$ is a simplicial set and $\epsilon$ is a set of edges of $X$, which contains every degenerate edge. We will say that $X$ is marked if it belongs to $\epsilon$. A morphism $(X, \epsilon) \rightarrow (X', \epsilon')$ is a map $f : X \rightarrow X'$ having the property that $f(\epsilon) \subseteq \epsilon'$.
 
-  Every simplicial set may be regarded as a marked simplicial set, with two extreme cases deserving special mention: $S^\# = (S, S_1)$ denotes the marked simplicial set in whic every edge of $S$ is marked, and $S^b = (S, s_0(S_0)$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked. We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\#}$.
+  Every simplicial set may be regarded as a marked simplicial set, with two extreme cases deserving special mention: $S^\sharp = (S, S_1)$ denotes the marked simplicial set in whic every edge of $S$ is marked, and $S^\flat = (S, s_0(S_0)$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked. We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\sharp}$.
 \end{definition}
 
 We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in particular see that each $(\SSet^+)_{/S}$ is a simplicial model category whose fibrant objets are the Cartesian fibrations $X \rightarrow S$.
@@ -237,13 +238,14 @@ Let $S$ be a simplicial set. In this section, the goal is to define the Cartesia
 First of all, the category $\SSet^+$ is cartesian-closed. This means that for any two objects $X,Y\in \SSet^+$, there exists an internal mapping object $Y^X$ equipped with an evaluation map $Y^X\times X\rightarrow Y$ which induces bijections
 \[\Hom_{\SSet^+}(Z,Y^X)\rightarrow \Hom_{\SSet^+}(Z\times X,Y)\]
 for every $Z\in\SSet^+$. Let $\Map^\flat(X,Y)$ denote the underlying simplicial set of $Y^X$ and $\Map^\sharp(X,Y)$ the simplicial subset of $\Map^\flat(X,Y)$ consisting of all simplices $\sigma\subset \Map^\flat(X,Y)$ such that every edge of $\sigma$ is a marked edge of $Y^X$.\\
-These simplicia sets can also be described by the properties:
-\begin{align*}{}
-  \Hom_\SSet(K,\Map^\flat(X,Y))  & \simeq \Hom_{\SSet^+}(K^\flat\times X,Y)   \\
-  \Hom_\SSet(K,\Map^\sharp(X,Y)) & \simeq \Hom_{\SSet^+}(K^\sharp\times X,Y).
+These simplicial sets can also be described by the properties:
+
+\begin{align*}
+  \Hom_{\SSet}(K,\Map^\flat(X,Y))  & \simeq \Hom_{\SSet^+}(K^\flat\times X,Y)  \\
+  \Hom_{\SSet}(K,\Map^\sharp(X,Y)) & \simeq \Hom_{\SSet^+}(K^\sharp\times X,Y)
 \end{align*}
 
-If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let $\Map_S^\sharp(X,Y) \subset \Map^\sharp(X,Y)$ and $\Map_S^\flat(X,Y) \subset \Map^\flat(X,Y)$ denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X\in(\SSet^+)_{/S}$ and $P:Y\rightarrow S$ is a cartesian fibration, tehn $\Map^\flat_S(X,Y^\natural)$ is an \8-category and $\Map^\sharp_S(X,Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X,Y^\natural).$
+If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let $\Map_S^\sharp(X,Y) \subset \Map^\sharp(X,Y)$ and $\Map_S^\flat(X,Y) \subset \Map^\flat(X,Y)$ denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X\in(\SSet^+)_{/S}$ and $P:Y\rightarrow S$ is a cartesian fibration, tehn $\Map^\flat_S(X,Y^\natural)$ is an \8-category and $\Map^\sharp_S(X,Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X,Y^\natural)$
 
 \begin{proposition}
   Let $S$ be a simplicial set. And let $p:X\rightarrow Y$ be a morphism in $(\SSet^+)_{/S}$. $p$ is a cartesian equivalence if it satisfies either of the following equivalent conditions:
@@ -295,7 +297,7 @@ This entails that if we have $f:A\rightarrow B$ a cofibration in $(\SSet^+)_{/S}
   Let $S$ be a simplicial set. Let's regard $(\SSet^+)_{/S}$ as a simplicial category with mapping objects given by $\Map^\sharp_S(X,Y)$. Then $(\SSet^+)_{/S}$ is a simplicial model category.
 \end{proposition}
 
-Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, where the simplicial mapping spaces are given by $\Map^\flat_S(X,Y)$. This simplicial structure is not compatible with the Cartesian model structure: for fixed $X\in(\SSet^+)_{/S}$ the functor $A\mapsto A^\flat\times X$ does not carry weak homotopy equivalences to Cartesian equivalences. But it does carry categorical equivalences to Cartesian equivalences, and consequently $(\SSet^+)_{/S}$ is endowed with the structure of a \SSet
+Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, where the simplicial mapping spaces are given by $\Map^\flat_S(X,Y)$. This simplicial structure is not compatible with the Cartesian model structure: for fixed $X\in(\SSet^+)_{/S}$ the functor $A\mapsto A^\flat\times X$ does not carry weak homotopy equivalences to Cartesian equivalences. But it does carry categorical equivalences to Cartesian equivalences, and consequently $(\SSet^+)_{/S}$ is endowed with the structure of a \SSet-enriched model category, where we regard \SSet as equipped with the Joyal model structure. It's actually closer to the truth to say that $(\SSet^+)_{/S}$ is a model for an \8-bicategory.
 
 
 \begin{proposition}
@@ -309,7 +311,7 @@ We have a plethora of model structures on categories of simplicial sets over the
 \begin{itemize}
   \item[0] Let $\C_0$ denote $(\SSet)_{/S}$ endowed with the Joyal model structure. Cofibrations are monomorphisms of simplicial sets, and weak equivalences are categorical equivalences.
   \item[1]  Let $\C_1$ denote $(\SSet^+)_{/S}$ endowed with the marked model structure. Cofibrations are maps $(X, \epsilon_X) \rightarrow (Y, \epsilon_Y)$ which induce monomorphisms $X \rightarrow Y$, and the weak equivalences are Cartesian equivalences.
-  \item[2]  Let $\C_2$ denote $(\SSet^+)_{/S}$ endowed with the following localization of the Cartesian model structure: $f : (X, \epsilon_X) \rightarrow (Y, \epsilon_Y)$ is a cofibration if $X \rightarrow Y$ is a monomorphism, and a weak equivalence if $f : X^\# \rightarrow Y^\#$ is a marked equivalence in $(\SSet^+)_{/S}$.
+  \item[2]  Let $\C_2$ denote $(\SSet^+)_{/S}$ endowed with the following localization of the Cartesian model structure: $f : (X, \epsilon_X) \rightarrow (Y, \epsilon_Y)$ is a cofibration if $X \rightarrow Y$ is a monomorphism, and a weak equivalence if $f : X^\sharp \rightarrow Y^\sharp$ is a marked equivalence in $(\SSet^+)_{/S}$.
   \item[3]  Let $\C_3$ denote $(\SSet)_{/S}$ endowed with the covariant model structure. The cofibrations are monomorphisms and the weak equivalcnes are contravariant equivalences.
   \item[4] Let $\C_4$ denote $(\SSet)_{/S}$ endowed with the usual homotopic-theoretic model structure. The cofibrations are monomorphisms of simplicial sets, and the weak equivalences are weak homotopy equivalences of simplicial sets.
 \end{itemize}
