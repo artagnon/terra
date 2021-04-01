@@ -290,7 +290,23 @@ Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, wher
 \end{proposition}
 
 \subsection{Quillen adjunctions between model structures}
+
 \subsection{Straightening and unstraightening, revisited}
+Let \C be a category and let $\xi:\C^{op}\text{Cat}$ be a functor from \C to the category $\text{Cat}$ of small categories. Via the Grothendieck construction, we can associate to this data a new category $\tilde{\C}$ which may be described as follows:
+
+\begin{itemize}
+  \item The objects of $\tilde{C}$ are pairs $(C,\eta)$, where $C\in\C$ and $\eta\in\xi(C)$.
+  \item A morphism from $(C,\eta)$ to $(C', \eta')$ is a pair $(f,\alpha)$, where $f:C\rightarrow C'$ is a morphism in the category \C and $\alpha:\eta\rightarrow \xi(f)(\eta')$ is a morphism in the category $\xi(C)$.
+\end{itemize}
+
+This construction establishes an equivalence between Cat-valued functors on $\C^{op}$ and categories which are fibered over $\C$. We will try to establish an \8-categorical version of the equivalence described above. We will replace the category \C by a simplicial set $S$, the category Cat by the \8-category $\text{Cat}_{\8}$, and the notion of fibered category with the notion of Cartesian fibration. This is going to give us an equivalence of \8-categories, which arises from a Quillen equivalence of simplicial model categories. \\
+On one side, we have the category $(\SSet^+)_{/S}$, equipped with the Cartesian model structure. On the other hand, we have the category of simplicial functors $$\mathscr{C}[S]^{op}\rightarrow \SSet^+$$ equipped with the projective model structure whose underlying \8-category is equivalent to $\text{Fun}(S^{op},\text{Cat}_\8). $ We have the following key result:
+
+\begin{theorem}
+  Let $S$ be a simplicial set, \C a simplicial category, and $\phi:\mathscr{C}[S]\rightarrow \C^{op}$ a functor between simplicial categories. Then there exists a pair of adjoint functors with the following properties:
+  \[(\SSet^+)_{/S} \adj{St_\phi^+}{Un_\phi^+} (\SSet^+)^\C\]
+\end{theorem}
+
 \subsection{Relative nerve}
 \subsection{Some applications}
 
