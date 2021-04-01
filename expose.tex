@@ -19,6 +19,7 @@
 \newcommand{\Gpd}{\ensuremath{\text{Gpd}}}
 \newcommand{\Map}{\ensuremath{\text{Map}}}
 \newcommand{\Fun}{\ensuremath{\text{Fun}}}
+\newcommand{\Hom}{\ensuremath{\text{Hom}}}
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
@@ -221,12 +222,12 @@ The straightening functor has a right adjoint, the unstraightening functor, deno
 \subsection{The Cartesian model structure}
 Let $S$ be a simplicial set. In this section, the goal is to define the Cartesian model structure on the category $(\SSet^+)_{/S}$ of marked simplicial sets over $S$. The ultimate goal is to prove that the fibrant objects of $(\SSet^+)_{/S}$ correspond precisely to cartesian fibrations $X\rightarrow S$ and that they encode contravariant functors from $S$ into the \8-category \Catinfdel.
 First of all, the category $\SSet^+$ is cartesian-closed. This means that for any two objects $X,Y\in \SSet^+$, there exists an internal mapping object $Y^X$ equipped with an evaluation map $Y^X\times X\rightarrow Y$ which induces bijections 
-\[\Hom_{\SSet^+}(Z,Y^X)\rightarrow \Hom_{\SSet^+}(Z\times X,Y)\]
+\[\text{Hom}_{\SSet^+}(Z,Y^X)\rightarrow \text{Hom}_{\SSet^+}(Z\times X,Y)\]
 for every $Z\in\SSet^+$. Let $\Map^\flat(X,Y)$ denote the underlying simplicial set of $Y^X$ and $\Map^\sharp(X,Y)$ the simplicial subset of $\Map^\flat(X,Y)$ consisting of all simplices $\sigma\subset \Map^\flat(X,Y)$ such that every edge of $\sigma$ is a marked edge of $Y^X$.\\
 These simplicia sets can also be described by the properties:
-\begin{align*}{}
-  \Hom_\SSet(K,\Map^\flat(X,Y))&\simeq \Hom_{\SSet^+}(K^\flat\times X,Y)\\
-  \Hom_\SSet(K,\Map^\sharp(X,Y)) &\simeq \Hom_{\SSet^+}(K^\sharp\times X,Y).
+\begin{align*}
+  \Hom_{\SSet}(K,\Map^\flat(X,Y))&\simeq \Hom_{\SSet^+}(K^\flat\times X,Y)\\
+  \Hom_{\SSet}(K,\Map^\sharp(X,Y)) &\simeq \Hom_{\SSet^+}(K^\sharp\times X,Y).
 \end{align*}
 
 If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let $\Map_S^\sharp(X,Y) \subset \Map^\sharp(X,Y)$ and $\Map_S^\flat(X,Y) \subset \Map^\flat(X,Y)$ denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X\in(\SSet^+)_{/S}$ and $P:Y\rightarrow S$ is a cartesian fibration, tehn $\Map^\flat_S(X,Y^\natural)$ is an \8-category and $\Map^\sharp_S(X,Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X,Y^\natural).$
@@ -281,7 +282,7 @@ This entails that if we have $f:A\rightarrow B$ a cofibration in $(\SSet^+)_{/S}
   Let $S$ be a simplicial set. Let's regard $(\SSet^+)_{/S}$ as a simplicial category with mapping objects given by $\Map^\sharp_S(X,Y)$. Then $(\SSet^+)_{/S}$ is a simplicial model category.
 \end{proposition}
 
-Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, where the simplicial mapping spaces are given by $\Map^\flat_S(X,Y)$. This simplicial structure is not compatible with the Cartesian model structure: for fixed $X\in(\SSet^+)_{/S}$ the functor $A\mapsto A^\flat\times X$ does not carry weak homotopy equivalences to Cartesian equivalences. But it does carry categorical equivalences to Cartesian equivalences, and consequently $(\SSet^+)_{/S}$ is endowed with the structure of a \SSet 
+Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, where the simplicial mapping spaces are given by $\Map^\flat_S(X,Y)$. This simplicial structure is not compatible with the Cartesian model structure: for fixed $X\in(\SSet^+)_{/S}$ the functor $A\mapsto A^\flat\times X$ does not carry weak homotopy equivalences to Cartesian equivalences. But it does carry categorical equivalences to Cartesian equivalences, and consequently $(\SSet^+)_{/S}$ is endowed with the structure of a \SSet-enriched model category, where we regard \SSet as equipped with the Joyal model structure. It's actually closer to the truth to say that $(\SSet^+)_{/S}$ is a model for an \8-bicategory.
 
 
 \begin{proposition}
