@@ -16,6 +16,7 @@
 \newcommand{\Delt}{\ensuremath{\boldsymbol{\Delta}}}
 \newcommand{\op}[1]{\ensuremath{{#1}^{\text{op}}}}
 \newcommand{\Pt}[1]{\ensuremath{\{{#1}\}}}
+\newcommand{\adj}[2]{\ensuremath{\overset{\overset{#1}{\rightarrow}}{\underset{#2}{\leftarrow}}}}
 \newcommand{\Set}{\ensuremath{\text{Set}}}
 \newcommand{\Gpd}{\ensuremath{\text{Gpd}}}
 \newcommand{\Map}{\ensuremath{\text{Map}}}
@@ -231,6 +232,25 @@ We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in
 \subsection{Marked anodyne extensions}
 \subsection{The Cartesian model structure}
 \subsection{Quillen adjunctions between model structures}
+
+We have a plethora of model structures on categories of simplicial sets over the simplicial set $S$:
+
+\begin{itemize}
+  \item[0] Let $\C_0$ denote $(\SSet)_{/S}$ endowed with the Joyal model structure. Cofibrations are monomorphisms of simplicial sets, and weak equivalences are categorical equivalences.
+  \item[1]  Let $\C_1$ denote $(\SSet^+)_{/S}$ endowed with the marked model structure. Cofibrations are maps $(X, \epsilon_X) \rightarrow (Y, \epsilon_Y)$ which induce monomorphisms $X \rightarrow Y$, and the weak equivalences are Cartesian equivalences.
+  \item[2]  Let $\C_2$ denote $(\SSet^+)_{/S}$ endowed with the following localization of the Cartesian model structure: $f : (X, \epsilon_X) \rightarrow (Y, \epsilon_Y)$ is a cofibration if $X \rightarrow Y$ is a monomorphism, and a weak equivalence if $f : X^\# \rightarrow Y^\#$ is a marked equivalence in $(\SSet^+)_{/S}$.
+  \item[3]  Let $\C_3$ denote $(\SSet)_{/S}$ endowed with the covariant model structure. The cofibrations are monomorphisms and the weak equivalcnes are contravariant equivalences.
+  \item[4] Let $\C_4$ denote $(\SSet)_{/S}$ endowed with the usual homotopic-theoretic model structure. The cofibrations are monomorphisms of simplicial sets, and the weak equivalences are weak homotopy equivalences of simplicial sets.
+\end{itemize}
+
+\begin{theorem}
+  There exists a sequence of Quillen adjunctions:
+
+  $$
+    \C_0 \adj{F_0}{G_0} \C_1 \adj{F_1}{G_1} C_2 \adj{F_2}{G_2} \C_3 \adj{F_3}{G_3} \C_4
+  $$
+\end{theorem}
+
 \subsection{Straightening and unstraightening, revisited}
 \subsection{Relative nerve}
 \subsection{Some applications}
