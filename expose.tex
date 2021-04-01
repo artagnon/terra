@@ -1,16 +1,9 @@
 \documentclass{amsart}
 
-\usepackage{latexsym, amsmath, amsthm, hyperref, url, verbatim, lmodern}
+\usepackage{latexsym, amsmath, amsthm, hyperref, url, verbatim, lmodern, mathrsfs}
 \usepackage[all]{xy}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-<<<<<<< HEAD
-\newcommand{\8}{\infty}
-\newcommand{\Horn}[2]{\Lambda^{#1}_{#2}}
-\newcommand{\Simplex}[1]{\boldsymbol{\Delta^{#1}}}
-\newcommand{\SSet}{\text{Set}_\boldsymbol{\Delta}}
-\newcommand{\HCal}{\mathcal{H}}
-=======
 \newcommand{\8}{\ensuremath{\infty}}
 \newcommand{\C}{\ensuremath{\mathscr{C}}}
 \newcommand{\D}{\ensuremath{\mathscr{D}}}
@@ -26,11 +19,11 @@
 \newcommand{\Gpd}{\ensuremath{\text{Gpd}}}
 \newcommand{\Map}{\ensuremath{\text{Map}}}
 \newcommand{\Fun}{\ensuremath{\text{Fun}}}
->>>>>>> master
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
 
 \title{An exposé on the \8-category of \8-categories}
 
@@ -153,7 +146,7 @@ Restricting the dotted arrow to $\{1\}\times X_s$, we obtain a map $f_!:X_s\righ
 
 
 \begin{lemma}
-  Let $q : X \rightarrow S$ be a left fibration of simplicial sets. The assignment $s \in S_0 \mapsto X_s$, $f \in S_1 \mapsto f_!$ determines a functor from the homotopy category $\text{hS}$ into the homotopy category $\HCal$ of spaces.
+  Let $q : X \rightarrow S$ be a left fibration of simplicial sets. The assignment $s \in S_0 \mapsto X_s$, $f \in S_1 \mapsto f_!$ determines a functor from the homotopy category $\text{hS}$ into the homotopy category \H of spaces.
 \end{lemma}
 
 Therefore, if we take $q: X\rightarrow S$ to be a left fibration of simplicial sets, we can assign to each $\textit{object}$ of $S$ a Kan complex $X_s$, as well as a map $f_{!}: X_s \rightarrow X_{s'}$ for each edge $s \rightarrow s'$. Higher dimensional simplexes of $S$ provide coherence data for these morphisms. A left fibration therefore gives us something like a functor from a simplicial set into the \8-category of spaces. Given a simplicial set $S$, we'd like to specify the relationship between left fibrations over $S$ and functors from $S$ into spaces by exhibiting left fibrations over $S$ as the class of fibrant objects in a particular model category. This category will turn out to be $(\SSet)_{/S}$.
@@ -224,7 +217,77 @@ The straightening functor has a right adjoint, the unstraightening functor, deno
 \end{definition}
 
 \subsection{Marked anodyne extensions}
+
 \subsection{The Cartesian model structure}
+Let $S$ be a simplicial set. In this section, the goal is to define the Cartesian model structure on the category $(\SSet^+)_{/S}$ of marked simplicial sets over $S$. The ultimate goal is to prove that the fibrant objects of $(\SSet^+)_{/S}$ correspond precisely to cartesian fibrations $X\rightarrow S$ and that they encode contravariant functors from $S$ into the \8-category \Catinfdel.
+First of all, the category $\SSet^+$ is cartesian-closed. This means that for any two objects $X,Y\in \SSet^+$, there exists an internal mapping object $Y^X$ equipped with an evaluation map $Y^X\times X\rightarrow Y$ which induces bijections 
+\[\Hom_{\SSet^+}(Z,Y^X)\rightarrow \Hom_{\SSet^+}(Z\times X,Y)\]
+for every $Z\in\SSet^+$. Let $\Map^\flat(X,Y)$ denote the underlying simplicial set of $Y^X$ and $\Map^\sharp(X,Y)$ the simplicial subset of $\Map^\flat(X,Y)$ consisting of all simplices $\sigma\subset \Map^\flat(X,Y)$ such that every edge of $\sigma$ is a marked edge of $Y^X$.\\
+These simplicia sets can also be described by the properties:
+\begin{align*}{}
+  \Hom_\SSet(K,\Map^\flat(X,Y))&\simeq \Hom_{\SSet^+}(K^\flat\times X,Y)\\
+  \Hom_\SSet(K,\Map^\sharp(X,Y)) &\simeq \Hom_{\SSet^+}(K^\sharp\times X,Y).
+\end{align*}
+
+If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let $\Map_S^\sharp(X,Y) \subset \Map^\sharp(X,Y)$ and $\Map_S^\flat(X,Y) \subset \Map^\flat(X,Y)$ denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X\in(\SSet^+)_{/S}$ and $P:Y\rightarrow S$ is a cartesian fibration, tehn $\Map^\flat_S(X,Y^\natural)$ is an \8-category and $\Map^\sharp_S(X,Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X,Y^\natural).$
+
+\begin{proposition}
+  Let $S$ be a simplicial set. And let $p:X\rightarrow Y$ be a morphism in $(\SSet^+)_{/S}$. $p$ is a cartesian equivalence if it satisfies either of the following equivalent conditions:
+  \begin{itemize}
+    \item[(1)] For every cartesian fibration $Z\rightarrow S$, the induced map
+    \[\Map^\flat_S(Y,Z^\natural)\rightarrow \Map_S^\flat(X,Z^\natural)\] is an equivalence of \8-categories.
+    \item[(2)] For every cartesian fibration $Z\rightarrow S$, the induced map \[\Map^\sharp_S(Y,Z^\natural)\rightarrow \Map_S^\sharp(X,Z^\natural)\] is a homotopy equivalence of Kan complexes.
+  \end{itemize}
+\end{proposition}
+
+Let's take $f:X\rightarrow Y$ to be a morphism in $(\SSet^+)_{/S}$ which is marked anodyne when regarded as a map of marked simplicial sets. Since the smash product of $f$ with any inclusion $A^\flat\subset B^\flat$ is also marked anodyne, we deduce that the map \[\phi:\Map_S^\flat(Y,Z^\natural)\rightarrow \Map_S^\flat(X,Z^\natural)\] is a trivial fibration for every cartesian fibration $Z\rightarrow S$, which makes $f$ a cartesian equivalence.
+
+\begin{definition}
+  $X,Y\in(\SSet^+)_{/S}$ for $S$ a simplicial set. We say that a pair of morphisms $f,g:X\rightarrow Y$ are strongly homotopic if there exists a contractible Kan compelx $K$ and a map $rightarrow \Map^\flat_S(X,Y)$ whose image contains both of the vertices $f$ and $g$. If $Y = Z^\natural$, where $Z\rightarrow S$ is a cartesian fibration, then this just means that $f$ and $g$ are equivalent when viewed as objects of the \8-category $\Map_S^\flat(X,Y)$.
+\end{definition}
+
+\begin{proposition}
+  Let $X\xrightarrow{p} Y\xrightarrow{q} S$ be a diagram of simplicial sets, where both $q$ and $q\circ p$ are cartesian fibrations. The following assertions are equivalent:
+  \begin{itemize}
+    \item[(1)] the map $p$ induces a cartesian equivalence $X^\natural \rightarrow Y^\natural$ in $(\SSet^+)_{/S}$.
+    \item[(2)] there exists a map $r:Y\rightarrow X$ which is a strong homotopy inverse to $p$, in the sense that $p\circ r$ and $r\circ p$ are both strongly homotopic to the identity.
+    \item[(3)] the map $p$ induces a categorical quivalence $X_s\rightarrow Y_s$ for each vertex $s$ of $S$.  
+  \end{itemize}
+\end{proposition}
+
+Let us now define the model structure we want on $(\SSet^+)_{/S}$:
+\begin{proposition}
+There exists a left proper combinatorial model structure on $(\SSet^+)_{/S}$ which can be described as follows:
+\begin{itemize}
+  \item[(C)] The cofibrations in $(\SSet^+)_{/S}$ are the morphisms $p:X\rightarrow Y$ in $(\SSet^+)_{/S}$ which are cofibrations when regarded as morphisms of simplicial sets.
+  \item[(W)] The weak equivalences in $(\SSet^+)_{/S}$ are the cartesian equivalences.
+  \item[(F)] The fibrations in $(\SSet^+)_{/S}$ are the maps which have the right lifting property with respect to every map which is simultaneously a cofibration and a weak equivalence.  
+\end{itemize}
+\end{proposition}
+
+\begin{remark}
+  Let $S$ be a simplicial set. It is important to be aware of the difference between Cartesian fibrations of simplicial sets and fibrations with respect to the Cartesian model structure on $(\SSet^+)_{/S}$. They are related, though: it turns out that the fibrant objects of $(\SSet^+)_{/S}$ are exactly the objects of the form $X^\natural$, where $X\rightarrow S$ is a Cartesian fibration.
+\end{remark}
+
+Let's now look at some properties of the cartesian model structure.
+
+First, the cartesian model structure behaves nicely with respect to products. If $S$ and $T$ are simplicial sets and $Z$ is an object of $(\SSet^+)_{/T}$, then the functor\begin{align*}(\SSet^+)_{/S}&\rightarrow (\SSet^+)_{/S\times T}\\
+X&\mapsto X\times Z \end{align*}
+preserves Cartesian equivalences.\\
+This entails that if we have $f:A\rightarrow B$ a cofibration in $(\SSet^+)_{/S}$ and $f':A'\rightarrow B'$ a cofibration in $(\SSet^+)_{/T}$, then the smash product map
+\[(A\times B')\displaystyle \cup_{A\times B}(A'\times B)\rightarrow A'\times B'\] is a cofibration in $(\SSet^+)_{/S\times T}$, which is trivial if either $f$ or $g$ is trivial. All of this brings us to the following result:
+
+\begin{proposition}
+  Let $S$ be a simplicial set. Let's regard $(\SSet^+)_{/S}$ as a simplicial category with mapping objects given by $\Map^\sharp_S(X,Y)$. Then $(\SSet^+)_{/S}$ is a simplicial model category.
+\end{proposition}
+
+Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, where the simplicial mapping spaces are given by $\Map^\flat_S(X,Y)$. This simplicial structure is not compatible with the Cartesian model structure: for fixed $X\in(\SSet^+)_{/S}$ the functor $A\mapsto A^\flat\times X$ does not carry weak homotopy equivalences to Cartesian equivalences. But it does carry categorical equivalences to Cartesian equivalences, and consequently $(\SSet^+)_{/S}$ is endowed with the structure of a \SSet 
+
+
+\begin{proposition}
+  An object $X\in(\SSet^+)_{/S}$ is fibrant with respect to the cartesian model structure if and only if $X\simeq Y^\natural$< where $Y\rightarrow S$ is a Cartesian fibration.
+\end{proposition}
+
 \subsection{Quillen adjunctions between model structures}
 \subsection{Straightening and unstraightening, revisited}
 \subsection{Relative nerve}
