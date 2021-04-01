@@ -1,16 +1,9 @@
 \documentclass{amsart}
 
-\usepackage{latexsym, amsmath, amsthm, hyperref, url, verbatim, lmodern}
+\usepackage{latexsym, amsmath, amsthm, mathrsfs, hyperref, url, verbatim, lmodern}
 \usepackage[all]{xy}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-<<<<<<< HEAD
-\newcommand{\8}{\infty}
-\newcommand{\Horn}[2]{\Lambda^{#1}_{#2}}
-\newcommand{\Simplex}[1]{\boldsymbol{\Delta^{#1}}}
-\newcommand{\SSet}{\text{Set}_\boldsymbol{\Delta}}
-\newcommand{\HCal}{\mathcal{H}}
-=======
 \newcommand{\8}{\ensuremath{\infty}}
 \newcommand{\C}{\ensuremath{\mathscr{C}}}
 \newcommand{\D}{\ensuremath{\mathscr{D}}}
@@ -19,14 +12,14 @@
 \newcommand{\Simplex}[1]{\ensuremath{\boldsymbol{\Delta^{#1}}}}
 \newcommand{\SSet}{\ensuremath{\text{Set}_{\boldsymbol{\Delta}}}}
 \newcommand{\Catinfdel}{\ensuremath{\text{Cat}^{\boldsymbol{\Delta}}_{\infty}}}
+\newcommand{\Catinf}{\ensuremath{\text{Cat}_{\infty}}}
 \newcommand{\Delt}{\ensuremath{\boldsymbol{\Delta}}}
-\newcommand{\op}[1]{{#1}^{\text{op}}}
-\newcommand{\Pt}[1]{\{{#1}\}}
+\newcommand{\op}[1]{\ensuremath{{#1}^{\text{op}}}}
+\newcommand{\Pt}[1]{\ensuremath{\{{#1}\}}}
 \newcommand{\Set}{\ensuremath{\text{Set}}}
 \newcommand{\Gpd}{\ensuremath{\text{Gpd}}}
 \newcommand{\Map}{\ensuremath{\text{Map}}}
 \newcommand{\Fun}{\ensuremath{\text{Fun}}}
->>>>>>> master
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
@@ -43,7 +36,7 @@
 
 \begin{document}
 \begin{abstract}
-  This is an exposé on Chapter III of Lurie's first book~\cite{lurie09}. It is meant to be an aid to studying the chapter. We begin with an introduction of Quasi-categories, and orient the reader towards cartesian fibrations. Then, after a brief section on fibrations of simplicial sets, we delve into the main propositions and theorems on $\text{Cat}_\8$. The work was done as a part of the course Catégories supérieures, taught by Muriel Livernet.
+  This is an exposé on Chapter III of Lurie's first book~\cite{lurie09}. It is meant to be an aid to studying the chapter. We begin with an introduction of Quasi-categories, and orient the reader towards cartesian fibrations. Then, after a brief section on fibrations of simplicial sets, we delve into the main propositions and theorems on \Catinf. The work was done as a part of the course Catégories supérieures, taught by Muriel Livernet.
 \end{abstract}
 \maketitle
 \tableofcontents
@@ -153,7 +146,7 @@ Restricting the dotted arrow to $\{1\}\times X_s$, we obtain a map $f_!:X_s\righ
 
 
 \begin{lemma}
-  Let $q : X \rightarrow S$ be a left fibration of simplicial sets. The assignment $s \in S_0 \mapsto X_s$, $f \in S_1 \mapsto f_!$ determines a functor from the homotopy category $\text{hS}$ into the homotopy category $\HCal$ of spaces.
+  Let $q : X \rightarrow S$ be a left fibration of simplicial sets. The assignment $s \in S_0 \mapsto X_s$, $f \in S_1 \mapsto f_!$ determines a functor from the homotopy category $\text{hS}$ into the homotopy category \H of spaces.
 \end{lemma}
 
 Therefore, if we take $q: X\rightarrow S$ to be a left fibration of simplicial sets, we can assign to each $\textit{object}$ of $S$ a Kan complex $X_s$, as well as a map $f_{!}: X_s \rightarrow X_{s'}$ for each edge $s \rightarrow s'$. Higher dimensional simplexes of $S$ provide coherence data for these morphisms. A left fibration therefore gives us something like a functor from a simplicial set into the \8-category of spaces. Given a simplicial set $S$, we'd like to specify the relationship between left fibrations over $S$ and functors from $S$ into spaces by exhibiting left fibrations over $S$ as the class of fibrant objects in a particular model category. This category will turn out to be $(\SSet)_{/S}$.
@@ -176,7 +169,7 @@ We can identify $S$ with a subset of $C^{\triangleleft}f$. With this identificat
 
 This model structure depends functorially on $S$:
 \begin{proposition}
-  Let $j:S\rightarrow S'$ be a map of simplicial sets. Let $J_!: (\SSet)_{/S}\rightarrow (\SSet)_{/S'}$ be the forgetful functor and let $j^*$ be its right adjoint given by $j^*X' = X'\times_{S'} S$. Then we have a Quillen adjunction 
+  Let $j:S\rightarrow S'$ be a map of simplicial sets. Let $J_!: (\SSet)_{/S}\rightarrow (\SSet)_{/S'}$ be the forgetful functor and let $j^*$ be its right adjoint given by $j^*X' = X'\times_{S'} S$. Then we have a Quillen adjunction
   \[(\SSet)_{/S}\underset{j^*}{\overset{j_!}{\overset{\rightarrow}{\leftarrow}}}.\]
 \end{proposition}
 
@@ -197,13 +190,13 @@ We can add a few remarks about specific instances where left fibrations are Kan 
 
 Let's look more precisely at the way we can view a left fibration $X\rightarrow S$ as a functor from $S$ into an $\8$-category of Kan complexes. \\
 Let us fix a simplicial set $S$, a simplicial category $\mathcal{C}$, and a functor $\phi:\mathscr{C}[S]\rightarrow \mathcal{C}^{op}$. Consider an object $X\in(\SSet)_{/S}$, and let $v$ be the cone point of $X^{\triangleright}$. We can view the simplicial category
-\[\mathcal{M} = \mathscr{C}[X^{\triangleright}]\displaystyle \cup_{\mathscr{C}[X]}\mathcal{C}^{op}\] as a correspondence from $\mathcal{C}^{op}$ to $\{v\}$, which we can identify with a simple functor 
+\[\mathcal{M} = \mathscr{C}[X^{\triangleright}]\displaystyle \cup_{\mathscr{C}[X]}\mathcal{C}^{op}\] as a correspondence from $\mathcal{C}^{op}$ to $\{v\}$, which we can identify with a simple functor
 \[(St_\phi X)(C)=\text{Map}_\mathcal{M}(C,v).\]
-We can consider $St_\phi$ as a functor from $(\SSet)_{/S}$ to $(\SSet)^\mathcal{C}$. We call it the straightening functor associated to $\phi$. 
+We can consider $St_\phi$ as a functor from $(\SSet)_{/S}$ to $(\SSet)^\mathcal{C}$. We call it the straightening functor associated to $\phi$.
 The straightening functor has a right adjoint, the unstraightening functor, denoted by $Un_\phi$ which satisfies functoriality properties.
 
 \begin{theorem}
-  Let $S$ be a simplicial set, $\mathcal{C}$ a simplicial category, and $\phi:\mathscr{C}[S]\rightarrow\mathcal{C}^{op}$ a simplicial functor. The straightening and unstraightening functors determine a Quillen adjunction 
+  Let $S$ be a simplicial set, $\mathcal{C}$ a simplicial category, and $\phi:\mathscr{C}[S]\rightarrow\mathcal{C}^{op}$ a simplicial functor. The straightening and unstraightening functors determine a Quillen adjunction
   \[(\SSet)_{/S}\dashv \SSet^\mathcal{C}\]
   where
 \end{theorem}
@@ -215,13 +208,25 @@ The straightening functor has a right adjoint, the unstraightening functor, deno
 
 \section{\texorpdfstring{$\text{Cat}_\8$}{Cat∞}}
 
-\begin{definition}
+\begin{definition}[\Catinf]
   The simplicial category \Catinfdel is defined as follows:
   \begin{itemize}
     \item The objects are small \8-categories.
     \item Given two \8-categories \C and \D, we define $\Map_{\Catinfdel}(\C, \D)$ to be the largest Kan complex contained in the \8-cateogry $\Fun(\C, \D)$.
   \end{itemize}
+
+  \Catinf denotes the simplicial nerve $\text{N}(\Catinfdel)$, and is referred to as the \8-category of small \8-categories whose mapping spaces are Kan complexes, and composition is strictly associative.
 \end{definition}
+
+The Joyal model structure on \SSet is not compatible with the usual simplicial structure. We will introduce marked simplicial sets $\SSet^+$ as a remedy to the problem, so that we obtain an equivalance of simplicial categories $\Catinfdel \simeq (\SSet^+)^\circ$.
+
+\begin{definition}[Marked simplicial set]
+  A marked simplicial set is a pair $(X, \epsilon)$, where $X$ is a simplicial set and $\epsilon$ is a set of edges of $X$, which contains every degenerate edge. We will say that $X$ is marked if it belongs to $\epsilon$. A morphism $(X, \epsilon) \rightarrow (X', \epsilon')$ is a map $f : X \rightarrow X'$ having the property that $f(\epsilon) \subseteq \epsilon'$.
+
+  Every simplicial set may be regarded as a marked simplicial set, with two extreme cases deserving special mention: $S^\# = (S, S_1)$ denotes the marked simplicial set in whic every edge of $S$ is marked, and $S^b = (S, s_0(S_0)$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked. We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\#}$.
+\end{definition}
+
+We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in particular see that each $(\SSet^+)_{/S}$ is a simplicial model category whose fibrant objets are the Cartesian fibrations $X \rightarrow S$.
 
 \subsection{Marked anodyne extensions}
 \subsection{The Cartesian model structure}
