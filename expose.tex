@@ -4,13 +4,13 @@
 \usepackage[all]{xy}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[a4paper,inner=25mm,outer=25mm]{geometry}
+\usepackage[a4paper, inner=25mm, outer=25mm]{geometry}
 \newcommand{\8}{\ensuremath{\infty}}
-\newcommand{\C}{\ensuremath{\mathscr{C}}}
+\newcommand{\C}{\ensuremath{\mathfrak{C}}}
 \newcommand{\D}{\ensuremath{\mathscr{D}}}
 \renewcommand{\H}{\ensuremath{\mathcal{H}}}
 \newcommand{\Horn}[2]{\ensuremath{\Lambda^{#1}_{#2}}}
-\newcommand{\Simplex}[1]{\ensuremath{\boldsymbol{\Delta^{#1}}}}
+\newcommand{\Simplex}[1][n]{\ensuremath{\boldsymbol{\Delta^{#1}}}}
 \newcommand{\SSet}{\ensuremath{\text{Set}_{\boldsymbol{\Delta}}}}
 \newcommand{\Catinfdel}{\ensuremath{\text{Cat}^{\boldsymbol{\Delta}}_{\infty}}}
 \newcommand{\Catinf}{\ensuremath{\text{Cat}_{\infty}}}
@@ -47,10 +47,10 @@
 We start with the definititon of quasi-categories, or what will henceforth referred to as $\8$-categories. $K$ is an $\8$-category if inner horns can be filled ($0 < k < n$):
 
 \begin{definition}[Simplicial nerve]
-  Given a small category \C a simplex category $\Delt$, and a map $i : \Delt \rightarrow \C$, there exists a functor $N : \C \rightarrow \Set^{\op{\Delt}}$, or $\C \hookrightarrow \SSet$ called the nerve of the category, which is a simplicial set associated to the category. Applying Yoneda lemma to the Yoneda embedding $N$ yields:
+  Given a small category \C a simplex category \Delt, and a map $i : \Delt \rightarrow \C$, there exists a functor $N : \C \rightarrow \Set^{\op\Delt}$, or $\C \hookrightarrow \SSet$ called the nerve of the category, which is a simplicial set associated to the category. Applying Yoneda lemma to the Yoneda embedding $N$ yields:
 
   $$
-    N(\C)_n = Hom(\Simplex{n}, N(\C))
+    N(\C)_n = Hom(\Simplex, N(\C))
   $$
 \end{definition}
 
@@ -61,7 +61,7 @@ We start with the definititon of quasi-categories, or what will henceforth refer
     \begin{xy}
       \xymatrix{
       \Horn{n}{k}\ar[r]\ar@{^{(}->}[d] & K \\
-      \Simplex{n}\ar@{.>}[ur]|{\exists!} &
+      \Simplex\ar@{.>}[ur]|{\exists!} &
       }
     \end{xy}
   $$
@@ -76,7 +76,7 @@ This simplicial nerve will play a crucial role in studying \8-categories, and qu
     \begin{xy}
       \xymatrix{
         \Horn{n}{k}\ar[r]\ar@{^{(}->}[d] & K \\
-        \Simplex{n}\ar@{.>}[ur]|\exists &
+        \Simplex\ar@{.>}[ur]|\exists &
       }
     \end{xy}
   $$
@@ -110,7 +110,7 @@ Let's detail the Grothendieck construction, that gives us an equivalence between
     \item For every object $C \in \C$ and every morphism $\eta: F(C) \rightarrow D$ in \D , there exists a morphism $\tilde{\eta} : C \rightarrow \tilde{D}$ such that $F(\tilde{\eta}) = \eta$.
     \item For every morphism $\eta: C \rightarrow C'$ in \C and every object $C'' \in \C$, the map
           $$
-            Hom_\mathcal{C}(C', C'') \rightarrow Hom_\mathcal{C}(C, C'')\times_{Hom_\mathcal{D}(F(C), F(C''))}Hom_\mathcal{D}(F(C'), F(C'')))
+            Hom_\C(C', C'') \rightarrow Hom_\C(C, C'')\times_{Hom_\mathcal{D}(F(C), F(C''))}Hom_\mathcal{D}(F(C'), F(C'')))
           $$
           is bijective.
   \end{itemize}
@@ -193,19 +193,26 @@ We can add a few remarks about specific instances where left fibrations are Kan 
 
 Let's look more precisely at the way we can view a left fibration $X \rightarrow S$ as a functor from $S$ into an $\8$-category of Kan complexes.
 
-Let us fix a simplicial set $S$, a simplicial category $\mathcal{C}$, and a functor $\phi: \mathscr{C}[S] \rightarrow \mathcal{C}^{op}$. Consider an object $X \in (\SSet)_{/S}$, and let $v$ be the cone point of $X^{\triangleright}$. We can view the simplicial category
-\[\mathcal{M} = \mathscr{C}[X^{\triangleright}]\displaystyle \cup_{\mathscr{C}[X]}\mathcal{C}^{op}\] as a correspondence from $\mathcal{C}^{op}$ to $\{v\}$, which we can identify with a simple functor
+Let us fix a simplicial set $S$, a simplicial category $\C$, and a functor $\phi: \mathfrak{C}[S] \rightarrow \op\C$. Consider an object $X \in (\SSet)_{/S}$, and let $v$ be the cone point of $X^{\triangleright}$. We can view the simplicial category
+
+$$
+  \mathcal{M} = \mathfrak{C}[X^{\triangleright}]\displaystyle \cup_{\mathfrak{C}[X]}\op\C
+$$
+
+as a correspondence from $\op\C$ to $\{v\}$, which we can identify with a simple functor
 
 $$
   (St_\phi X)(C)=\text{Map}_\mathcal{M}(C, v).
 $$
 
-We can consider $St_\phi$ as a functor from $(\SSet)_{/S}$ to $(\SSet)^\mathcal{C}$. We call it the straightening functor associated to $\phi$.
+We can consider $St_\phi$ as a functor from $(\SSet)_{/S}$ to $(\SSet)^\C$. We call it the straightening functor associated to $\phi$.
 The straightening functor has a right adjoint, the unstraightening functor, denoted by $Un_\phi$ which satisfies functoriality properties.
 
 \begin{theorem}
-  Let $S$ be a simplicial set, $\mathcal{C}$ a simplicial category, and $\phi: \mathscr{C}[S] \rightarrow\mathcal{C}^{op}$ a simplicial functor. The straightening and unstraightening functors determine a Quillen adjunction
-  \[(\SSet)_{/S}\dashv \SSet^\mathcal{C}\]
+  Let $S$ be a simplicial set, $\C$ a simplicial category, and $\phi: \mathfrak{C}[S] \rightarrow\op\C$ a simplicial functor. The straightening and unstraightening functors determine a Quillen adjunction
+  $$
+    (\SSet)_{/S}\dashv \SSet^\C
+  $$
   where
 \end{theorem}
 
@@ -356,19 +363,25 @@ We have a plethora of model structures on categories of simplicial sets over the
 \end{theorem}
 
 \subsection{Straightening and unstraightening, revisited}
-Let \C be a category and let $\xi: \C^{op}\text{Cat}$ be a functor from \C to the category $\text{Cat}$ of small categories. Via the Grothendieck construction, we can associate to this data a new category $\tilde{\C}$ which may be described as follows:
+Let \C be a category and let $\xi: \op\C\text{Cat}$ be a functor from \C to the category $\text{Cat}$ of small categories. Via the Grothendieck construction, we can associate to this data a new category $\tilde{\C}$ which may be described as follows:
 
 \begin{itemize}
   \item The objects of $\tilde{C}$ are pairs $(C, \eta)$, where $C \in \C$ and $\eta \in \xi(C)$.
   \item A morphism from $(C, \eta)$ to $(C', \eta')$ is a pair $(f, \alpha)$, where $f: C \rightarrow C'$ is a morphism in the category \C and $\alpha: \eta \rightarrow \xi(f)(\eta')$ is a morphism in the category $\xi(C)$.
 \end{itemize}
 
-This construction establishes an equivalence between Cat-valued functors on $\C^{op}$ and categories which are fibered over $\C$. We will try to establish an \8-categorical version of the equivalence described above. We will replace the category \C by a simplicial set $S$, the category Cat by the \8-category $\text{Cat}_{\8}$, and the notion of fibered category with the notion of Cartesian fibration. This is going to give us an equivalence of \8-categories, which arises from a Quillen equivalence of simplicial model categories.
+This construction establishes an equivalence between Cat-valued functors on $\op\C$ and categories which are fibered over $\C$. We will try to establish an \8-categorical version of the equivalence described above. We will replace the category \C by a simplicial set $S$, the category Cat by the \8-category $\text{Cat}_{\8}$, and the notion of fibered category with the notion of Cartesian fibration. This is going to give us an equivalence of \8-categories, which arises from a Quillen equivalence of simplicial model categories.
 
-On one side, we have the category $(\SSet^+)_{/S}$, equipped with the Cartesian model structure. On the other hand, we have the category of simplicial functors $$\mathscr{C}[S]^{op} \rightarrow \SSet^+$$ equipped with the projective model structure whose underlying \8-category is equivalent to $\text{Fun}(S^{op}, \text{Cat}_\8). $ We have the following key result:
+On one side, we have the category $(\SSet^+)_{/S}$, equipped with the Cartesian model structure. On the other hand, we have the category of simplicial functors
+
+$$
+  \op{\mathfrak{C}[S]} \rightarrow \SSet^+
+$$
+
+equipped with the projective model structure whose underlying \8-category is equivalent to $\text{Fun}(\op{S}, \text{Cat}_\8). $ We have the following key result:
 
 \begin{theorem}
-  Let $S$ be a simplicial set, \C a simplicial category, and $\phi: \mathscr{C}[S] \rightarrow \C^{op}$ a functor between simplicial categories. Then there exists a pair of adjoint functors
+  Let $S$ be a simplicial set, \C a simplicial category, and $\phi: \mathfrak{C}[S] \rightarrow \op\C$ a functor between simplicial categories. Then there exists a pair of adjoint functors
   \[(\SSet^+)_{/S} \adj{St_\phi^+}{Un_\phi^+} (\SSet^+)^\C\]
   with the following properties:
   \begin{itemize}
@@ -379,7 +392,7 @@ On one side, we have the category $(\SSet^+)_{/S}$, equipped with the Cartesian 
 
 The rest of this subsection will be devoted to constructing these straightening and unstraightening functors and setting up what we need to prove the theorem.
 
-Let $S$ be a simplicial set and $\phi: \mathscr{C}[S] \rightarrow \mathcal{C}^{op}$ be a functor between simplicial categories, which we regard as fixed throughout this section. We're going to define the straightening functor $St_\phi^+: (\SSet^+)_{/S} \rightarrow (\SSet^+)^\C$ and its right adjoint $Un_\phi^+$. What is the intuition behind the name of straightening functor? An object $X$ of $(\SSet^+)_{/S}$ associates \8-categories to vertices of $S$ in a way that is coherent up to homotopy, and the functor $St_\phi^+$ straightens this diagram to get a functor on \C that takes values in \8-categories. Conversely, the unstraightening functor $Un_\phi^+$ takes a diagram that is strictly commutative and only retains the commutativity \emph{up to homotopy}.
+Let $S$ be a simplicial set and $\phi: \mathfrak{C}[S] \rightarrow \op\C$ be a functor between simplicial categories, which we regard as fixed throughout this section. We're going to define the straightening functor $St_\phi^+: (\SSet^+)_{/S} \rightarrow (\SSet^+)^\C$ and its right adjoint $Un_\phi^+$. What is the intuition behind the name of straightening functor? An object $X$ of $(\SSet^+)_{/S}$ associates \8-categories to vertices of $S$ in a way that is coherent up to homotopy, and the functor $St_\phi^+$ straightens this diagram to get a functor on \C that takes values in \8-categories. Conversely, the unstraightening functor $Un_\phi^+$ takes a diagram that is strictly commutative and only retains the commutativity \emph{up to homotopy}.
 
 \subsection{Relative nerve}
 \subsection{Some applications}
