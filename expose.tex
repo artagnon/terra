@@ -1,4 +1,4 @@
-\documentclass{amsart}
+\documentclass[12pt]{amsart}
 
 \usepackage{latexsym, amsmath, amsthm, mathrsfs, hyperref, url, verbatim, lmodern}
 \usepackage[all]{xy}
@@ -22,6 +22,7 @@
 \newcommand{\Map}{\ensuremath{\text{Map}}}
 \newcommand{\Fun}{\ensuremath{\text{Fun}}}
 \newcommand{\Hom}{\ensuremath{\text{Hom}}}
+
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
@@ -152,7 +153,7 @@ Restricting the dotted arrow to $\{1\}\times X_s$, we obtain a map $f_!: X_s \ri
   Let $q : X \rightarrow S$ be a left fibration of simplicial sets. The assignment $s \in S_0 \mapsto X_s$, $f \in S_1 \mapsto f_!$ determines a functor from the homotopy category $\text{hS}$ into the homotopy category \H of spaces.
 \end{lemma}
 
-Therefore, if we take $q: X \rightarrow S$ to be a left fibration of simplicial sets, we can assign to each $\textit{object}$ of $S$ a Kan complex $X_s$, as well as a map $f_{!}: X_s \rightarrow X_{s'}$ for each edge $s \rightarrow s'$. Higher dimensional simplexes of $S$ provide coherence data for these morphisms. A left fibration therefore gives us something like a functor from a simplicial set into the \8-category of spaces. Given a simplicial set $S$, we'd like to specify the relationship between left fibrations over $S$ and functors from $S$ into spaces by exhibiting left fibrations over $S$ as the class of fibrant objects in a particular model category. This category will turn out to be $(\SSet)_{/S}$.
+Therefore, if we take $q: X \rightarrow S$ to be a left fibration of simplicial sets, we can assign to each \emph{object} of $S$ a Kan complex $X_s$, as well as a map $f_{!}: X_s \rightarrow X_{s'}$ for each edge $s \rightarrow s'$. Higher dimensional simplexes of $S$ provide coherence data for these morphisms. A left fibration therefore gives us something like a functor from a simplicial set into the \8-category of spaces. Given a simplicial set $S$, we'd like to specify the relationship between left fibrations over $S$ and functors from $S$ into spaces by exhibiting left fibrations over $S$ as the class of fibrant objects in a particular model category. This category will turn out to be $(\SSet)_{/S}$.
 
 \begin{definition}
   Let $f: X \rightarrow S$ be a map of simplicial sets. The left cone of $f$ $C^
@@ -173,7 +174,9 @@ We can identify $S$ with a subset of $C^{\triangleleft}f$. With this identificat
 This model structure depends functorially on $S$:
 \begin{proposition}
   Let $j: S \rightarrow S'$ be a map of simplicial sets. Let $J_!: (\SSet)_{/S} \rightarrow (\SSet)_{/S'}$ be the forgetful functor and let $j^*$ be its right adjoint given by $j^*X' = X'\times_{S'} S$. Then we have a Quillen adjunction
-  \[(\SSet)_{/S}\underset{j^*}{\overset{j_!}{\overset{ \rightarrow}{\leftarrow}}}.\]
+  $$
+    (\SSet)_{/S} \adj{j_!}{j_*}
+  $$
 \end{proposition}
 
 This model structure has nice properties: for instance, every left anodyne map in $(\SSet)_{/S}$ is a covariant equivalence, every left anodyne map is a trivial cofibration, and most importantly: every covariant fibration is a left fibration of simplicial sets, and every fibrant object of $(\SSet)_{/S}$ determines a left fibration $X \rightarrow S$.
@@ -191,10 +194,15 @@ We can add a few remarks about specific instances where left fibrations are Kan 
 
 \subsection{Straightening and unstraightening, in the unmarked case}
 
-Let's look more precisely at the way we can view a left fibration $X \rightarrow S$ as a functor from $S$ into an $\8$-category of Kan complexes. \\
+Let's look more precisely at the way we can view a left fibration $X \rightarrow S$ as a functor from $S$ into an $\8$-category of Kan complexes.
+
 Let us fix a simplicial set $S$, a simplicial category $\mathcal{C}$, and a functor $\phi: \mathscr{C}[S] \rightarrow \mathcal{C}^{op}$. Consider an object $X \in (\SSet)_{/S}$, and let $v$ be the cone point of $X^{\triangleright}$. We can view the simplicial category
 \[\mathcal{M} = \mathscr{C}[X^{\triangleright}]\displaystyle \cup_{\mathscr{C}[X]}\mathcal{C}^{op}\] as a correspondence from $\mathcal{C}^{op}$ to $\{v\}$, which we can identify with a simple functor
-\[(St_\phi X)(C)=\text{Map}_\mathcal{M}(C, v).\]
+
+$$
+  (St_\phi X)(C)=\text{Map}_\mathcal{M}(C, v).
+$$
+
 We can consider $St_\phi$ as a functor from $(\SSet)_{/S}$ to $(\SSet)^\mathcal{C}$. We call it the straightening functor associated to $\phi$.
 The straightening functor has a right adjoint, the unstraightening functor, denoted by $Un_\phi$ which satisfies functoriality properties.
 
@@ -236,8 +244,13 @@ We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in
 \subsection{The Cartesian model structure}
 Let $S$ be a simplicial set. In this section, the goal is to define the Cartesian model structure on the category $(\SSet^+)_{/S}$ of marked simplicial sets over $S$. The ultimate goal is to prove that the fibrant objects of $(\SSet^+)_{/S}$ correspond precisely to cartesian fibrations $X \rightarrow S$ and that they encode contravariant functors from $S$ into the \8-category \Catinfdel.
 First of all, the category $\SSet^+$ is cartesian-closed. This means that for any two objects $X, Y\in \SSet^+$, there exists an internal mapping object $Y^X$ equipped with an evaluation map $Y^X\times X \rightarrow Y$ which induces bijections
-\[\Hom_{\SSet^+}(Z, Y^X) \rightarrow \Hom_{\SSet^+}(Z\times X, Y)\]
-for every $Z \in \SSet^+$. Let $\Map^\flat(X, Y)$ denote the underlying simplicial set of $Y^X$ and $\Map^\sharp(X, Y)$ the simplicial subset of $\Map^\flat(X, Y)$ consisting of all simplices $\sigma\subset \Map^\flat(X, Y)$ such that every edge of $\sigma$ is a marked edge of $Y^X$.\\
+
+$$
+  \Hom_{\SSet^+}(Z, Y^X) \rightarrow \Hom_{\SSet^+}(Z\times X, Y)
+$$
+
+for every $Z \in \SSet^+$. Let $\Map^\flat(X, Y)$ denote the underlying simplicial set of $Y^X$ and $\Map^\sharp(X, Y)$ the simplicial subset of $\Map^\flat(X, Y)$ consisting of all simplices $\sigma\subset \Map^\flat(X, Y)$ such that every edge of $\sigma$ is a marked edge of $Y^X$.
+
 These simplicial sets can also be described by the properties:
 
 \begin{align*}
@@ -245,7 +258,14 @@ These simplicial sets can also be described by the properties:
   \Hom_{\SSet}(K, \Map^\sharp(X, Y)) & \simeq \Hom_{\SSet^+}(K^\sharp\times X, Y)
 \end{align*}
 
-If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let $\Map_S^\sharp(X, Y) \subset \Map^\sharp(X, Y)$ and $\Map_S^\flat(X, Y) \subset \Map^\flat(X, Y)$ denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X \in (\SSet^+)_{/S}$ and $P: c Y \rightarrow S$ is a cartesian fibration, tehn $\Map^\flat_S(X, Y^\natural)$ is an \8-category and $\Map^\sharp_S(X, Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X, Y^\natural)$
+If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let
+
+\begin{align*}
+  \Map_S^\sharp(X, Y) & \subset \Map^\sharp(X, Y) \\
+  \Map_S^\flat(X, Y)  & \subset \Map^\flat(X, Y)
+\end{align*}
+
+denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X \in (\SSet^+)_{/S}$ and $P: c Y \rightarrow S$ is a cartesian fibration, then $\Map^\flat_S(X, Y^\natural)$ is an \8-category and $\Map^\sharp_S(X, Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X, Y^\natural)$
 
 \begin{proposition}
   Let $S$ be a simplicial set. And let $p: X \rightarrow Y$ be a morphism in $(\SSet^+)_{/S}$. $p$ is a cartesian equivalence if it satisfies either of the following equivalent conditions:
@@ -287,9 +307,15 @@ Let us now define the model structure we want on $(\SSet^+)_{/S}$:
 
 Let's now look at some properties of the cartesian model structure.
 
-First, the cartesian model structure behaves nicely with respect to products. If $S$ and $T$ are simplicial sets and $Z$ is an object of $(\SSet^+)_{/T}$, then the functor\begin{align*}(\SSet^+)_{/S} & \rightarrow (\SSet^+)_{/S\times T} \\
-  X              & \mapsto X\times Z\end{align*}
-preserves Cartesian equivalences.\\
+First, the cartesian model structure behaves nicely with respect to products. If $S$ and $T$ are simplicial sets and $Z$ is an object of $(\SSet^+)_{/T}$, then the functor
+
+\begin{align*}
+  (\SSet^+)_{/S} & \rightarrow (\SSet^+)_{/S\times T} \\
+  X              & \mapsto X\times Z
+\end{align*}
+
+preserves Cartesian equivalences.
+
 This entails that if we have $f: A \rightarrow B$ a cofibration in $(\SSet^+)_{/S}$ and $f': A' \rightarrow B'$ a cofibration in $(\SSet^+)_{/T}$, then the smash product map
 \[(A\times B')\displaystyle \cup_{A\times B}(A'\times B) \rightarrow A'\times B'\] is a cofibration in $(\SSet^+)_{/S\times T}$, which is trivial if either $f$ or $g$ is trivial. All of this brings us to the following result:
 
@@ -356,7 +382,7 @@ On one side, we have the category $(\SSet^+)_{/S}$, equipped with the Cartesian 
 
 The rest of this subsection will be devoted to constructing these straightening and unstraightening functors and setting up what we need to prove the theorem.
 
-Let $S$ be a simplicial set and $\phi: \mathscr{C}[S] \rightarrow \mathcal{C}^{op}$ be a functor between simplicial categories, which we regard as fixed throughout this section. We're going to define the straightening functor $St_\phi^+: (\SSet^+)_{/S} \rightarrow (\SSet^+)^\C$ and its right adjoint $Un_\phi^+$. What is the intuition behind the name of straightening functor? An object $X$ of $(\SSet^+)_{/S}$ associates \8-categories to vertices of $S$ in a way that is coherent up to homotopy, and the functor $St_\phi^+$ straightens this diagram to get a functor on \C that takes values in \8-categories. Conversely, the unstraightening functor $Un_\phi^+$ takes a diagram that is strictly commutative and only retains the commutativity "up to homotopy".
+Let $S$ be a simplicial set and $\phi: \mathscr{C}[S] \rightarrow \mathcal{C}^{op}$ be a functor between simplicial categories, which we regard as fixed throughout this section. We're going to define the straightening functor $St_\phi^+: (\SSet^+)_{/S} \rightarrow (\SSet^+)^\C$ and its right adjoint $Un_\phi^+$. What is the intuition behind the name of straightening functor? An object $X$ of $(\SSet^+)_{/S}$ associates \8-categories to vertices of $S$ in a way that is coherent up to homotopy, and the functor $St_\phi^+$ straightens this diagram to get a functor on \C that takes values in \8-categories. Conversely, the unstraightening functor $Un_\phi^+$ takes a diagram that is strictly commutative and only retains the commutativity \emph{up to homotopy}.
 
 \subsection{Relative nerve}
 \subsection{Some applications}
