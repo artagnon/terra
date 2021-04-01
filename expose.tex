@@ -1,6 +1,6 @@
 \documentclass{amsart}
 
-\usepackage{latexsym, amsmath, amsthm, hyperref, url, verbatim, lmodern, mathrsfs}
+\usepackage{latexsym, amsmath, amsthm, mathrsfs, hyperref, url, verbatim, lmodern}
 \usepackage[all]{xy}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -12,9 +12,11 @@
 \newcommand{\Simplex}[1]{\ensuremath{\boldsymbol{\Delta^{#1}}}}
 \newcommand{\SSet}{\ensuremath{\text{Set}_{\boldsymbol{\Delta}}}}
 \newcommand{\Catinfdel}{\ensuremath{\text{Cat}^{\boldsymbol{\Delta}}_{\infty}}}
+\newcommand{\Catinf}{\ensuremath{\text{Cat}_{\infty}}}
 \newcommand{\Delt}{\ensuremath{\boldsymbol{\Delta}}}
-\newcommand{\op}[1]{{#1}^{\text{op}}}
-\newcommand{\Pt}[1]{\{{#1}\}}
+\newcommand{\op}[1]{\ensuremath{{#1}^{\text{op}}}}
+\newcommand{\Pt}[1]{\ensuremath{\{{#1}\}}}
+\newcommand{\adj}[2]{\ensuremath{\overset{\overset{#1}{\rightarrow}}{\underset{#2}{\leftarrow}}}}
 \newcommand{\Set}{\ensuremath{\text{Set}}}
 \newcommand{\Gpd}{\ensuremath{\text{Gpd}}}
 \newcommand{\Map}{\ensuremath{\text{Map}}}
@@ -37,7 +39,7 @@
 
 \begin{document}
 \begin{abstract}
-  This is an exposé on Chapter III of Lurie's first book~\cite{lurie09}. It is meant to be an aid to studying the chapter. We begin with an introduction of Quasi-categories, and orient the reader towards cartesian fibrations. Then, after a brief section on fibrations of simplicial sets, we delve into the main propositions and theorems on $\text{Cat}_\8$. The work was done as a part of the course Catégories supérieures, taught by Muriel Livernet.
+  This is an exposé on Chapter III of Lurie's first book~\cite{lurie09}. It is meant to be an aid to studying the chapter. We begin with an introduction of Quasi-categories, and orient the reader towards cartesian fibrations. Then, after a brief section on fibrations of simplicial sets, we delve into the main propositions and theorems on \Catinf. The work was done as a part of the course Catégories supérieures, taught by Muriel Livernet.
 \end{abstract}
 \maketitle
 \tableofcontents
@@ -170,7 +172,7 @@ We can identify $S$ with a subset of $C^{\triangleleft}f$. With this identificat
 
 This model structure depends functorially on $S$:
 \begin{proposition}
-  Let $j:S\rightarrow S'$ be a map of simplicial sets. Let $J_!: (\SSet)_{/S}\rightarrow (\SSet)_{/S'}$ be the forgetful functor and let $j^*$ be its right adjoint given by $j^*X' = X'\times_{S'} S$. Then we have a Quillen adjunction 
+  Let $j:S\rightarrow S'$ be a map of simplicial sets. Let $J_!: (\SSet)_{/S}\rightarrow (\SSet)_{/S'}$ be the forgetful functor and let $j^*$ be its right adjoint given by $j^*X' = X'\times_{S'} S$. Then we have a Quillen adjunction
   \[(\SSet)_{/S}\underset{j^*}{\overset{j_!}{\overset{\rightarrow}{\leftarrow}}}.\]
 \end{proposition}
 
@@ -191,13 +193,13 @@ We can add a few remarks about specific instances where left fibrations are Kan 
 
 Let's look more precisely at the way we can view a left fibration $X\rightarrow S$ as a functor from $S$ into an $\8$-category of Kan complexes. \\
 Let us fix a simplicial set $S$, a simplicial category $\mathcal{C}$, and a functor $\phi:\mathscr{C}[S]\rightarrow \mathcal{C}^{op}$. Consider an object $X\in(\SSet)_{/S}$, and let $v$ be the cone point of $X^{\triangleright}$. We can view the simplicial category
-\[\mathcal{M} = \mathscr{C}[X^{\triangleright}]\displaystyle \cup_{\mathscr{C}[X]}\mathcal{C}^{op}\] as a correspondence from $\mathcal{C}^{op}$ to $\{v\}$, which we can identify with a simple functor 
+\[\mathcal{M} = \mathscr{C}[X^{\triangleright}]\displaystyle \cup_{\mathscr{C}[X]}\mathcal{C}^{op}\] as a correspondence from $\mathcal{C}^{op}$ to $\{v\}$, which we can identify with a simple functor
 \[(St_\phi X)(C)=\text{Map}_\mathcal{M}(C,v).\]
-We can consider $St_\phi$ as a functor from $(\SSet)_{/S}$ to $(\SSet)^\mathcal{C}$. We call it the straightening functor associated to $\phi$. 
+We can consider $St_\phi$ as a functor from $(\SSet)_{/S}$ to $(\SSet)^\mathcal{C}$. We call it the straightening functor associated to $\phi$.
 The straightening functor has a right adjoint, the unstraightening functor, denoted by $Un_\phi$ which satisfies functoriality properties.
 
 \begin{theorem}
-  Let $S$ be a simplicial set, $\mathcal{C}$ a simplicial category, and $\phi:\mathscr{C}[S]\rightarrow\mathcal{C}^{op}$ a simplicial functor. The straightening and unstraightening functors determine a Quillen adjunction 
+  Let $S$ be a simplicial set, $\mathcal{C}$ a simplicial category, and $\phi:\mathscr{C}[S]\rightarrow\mathcal{C}^{op}$ a simplicial functor. The straightening and unstraightening functors determine a Quillen adjunction
   \[(\SSet)_{/S}\dashv \SSet^\mathcal{C}\]
   where
 \end{theorem}
@@ -209,34 +211,47 @@ The straightening functor has a right adjoint, the unstraightening functor, deno
 
 \section{\texorpdfstring{$\text{Cat}_\8$}{Cat∞}}
 
-\begin{definition}
+\begin{definition}[\Catinf]
   The simplicial category \Catinfdel is defined as follows:
   \begin{itemize}
     \item The objects are small \8-categories.
     \item Given two \8-categories \C and \D, we define $\Map_{\Catinfdel}(\C, \D)$ to be the largest Kan complex contained in the \8-cateogry $\Fun(\C, \D)$.
   \end{itemize}
+
+  \Catinf denotes the simplicial nerve $\text{N}(\Catinfdel)$, and is referred to as the \8-category of small \8-categories whose mapping spaces are Kan complexes, and composition is strictly associative.
 \end{definition}
+
+The Joyal model structure on \SSet is not compatible with the usual simplicial structure. We will introduce marked simplicial sets $\SSet^+$ as a remedy to the problem, so that we obtain an equivalance of simplicial categories $\Catinfdel \simeq (\SSet^+)^\circ$.
+
+\begin{definition}[Marked simplicial set]
+  A marked simplicial set is a pair $(X, \epsilon)$, where $X$ is a simplicial set and $\epsilon$ is a set of edges of $X$, which contains every degenerate edge. We will say that $X$ is marked if it belongs to $\epsilon$. A morphism $(X, \epsilon) \rightarrow (X', \epsilon')$ is a map $f : X \rightarrow X'$ having the property that $f(\epsilon) \subseteq \epsilon'$.
+
+  Every simplicial set may be regarded as a marked simplicial set, with two extreme cases deserving special mention: $S^\sharp = (S, S_1)$ denotes the marked simplicial set in whic every edge of $S$ is marked, and $S^\flat = (S, s_0(S_0)$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked. We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\sharp}$.
+\end{definition}
+
+We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in particular see that each $(\SSet^+)_{/S}$ is a simplicial model category whose fibrant objets are the Cartesian fibrations $X \rightarrow S$.
 
 \subsection{Marked anodyne extensions}
 
 \subsection{The Cartesian model structure}
 Let $S$ be a simplicial set. In this section, the goal is to define the Cartesian model structure on the category $(\SSet^+)_{/S}$ of marked simplicial sets over $S$. The ultimate goal is to prove that the fibrant objects of $(\SSet^+)_{/S}$ correspond precisely to cartesian fibrations $X\rightarrow S$ and that they encode contravariant functors from $S$ into the \8-category \Catinfdel.
-First of all, the category $\SSet^+$ is cartesian-closed. This means that for any two objects $X,Y\in \SSet^+$, there exists an internal mapping object $Y^X$ equipped with an evaluation map $Y^X\times X\rightarrow Y$ which induces bijections 
-\[\text{Hom}_{\SSet^+}(Z,Y^X)\rightarrow \text{Hom}_{\SSet^+}(Z\times X,Y)\]
+First of all, the category $\SSet^+$ is cartesian-closed. This means that for any two objects $X,Y\in \SSet^+$, there exists an internal mapping object $Y^X$ equipped with an evaluation map $Y^X\times X\rightarrow Y$ which induces bijections
+\[\Hom_{\SSet^+}(Z,Y^X)\rightarrow \Hom_{\SSet^+}(Z\times X,Y)\]
 for every $Z\in\SSet^+$. Let $\Map^\flat(X,Y)$ denote the underlying simplicial set of $Y^X$ and $\Map^\sharp(X,Y)$ the simplicial subset of $\Map^\flat(X,Y)$ consisting of all simplices $\sigma\subset \Map^\flat(X,Y)$ such that every edge of $\sigma$ is a marked edge of $Y^X$.\\
-These simplicia sets can also be described by the properties:
+These simplicial sets can also be described by the properties:
+
 \begin{align*}
-  \Hom_{\SSet}(K,\Map^\flat(X,Y))&\simeq \Hom_{\SSet^+}(K^\flat\times X,Y)\\
-  \Hom_{\SSet}(K,\Map^\sharp(X,Y)) &\simeq \Hom_{\SSet^+}(K^\sharp\times X,Y).
+  \Hom_{\SSet}(K,\Map^\flat(X,Y))  & \simeq \Hom_{\SSet^+}(K^\flat\times X,Y)  \\
+  \Hom_{\SSet}(K,\Map^\sharp(X,Y)) & \simeq \Hom_{\SSet^+}(K^\sharp\times X,Y)
 \end{align*}
 
-If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let $\Map_S^\sharp(X,Y) \subset \Map^\sharp(X,Y)$ and $\Map_S^\flat(X,Y) \subset \Map^\flat(X,Y)$ denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X\in(\SSet^+)_{/S}$ and $P:Y\rightarrow S$ is a cartesian fibration, tehn $\Map^\flat_S(X,Y^\natural)$ is an \8-category and $\Map^\sharp_S(X,Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X,Y^\natural).$
+If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let $\Map_S^\sharp(X,Y) \subset \Map^\sharp(X,Y)$ and $\Map_S^\flat(X,Y) \subset \Map^\flat(X,Y)$ denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X\in(\SSet^+)_{/S}$ and $P:Y\rightarrow S$ is a cartesian fibration, tehn $\Map^\flat_S(X,Y^\natural)$ is an \8-category and $\Map^\sharp_S(X,Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X,Y^\natural)$
 
 \begin{proposition}
   Let $S$ be a simplicial set. And let $p:X\rightarrow Y$ be a morphism in $(\SSet^+)_{/S}$. $p$ is a cartesian equivalence if it satisfies either of the following equivalent conditions:
   \begin{itemize}
     \item[(1)] For every cartesian fibration $Z\rightarrow S$, the induced map
-    \[\Map^\flat_S(Y,Z^\natural)\rightarrow \Map_S^\flat(X,Z^\natural)\] is an equivalence of \8-categories.
+          \[\Map^\flat_S(Y,Z^\natural)\rightarrow \Map_S^\flat(X,Z^\natural)\] is an equivalence of \8-categories.
     \item[(2)] For every cartesian fibration $Z\rightarrow S$, the induced map \[\Map^\sharp_S(Y,Z^\natural)\rightarrow \Map_S^\sharp(X,Z^\natural)\] is a homotopy equivalence of Kan complexes.
   \end{itemize}
 \end{proposition}
@@ -252,7 +267,7 @@ Let's take $f:X\rightarrow Y$ to be a morphism in $(\SSet^+)_{/S}$ which is mark
   \begin{itemize}
     \item[(1)] the map $p$ induces a cartesian equivalence $X^\natural \rightarrow Y^\natural$ in $(\SSet^+)_{/S}$.
     \item[(2)] there exists a map $r:Y\rightarrow X$ which is a strong homotopy inverse to $p$, in the sense that $p\circ r$ and $r\circ p$ are both strongly homotopic to the identity.
-    \item[(3)] the map $p$ induces a categorical quivalence $X_s\rightarrow Y_s$ for each vertex $s$ of $S$.  
+    \item[(3)] the map $p$ induces a categorical quivalence $X_s\rightarrow Y_s$ for each vertex $s$ of $S$.
   \end{itemize}
 \end{proposition}
 
@@ -272,8 +287,8 @@ There exists a left proper combinatorial model structure on $(\SSet^+)_{/S}$ whi
 
 Let's now look at some properties of the cartesian model structure.
 
-First, the cartesian model structure behaves nicely with respect to products. If $S$ and $T$ are simplicial sets and $Z$ is an object of $(\SSet^+)_{/T}$, then the functor\begin{align*}(\SSet^+)_{/S}&\rightarrow (\SSet^+)_{/S\times T}\\
-X&\mapsto X\times Z \end{align*}
+First, the cartesian model structure behaves nicely with respect to products. If $S$ and $T$ are simplicial sets and $Z$ is an object of $(\SSet^+)_{/T}$, then the functor\begin{align*}(\SSet^+)_{/S} & \rightarrow (\SSet^+)_{/S\times T} \\
+  X              & \mapsto X\times Z\end{align*}
 preserves Cartesian equivalences.\\
 This entails that if we have $f:A\rightarrow B$ a cofibration in $(\SSet^+)_{/S}$ and $f':A'\rightarrow B'$ a cofibration in $(\SSet^+)_{/T}$, then the smash product map
 \[(A\times B')\displaystyle \cup_{A\times B}(A'\times B)\rightarrow A'\times B'\] is a cofibration in $(\SSet^+)_{/S\times T}$, which is trivial if either $f$ or $g$ is trivial. All of this brings us to the following result:
@@ -291,6 +306,24 @@ Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, wher
 
 \subsection{Quillen adjunctions between model structures}
 
+We have a plethora of model structures on categories of simplicial sets over the simplicial set $S$:
+
+\begin{itemize}
+  \item[0] Let $\C_0$ denote $(\SSet)_{/S}$ endowed with the Joyal model structure. Cofibrations are monomorphisms of simplicial sets, and weak equivalences are categorical equivalences.
+  \item[1]  Let $\C_1$ denote $(\SSet^+)_{/S}$ endowed with the marked model structure. Cofibrations are maps $(X, \epsilon_X) \rightarrow (Y, \epsilon_Y)$ which induce monomorphisms $X \rightarrow Y$, and the weak equivalences are Cartesian equivalences.
+  \item[2]  Let $\C_2$ denote $(\SSet^+)_{/S}$ endowed with the following localization of the Cartesian model structure: $f : (X, \epsilon_X) \rightarrow (Y, \epsilon_Y)$ is a cofibration if $X \rightarrow Y$ is a monomorphism, and a weak equivalence if $f : X^\sharp \rightarrow Y^\sharp$ is a marked equivalence in $(\SSet^+)_{/S}$.
+  \item[3]  Let $\C_3$ denote $(\SSet)_{/S}$ endowed with the covariant model structure. The cofibrations are monomorphisms and the weak equivalcnes are contravariant equivalences.
+  \item[4] Let $\C_4$ denote $(\SSet)_{/S}$ endowed with the usual homotopic-theoretic model structure. The cofibrations are monomorphisms of simplicial sets, and the weak equivalences are weak homotopy equivalences of simplicial sets.
+\end{itemize}
+
+\begin{theorem}
+  There exists a sequence of Quillen adjunctions:
+
+  $$
+    \C_0 \adj{F_0}{G_0} \C_1 \adj{F_1}{G_1} C_2 \adj{F_2}{G_2} \C_3 \adj{F_3}{G_3} \C_4
+  $$
+\end{theorem}
+
 \subsection{Straightening and unstraightening, revisited}
 Let \C be a category and let $\xi:\C^{op}\text{Cat}$ be a functor from \C to the category $\text{Cat}$ of small categories. Via the Grothendieck construction, we can associate to this data a new category $\tilde{\C}$ which may be described as follows:
 
@@ -303,8 +336,14 @@ This construction establishes an equivalence between Cat-valued functors on $\C^
 On one side, we have the category $(\SSet^+)_{/S}$, equipped with the Cartesian model structure. On the other hand, we have the category of simplicial functors $$\mathscr{C}[S]^{op}\rightarrow \SSet^+$$ equipped with the projective model structure whose underlying \8-category is equivalent to $\text{Fun}(S^{op},\text{Cat}_\8). $ We have the following key result:
 
 \begin{theorem}
-  Let $S$ be a simplicial set, \C a simplicial category, and $\phi:\mathscr{C}[S]\rightarrow \C^{op}$ a functor between simplicial categories. Then there exists a pair of adjoint functors with the following properties:
+  Let $S$ be a simplicial set, \C a simplicial category, and $\phi:\mathscr{C}[S]\rightarrow \C^{op}$ a functor between simplicial categories. Then there exists a pair of adjoint functors 
   \[(\SSet^+)_{/S} \adj{St_\phi^+}{Un_\phi^+} (\SSet^+)^\C\]
+  with the following properties:
+  \begin{itemize}
+    \item[(1)] The functors $(St_\phi^+, Un_\phi^+)$
+  \end{itemize}
+
+  
 \end{theorem}
 
 \subsection{Relative nerve}
