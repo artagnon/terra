@@ -243,7 +243,26 @@ The Joyal model structure on \SSet is not compatible with the usual simplicial s
 
 We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in particular see that each $(\SSet^+)_{/S}$ is a simplicial model category whose fibrant objets are the Cartesian fibrations $X \rightarrow S$.
 
-\subsection{Marked anodyne extensions}
+\subsection{Marked anodyne morphisms}
+
+\begin{definition}
+  The class of marked anodyne morphisms in $\SSet^+$ is the smallest weakly saturated class of morphisms with the following properties:
+
+  \begin{itemize}
+    \item For each $0 < i < n$, the inclusion $(\Horn{n}{i})^\flat \subseteq (\Simplex)^\flat$ is marked anodyne.
+    \item For every $n > 0$ the inclusion
+          $$
+            (\Horn{n}{n}, \epsilon \cap (\Horn{n}{n})_1) \subseteq (\Simplex, \epsilon)
+          $$
+          is marked anodyne, where $\epsilon$ denotes the set of all degenerate deges of \Simplex, together with the final edge \Simplex{\{n - 1, n\}}.
+    \item The inclusion
+          $$
+            (\Horn{2}{1})^\sharp \bigcup_(\Horn{2}{1})^\flat (\Simplex{2})^\flat \rightarrow (\Simplex{2})^\sharp
+          $$
+          is marked anodyne.
+    \item For every Kan complex $K$, the map $K^\flat \rightarrow K^\sharp$ is marked anodyne.
+  \end{itemize}
+\end{definition}
 
 \subsection{The Cartesian model structure}
 Let $S$ be a simplicial set. In this section, the goal is to define the Cartesian model structure on the category $(\SSet^+)_{/S}$ of marked simplicial sets over $S$. The ultimate goal is to prove that the fibrant objects of $(\SSet^+)_{/S}$ correspond precisely to cartesian fibrations $X \rightarrow S$ and that they encode contravariant functors from $S$ into the \8-category \Catinfdel.
