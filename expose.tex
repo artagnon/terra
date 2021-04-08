@@ -30,6 +30,7 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
 
 \title{An exposé on the \8-category of \8-categories}
 
@@ -541,6 +542,40 @@ The rest of this subsection will be devoted to constructing these straightening 
 Let $S$ be a simplicial set and $\phi: \mathfrak{C}[S] \rightarrow \op\C$ be a functor between simplicial categories, which we regard as fixed throughout this section. We're going to define the straightening functor $St_\phi^+: (\SSet^+)_{/S} \rightarrow (\SSet^+)^\C$ and its right adjoint $Un_\phi^+$. What is the intuition behind the name of straightening functor? An object $X$ of $(\SSet^+)_{/S}$ associates \8-categories to vertices of $S$ in a way that is coherent up to homotopy, and the functor $St_\phi^+$ straightens this diagram to get a functor on \C that takes values in \8-categories. Conversely, the unstraightening functor $Un_\phi^+$ takes a diagram that is strictly commutative and only retains the commutativity \emph{up to homotopy}.
 
 \subsection{Relative nerve}
+
+We have the Quillen equivalence of moel categories
+
+$$
+  (\SSet^+)_{/S} \adj{St^+_\phi}{Un^+_\phi} (\SSet^+)^\C
+$$
+
+whenever $\phi: \mathfrak{C}[S] \rightarrow \op\C$ is a weak equivalence of simplicial categories. Suppose $\mathcal{F} : \C \rightarrow \SSet^{+}$ is a weakly fibrant diagram , so that $Un_\phi^+(\mathcal{F})$ is a fibrant object of $(\SSet^+)_{/S}$ corresponding to a Cartesian fibration of simplicial sets $X \rightarrow S$. For every vertex $s \in S$, the fiber $X_s$ is an \8-category which is equivalent to $\mathfrak{F}(\phi(s))$, but usually not isomorphic to $\mathcal{F}(\phi(s))$. In the special case when \C is an ordinary category, and $\phi: \mathfrak{C}[\op{N(\C)}] \rightarrow \op\C$ is the counit map, there is another version of unstraightening construction $Un_\phi^+$, which does not share this defect. Now, we introduce the marked relative nerve $\mathcal{F} \mapsto N_\mathfrak{F}^+(\C)$ to study its basic properties.
+
+\begin{definition}
+  Let \C be a small category and $f : \C \rightarrow \SSet$ be a functor. We define a simplicial set $N_f(\C)$, the nerve of \C relative to $f$, as follows. For every nonempty finite linearly ordered set $J$, a map $\Simplex{J} \rightarrow N_f(\C)$ consists of the following data:
+  \begin{itemize}
+    \item A functor $\sigma$ from $J$ to \C.
+    \item For every nonempty subset $J' \subseteq J$ having a maximal element $j'$, a map $\tau(J') : \Simplex{J'} \rightarrow f(\sigma(j'))$.
+    \item For nonemtpy substes $J'' \subseteq J' \subseteq J$, with maximal elements $j'' \in J''$, $j' \in J'$, the following diagram is commutative:
+          $$
+            \begin{xy}
+              \xymatrix{
+                \Simplex{J''}\ar[r]^{\tau(J'')}\ar@{(->}[d] & f(\sigma(j''))\ar[d] \\
+                \Simplex{J'}\ar[r]^{\tau(J')} & f(\sigma(j'))
+              }
+            \end{xy}
+          $$
+  \end{itemize}
+\end{definition}
+
+\begin{remark}
+  The simplicial set $N_f(\C)$ depends funcorially on $f$. When $f$ takes a constant value \Simplex{0}, there is a canonical isomorphism $N_f(\C) \simeq N(\C)$. In particula, for any functor $f$, there is a canonical map $N_f(\C) \rightarrow N(\C)$; the fiber of this map over an object $C \in \C$ can be identified with a simplicial set $f(C)$.
+\end{remark}
+
+\begin{example}
+  Let \C be a small category, and regard $N(\C)$ as an object of $(\SSet)_{/N(\C)}$ via the identity map. Then, $\mathfrak{F}_{N(\C)} \in (\SSet)^\C$ can be identified with the functor $C \mapsto N(\C_{/C})$.
+\end{example}
+
 \subsection{Some applications}
 
 \bibliographystyle{amsalpha}
