@@ -1,6 +1,7 @@
 \documentclass[12pt]{amsart}
 
 \usepackage{latexsym, amsmath, amsthm, mathrsfs, hyperref, url, verbatim, lmodern}
+\usepackage{tikz-cd}
 \usepackage[all]{xy}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -408,6 +409,132 @@ equipped with the projective model structure whose underlying \8-category is equ
     \item[(2)] If $\phi$ is an equivalence of simplicial categories, then $(St_\phi^+, Un_\phi^+)$ is a Quillen equivalence.
   \end{itemize}
 \end{theorem}
+
+The rest of this subsection will be devoted to constructing these straightening and unstraightening functors and setting up what we need to prove the theorem.\\
+Let $S$ be a simplicial set and $\phi:\mathscr{C}[S]\rightarrow \mathcal{C}^{op}$ be a functor between simplicial categories, which we regard as fixed throughout this section. We're going to define the straightening functor $St_\phi^+:(\SSet^+)_{/S}\rightarrow (\SSet^+)^\C$ and its right adjoint $Un_\phi^+$. What is the intuition behind the name of straightening functor? An object $X$ of $(\SSet^+)_{/S}$ associates \8-categories to vertices of $S$ in a way that is coherent up to homotopy, and the functor $St_\phi^+$ straightens this diagram to get a functor on \C that takes values in \8-categories. Conversely, the unstraightening functor $Un_\phi^+$ takes a diagram that is strictly commutative and only retains the commutativity "up to homotopy".\\
+Let's first recall the unmarked version of the construction. For each object $X\in(\SSet)_{/S}$, we form a pushout diagram of simplicial categories
+\begin{tikzcd}
+  \mathscr{C}[X]\arrow[r] \arrow[d,"\phi"] &\mathscr{C}[X^\triangleright]\arrow[d]\\
+  \C^{op} \arrow[r] &\C^{op}_X
+\end{tikzcd}
+where the left vertical map is given by composing $\phi$ wih the map $\mathscr{C}[X]\rightarrow \mathscr{C}[S]$. The functor $St_\phi X: \C\rightarrow \SSet$ is defined by the formula
+\[(St_\phi X)(C) = \Map_{\C^{op}_X}(C,v),\] where $v$ is the cone point of $X^\triangleright$.\\
+Now, to define $St_\phi^+$, we will designate certain marked edges on the simplicial sets $(St_\phi X)(C)$ which depend on the marked edges of $X$. Let's detail some notations we will use to that end. \\
+If $X$ is an object of ${\SSet}_{/S}$. Given an $n$-simplex $\sigma$ of the simplicial set $\Map_{\C^{op}}(C,D)$, we let $\sigma^*:(St_\phi X)(D)_n \rightarrow (St_\phi X)(C)_n$ denote the associated map of $n$-simplices. If $c$ is a vertex of $X$ and $C = \phi(c)\in\C$. We can identify $c$ with a map $c:\Delta^0\rightarrow X$. Then $c\star id_{\Delta^0}:\Delta^1\rightarrow X^\triangleright$ is an edge of $X^\triangleright$ and so determines a morphism $C\rightarrow *$ in $\C^{op}_X$, which we can identify with a vertex $\tilde{c}\in(St_\phi X)(C)$. Similarly, if $f:c\rightarrow d$ is an edge of $X$ corresponding to a morphism $F:C\rightarrow D$, we can identify $f$ with a map $\Delta^1\rightarrow X$. Then $f\star id_{\Delta^1}:\Delta^2 \rightarrow X^\triangleright$ determines a map $\mathscr{C}[\Delta^2]\rightarrow \C_X$, which we can identify with a diagram:
+\begin{tikzcd}
+  C\arrow[rr,"F"] \arrow[dr,"\tilde{c}"] &&D\arrow[dl,"\tilde{d}"]\\
+  &*
+\end{tikzcd}
+with an edge $\tilde{f}:\tilde{c}\rightarrow \tilde{d}\circ F = F^*\tilde{d}$ in the simplicial set $\Map_{\C^{op}_X}(C,*) = (St_\phi X)(C).$
+
+\begin{definition}
+  Let $S$ be a simplicial set, $\C$ a simplicial category, and $\phi:\mathscr{C}[S]\rightarrow \C^{op}$ a simplicial functor. Let $(X,\mathcal{E})$ be an object of $(\SSet^+)_{/S}$. Then $St_\phi^+(X,\mathcal{E}):\C\rightarrow \SSet^+$ is defined by the formula \[St_\phi^+(X,\mathcal{E})(C) = ((St_\phi X)(C),\mathcal{E}_\phi(C)),\] where $\mathcal{E}_\phi (C)$ is the set of all edges of $(St_\phi X)(C)$ having the form $G^*\tilde{f}$, where $f:d\rightarrow e$ is a marked edge of $X$, and $G$ belongs to $\Map_{\C^{op}}(C,D)$.
+\end{definition}
+
+This construction is functorial in $X$. The straightening functor also preserves colimits, and every map $p:S'\rightarrow S$ of simplicial sets induces an isomorphism of functors \[St_\phi^+\circ p_! \simeq St^+_{\phi'}.\] Similarly, every simplicial functor $\pi:\C\rightarrow \C'$ induces a natural isomorphism of functors \[St^+_{\pi\circ\phi} \simeq \pi_!\circ St^+_\phi.\]
+
+\begin{proposition}
+  Let $S$ be a simplicial set, $\C$ a simplicial category, and $\phi:\mathscr{C}[S]\rightarrow \C^{op}$ a simplicial functor. The straightening functor $St^+_\phi$ has a right adjoint \[Un_\phi^+:(\SSet^+)^\C\rightarrow (\SSet^+)_{/S}.\]
+\end{proposition}
+
+We're going to show that this adjunction is actually a Quillen adjunction.
+
+\begin{proposition}
+  TO DO: maybe detail this later.
+\end{proposition}
+
+\subsubsection{Cartesian fibrations over a simplex}
+Let us now look more closely at cartesian fibrations over a simplex. A map of simplicial sets $p:X\rightarrow S$ is a cartesian fibrations if and only if the pullback map $X\times_S \Delta^n \rightarrow \Delta^n$ is a Cartesian fibration for each simplex of $S$. The Cartesian fibrations $X\rightarrow \Delta^n$ are the "basic fibrations" out of which other Cartesian fibrations are built. We're now looking to prove a structure theorem on these "basic fibrations".\\
+$\Delta^n$ is the nerve of the category associated to the linearly ordered set $[n] = \{0<1<\dots <n\}.$ A cartesian fibration $p:X\rightarrow S$ can be thought of as giving a contravariant functor from $S$ to $\8$-categories. So we can expect to have a close relationship between cartesian fibrations $X\rightarrow \Delta^n$ and composable sequences of maps between \8-categories \[A^0\leftarrow A^1\leftarrow \dots \leftarrow A^n.\]\\
+Suppose that we are given a composable sequence of maps\[\phi:A^0\leftarrow A^1\leftarrow \dots \leftarrow A^n\] of simplicial sets. Let us define the mapping simplex $M(\phi)$ of $\phi$: if $J$ is a nonempty finite linearly ordered set with greatest element $j$, then specifying a map $\Delta^J\rightarrow M(\phi)$ is like specifying an order-preserving map $f:J\rightarrow [n]$ and a map $\sigma:\Delta^J\rightarrow A^{f(j)}$. Given an order-preserving map $p:J\rightarrow J'$ of partially ordered sets containing largest elements $j$ and $j'$, there is a natural map $M(\phi)(\Delta^{J'})\rightarrow M(\phi)(\Delta^J)$ which carries $(f,\sigma)$ to $(f\circ p, e\circ\sigma)$, where $e:A^{f(j')}\rightarrow A^{f(p(j))}$ is obtained from $\phi$ in the obvious way.
+
+\begin{remark}
+  The mapping simplex $M(\phi)$ is equipped with a natural map $p:M(\phi)\rightarrow \Delta^n$; the fiber of $p$ over the vertex $j$ is isomorphic to the simplicial set $A^j$. More generally, let $f:[m]\rightarrow [n]$ be an order-preserving map, inducing a map $\Delta^m\rightarrow \Delta^n$. Then $M(\phi)\times_{\Delta^n}\Delta^m$ is naturally isomorphic to $M(\phi')$, where the sequence $\phi'$ is given by \[A^{f(0)}\leftarrow\dots\leftarrow A^{f(m)}.\]
+\end{remark}
+
+Let $\phi:A^0\leftarrow \dots\leftarrow A^n$ be a composable sequence of maps of simplicial sets. To give an edge $e$ of $M(\phi)$, one must give a pair of integers $0\leq i\leq j\leq n$ and an edge $\overline{e}\in A^j$. We will say that $e$ is marked if $\overline{e}$ is degenerate; let $\mathcal{E}$ denote the set of all marked edges of $M(\phi)$. Then the pair $(M(\phi),\mathcal{E})$ is a marked simplicial set which we will denote by $M^\natural(\phi)$.
+
+\begin{remark}
+  There is a potential ambiguity in what we have just defined. If we take a composable sequence of map $p:A^0\leftarrow\dots\leftarrow A^n$ and $p:M(\phi)\rightarrow \Delta^n$ is a cartesian fibration. Then $M(\phi)^\natural$ and $M^\natural(\phi)$ do not generally coincide.
+\end{remark}
+
+\begin{remark}
+  The construction of the mapping simplex is functorial in the sense that a commutative ladder
+  \begin{tikzcd}
+    \phi:A^0 \arrow[d,"f_0"] &\dots \arrow[l]\arrow[d]&A^n\arrow[d,"f_n"]\arrow[l]\\
+    \psi:B^0 &\dots \arrow[l] &B^n\arrow[l]
+  \end{tikzcd}
+  induces a map $M(f):M(\phi)\rightarrow M(\psi)$. If each $f_i$ is a categorical equivalence, then $f$ is a categorical equivalence.
+\end{remark}
+
+\begin{definition}
+  Let $p:X\rightarrow \Delta^n$ be a cartesian fibration and let \[\phi:A^0\leftarrow\dots\leftarrow A^n\] be a composable sequence of maps. A map $q:M(\phi)\rightarrow X$ is a quasi-equivalence if it has the following properties:
+  \begin{itemize}
+    \item The diagram\begin{tikzcd}
+            M(\phi) \arrow[rr,"q"] \arrow[dr]&&X\arrow[dl,"p"]\\
+            &\Delta^n
+          \end{tikzcd}
+          is commutative.
+    \item The map $q$ carries marked edges of $M(\phi)$ to $p$-Cartesian edges of $S$; in other words, $q$ induces a map $M^\natural(\phi)\rightarrow X^\natural$ of marked simplicial sets.
+    \item For $0\leq i\leq n$, the induced map $A^i\rightarrow p^{-1}\{i\}$ is a categorical equivalence.
+  \end{itemize}
+\end{definition}
+
+Our goal is to prove the following proposition:
+\begin{proposition}
+  Let $p:X\rightarrow \Delta^n$ be a Cartesian fibration.
+  \begin{itemize}
+    \item There exists a composable sequence of maps \[\phi:A^0\leftarrow A^1\leftarrow \dots \leftarrow A^n\] and a quasi-equivalence $q:M(\phi)\rightarrow X$.
+    \item Let $\phi:A^0\leftarrow A^1\leftarrow \dots\leftarrow A^n$ be a composable sequence of maps and let $q:M(\phi)\rightarrow X$ be a quasi-equivalence. For any map $T\rightarrow \Delta^n$, the induced map \[M(\phi)\times_{\Delta^n}T\rightarrow X\times_{\Delta^n}T\]ia a categorical equivalence.
+  \end{itemize}
+\end{proposition}
+
+To establish this second point, it suffices to consider the case where $T$ is a simplex:\\
+Suppose that we are given a diagram $X\rightarrow Y\rightarrow Z$ of simplicial sets. For any map $T\rightarrow Z$, we let $X_T$ denote $X\times_Z T$ and $Y_T$ denote $Y\times_Z T$. The following statements are equivalent:
+\begin{itemize}
+  \item For any map $T\rightarrow Z$, the induced map $X_T\rightarrow Y_T$ is a categorical equivalence.
+  \item For any $n\geq 0$ and any map $\Delta^n\rightarrow Z$, the induced map $X_{\Delta^n}\rightarrow Y_{\Delta^n}$ is a categorical equivalence.
+\end{itemize}
+
+Suppose $p:X\rightarrow\Delta^n$ is a Cartesian fibraion and $q:M(\phi)\rightarrow X$ is a quasi-equivalence. Let $f:\Delta^m\rightarrow \Delta^n$ be any map. We note that $M(\phi)\times_{\Delta^n}\Delta^m$ may be identified with a mapping simplex $M(\phi')$ and that the induced map $M(\phi')\rightarrow X\times_{\Delta^n}\Delta^m$ is again a quasi-equivalence. Therefore, it suffices to prove that every quasi-equivalence is a categorical equivalence. First, we need the following lemma:
+
+\begin{lemma}
+  Let $\phi:A^0\leftarrow\dots\leftarrow A^n$ be a composable sequence of maps between simplicial sets, where $n>0$. Let $y$ be a vertex of $A^n$ and let the edge $e:y'\rightarrow y$ be the image of $\Delta^{\{n-1,n\}}\times \{y\}$ under the map $\Delta^n\times A^n\rightarrow M(\phi)$. Let $x$ be any vertex of $M(\phi)$ which does not belong to the fiber $A^n$.Then composition with $e$ induces a weak homotopy equivalence of simplicial sets \[\Map_{\mathscr{C}[M(\phi)]}(x,y')\rightarrow \Map_{\mathscr{C}[M(\phi)]}(x,y)\]
+\end{lemma}
+
+This brings us to the following result:
+\begin{proposition}
+  Let $p:X\rightarrow \Delta^n$ be a Cartesian fibration, let $\phi:A^0\leftarrow\dots\leftarrow A^n$ be a composable sequence of maps of simplicial sets and let $q:M(\phi)\rightarrow X$ be a quasi-equivalence. Then $q$ is a categorical equivalence.
+\end{proposition}
+
+Now, the last thing we need to prove is that for any Cartesian fibration $p:X\rightarrow \Delta^n$, there exists a quasi-equivalence $M(\phi)\rightarrow X$. We are actually going to prove something a little stronger:
+
+\begin{proposition}
+  Let $p:X\rightarrow \Delta^n$ be a Cartesian fibration of simplicial sets and $A$ another simplicial set. Suppose that we are given a commutative diagram of marked simplicial sets \begin{tikzcd}
+    A^\flat\times(\Delta^n)^\sharp \arrow[rr,"s"]\arrow[rd] &&X^\natural \arrow[dl]\\
+    &(\Delta^n)^\sharp.
+  \end{tikzcd}
+  Then there exists a sequence on composable morphisms \[\phi:A^0\leftarrow\dots\leftarrow A^n,\]
+  a map $A\rightarrow A^n$, and an extension
+  \begin{tikzcd}
+    A^\flat\times (\Delta^n)^\sharp \arrow[r]\arrow[dr]&M^\natural(\phi)\arrow[d]\arrow[r,"f"]&X^\natural \arrow[dl]\\
+    &(\Delta^n)^\sharp
+  \end{tikzcd}
+  of the previous diagram, such that $f$ is a quasi-equivalence.
+\end{proposition}
+
+\begin{proof}
+  To do: prove this by induction.
+\end{proof}
+
+Let's note that
+\begin{proposition}
+  Let $S=\Delta^n$, let $p:X\rightarrow S$ be a Cartesian fibration, let \[\phi:A^0\leftarrow\dots\leftarrow A^n\] be a composable sequence of maps, and let $q:M(\phi)\rightarrow X$ be a quasi-equivalence. The induced map $M^\natural(\phi)\rightarrow X^\natural$ is a Cartesian equivalence in $(\SSet^+)_{/S}$.
+\end{proposition}
+
+Let's now examine what straightening looks like over a simplex. Let $S$ be a simplicial set, \C a simplicial category, and $\phi:\mathscr{C}[S]^{op}\rightarrow \C$ a simplicial functor. We introduced the straightening and unstraightening functors
+\[(\SSet^+)_{/S}\adj{St^+_\phi}{Un^+_\phi} (\SSet^+)^\C.\]
+Provided that $\phi$ is a categorical equivalence and $S$ is a simplex, we can prove that $(St^+_\phi, Un^+_\phi)$ is a Quillen equivalence.
 
 The rest of this subsection will be devoted to constructing these straightening and unstraightening functors and setting up what we need to prove the theorem.
 
