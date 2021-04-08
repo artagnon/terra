@@ -212,10 +212,55 @@ The straightening functor has a right adjoint, the unstraightening functor, deno
 \begin{theorem}
   Let $S$ be a simplicial set, $\C$ a simplicial category, and $\phi: \mathfrak{C}[S] \rightarrow\op\C$ a simplicial functor. The straightening and unstraightening functors determine a Quillen adjunction
   $$
-    (\SSet)_{/S}\dashv \SSet^\C
+    (\SSet)_{/S}\adj{St_\phi}{Un_\phi} \SSet^\C
   $$
-  where
+  where $(\SSet)_{/S}$ is endowed with the contravariant model structure and $\SSet^\C$ wit the projective model structure. Moreover, if $\phi$ is an equivalence of simplicial categories, then $(St_\phi,Un_\phi)$ is a Quillen equivalence.
 \end{theorem}
+
+The difficult part of this proposition if proving that the adjunction is a Quillen equivalence when $\phi$ is an equivalence of simplciial categories. Let's look at what it means to straighten over a point first.
+
+\subsubsection{Straightening over a point}
+
+Let's look at the simplicial set $X = \{x\}$. In this case, we can view $St_X$ as a colimit-preserving functor from $\SSet$ to itself. Let's look at the specific properties of such a functor: if \C is a category that admits small colimits, then any functor $f:\Delta \rightarrow \C$ extends to a colimit-preserving functor $F:\SSet\rightarrow \C$. So the functor $F$ is represented by a cosimplicial object, which we take to be $f$: $F:S\mapsto \vert S\vert_{C^\dot}$ (defined by taking a coend). The functor $S\mapsto\vert S\vert_{C^\dot}$ has a right adjoint that we denote by $Sing_{C^\dot}$ and that we describe by the formula:
+\[Sin_{C^\dot}(X)_n = \Hom_\C(C^n,X).\] . 
+
+SO in the case of a point, $St_X$ can be identified with the geometric realization functor $\vert\dot\vert_{Q^\dot}:\SSet\rightarrow \SSet$ for some cosimplicial object $Q^\dot$ in $\SSet$. Let's describe $Q^\dot$ explicitly. Let's describe a cosimplicial simplicial set $J^\dot$ by the formula \[J^n = \displaystyle (\Delta^n\star \{y\})\cup_{\Delta^n}\{x\}.\]
+The cosimplicial simplicial set $Q^\dot$ can then be described by the formula $Q^n=\Map_{\mathfrak{C}[J^n]}(x,y)$.\\
+$Q^\dot$ admits the following description: for each $n\geq 0$, let $P_[n]$ denote the partially ordered set of nonempty subsets of $[n]$, and $K_{[n]}$ the simplicial set $N(P)$ (which may be identified with a simplicial subset of the $(n+1)$-cube $(\Delta^1)^{n+1}$. The simplicial set $Q^n$ is obtained by collapsing, for each $0\leq i\leq n$, the subset  \[(\Delta^1)^{\{j:0\leq j<i\}\times \{1\}\times (\Delta^1)^{\{j:i<j\leq n\}\subset K_{[n]}\] to its quotient $(\Delta^1)^{\{j:i<j\leq n\}}\subset K_{[n]}$ to its quotient $(\Delta^1)^{\{J:i<j\leq n\}}$\\
+A map $f:[n]\rightarrow[m]$ determines a map $P_f:P_{[n]}\rightarrow P_{[m]}$ by setting $P_f(I) = f(I)$. The map $P_f$ in turn induces a map of simplicial sets $K_{[n]}\rightarrow K_{[m]}$, whcih determines a map of quotients $Q^n\rightarrow Q^m$ when $f$ is order-preserving. 
+In other words, if we look at $\mathscr{Q}$, the geometric realization of $Q^\dot$, then $\mathscr{Q}^n$ is a quotient of the cube of all functions $p:[n]\rightarrow[0,1]$ satisfying $p(0) = 1$. We quotient by the following relation: $p\simeq p'$ if there exists an integer $0\leq i\leq n$ such that $p_{\vert\{i,\dots,n\}} = p'_{\vert\{i,\dots,n\}}$ and $p(i) = p'(i) = 1$. SO each $\mathscr{Q}^n$ is homeomorphic to an $n$-simplex in a way that's compatible with the face maps of the cosimplicial space $\mathscr{Q}^\dot$. However, the degeneracies are very different from the degeneracies of the standard simplex. For instance, the product of the degeneracy mapping $\mathscr{Q}^n\rightarrow (\mathscr{Q}^1)^n$ is not injective for $n\geq 2$.\\
+Now that we have a better understanding of $Q^\dot$, let's study the functors $Sing_{Q^\dot}$ and $\vert \dot \vert_{Q^\dot}$. There is a map $\pi:Q^\dot\rightarrow\Delta^\dot$ of cosimplicial objects of $\SSet$. It is induced by a map $K_{[n]}\rightarrow \Delta^n$, which is the nerve of the map of partially ordered sets $P_{[n]}\mapsto[n]$ that carries each nonempty subset of $[n]$ to its largest element. 
+
+\begin{proposition}
+  Let $S$ be a simplicial set. The map $p_S:\vert S\vert_{Q^\dot}\rightarrow S$ induced by $\pi$ is a weak homotopy equivalence.
+\end{proposition}
+
+\begin{proof}
+  Basically, we're going to prove that the collection $A$ of simplicial sets $S$ for which the proposition is true contains every simplicial set $S$ having only finitely many nondegenerate simplices. Since $A$ is stable under filtered colimits, this will prove the proposition. \\
+  We therefore proveed by induction on the dimension $n$ of $S$ and the number of nondegenerate simplices of $S$ of dimension $n$. If $S=\emtyset$< there is nothing to prove. Otherwise, let's write $$S\simeq S'\displaystyle \cup_{\partial \Delta^n}\Delta^n$$
+  $$\vert S\vert_{Q^\dot}\simeq \vert S'\vert_{Q^\dot}\displaystyle \cup_{\vert \partial \Delta^n\vert_{Q^\dot}}\vert\Delta^n\vert_{Q^\dot}.$$
+  These pushouts are homotopy pushouts, so all we have to do is prove that $p_{S'}, p_{\partial\Delta^n},$, and $p_{\Delta^n}$ are weak homotopy equivalences. This follows from the inductive hypothesis for $p_{S'}$ and $p_{\partial\Delta^n}$. For $p_{\Delta^n}$, it is true because $\Delta^n$ and $\vert\Delta^n\vert_{Q^\dot}=\mathscr{Q}^n$ are weakly contractible.
+\end{proof}
+
+\begin{proposition}
+  The adjoint functors $\SSet\adj{\vert \dot \vert_{Q^\dot}}{Sing_{Q^\dot}}\SSet$ determine a Quillen equivalence from the category $\SSet$ to itself.
+\end{proposition}
+
+This directly entails the following proposition:
+
+\begin{proposition}
+  Let $X$ be a Kan complex. Then the counit map\[v:\vert Sing_{Q^\dot}X\vert_{Q^\dot}\rightarrow X\] is a weak homotopy equivalence.
+\end{proposition}
+
+Let $S$ be a simplicial set containing a vertex $s$. Let $\C$ be a simplicial category, $\phi:\mathfrak{C}[S]^{op}\rightarrow \C$ a simplicial functor, and $C=\phi(s)\in\C$. For every simplicial functor $\mathcal{F}:\C\rightarrow \SSet$, there is a canonical isomorphism \[(Un_\phi\mathcal{F})\times_S\{s\}\simeq \Sing_{Q^\dot}\mathcal{F}(C).\]
+In particular, we have a canonical map from $\mathcal{F}(C)$ to the fiber $(Un_\phi\mathcal{F})_s$, which is a homotopy equivalence if $\mathcal{F}(C)$ is fibrant.\\
+
+Now let's look at the straightening of right fibrations. We take $\phi:\mathfrak{C}[S]\rightarrow \C^{op}$ to be an equivalence of simplicial categories. Let's first consider $S$ to be a simplex.\\
+
+\begin{lemma}
+  Let $n$ be a nonnegative integer, let $[n]$ denote the linearly ordered set $\{0,\dots,n\}$, regarded as a discrete simplicial category, and let $\phi:\mathfrak{C}[\Delta^n]\rightarrow [n]$ be the canonical functor. Then the Quillen adjunction 
+\end{lemma}
+
 
 
 \subsection{Simplicial categories, and their \texorpdfstring{$\8$-categories}{∞-categories}}
@@ -411,7 +456,7 @@ equipped with the projective model structure whose underlying \8-category is equ
 \end{theorem}
 
 The rest of this subsection will be devoted to constructing these straightening and unstraightening functors and setting up what we need to prove the theorem.\\
-Let $S$ be a simplicial set and $\phi:\mathscr{C}[S]\rightarrow \mathcal{C}^{op}$ be a functor between simplicial categories, which we regard as fixed throughout this section. We're going to define the straightening functor $St_\phi^+:(\SSet^+)_{/S}\rightarrow (\SSet^+)^\C$ and its right adjoint $Un_\phi^+$. What is the intuition behind the name of straightening functor? An object $X$ of $(\SSet^+)_{/S}$ associates \8-categories to vertices of $S$ in a way that is coherent up to homotopy, and the functor $St_\phi^+$ straightens this diagram to get a functor on \C that takes values in \8-categories. Conversely, the unstraightening functor $Un_\phi^+$ takes a diagram that is strictly commutative and only retains the commutativity "up to homotopy".\\
+Let $S$ be a simplicial set and $\phi: \mathfrak{C}[S] \rightarrow \op\C$ be a functor between simplicial categories, which we regard as fixed throughout this section. We're going to define the straightening functor $St_\phi^+: (\SSet^+)_{/S} \rightarrow (\SSet^+)^\C$ and its right adjoint $Un_\phi^+$. What is the intuition behind the name of straightening functor? An object $X$ of $(\SSet^+)_{/S}$ associates \8-categories to vertices of $S$ in a way that is coherent up to homotopy, and the functor $St_\phi^+$ straightens this diagram to get a functor on \C that takes values in \8-categories. Conversely, the unstraightening functor $Un_\phi^+$ takes a diagram that is strictly commutative and only retains the commutativity \emph{up to homotopy}.
 Let's first recall the unmarked version of the construction. For each object $X\in(\SSet)_{/S}$, we form a pushout diagram of simplicial categories
 \begin{tikzcd}
   \mathscr{C}[X]\arrow[r] \arrow[d,"\phi"] &\mathscr{C}[X^\triangleright]\arrow[d]\\
@@ -534,11 +579,12 @@ Let's note that
 
 Let's now examine what straightening looks like over a simplex. Let $S$ be a simplicial set, \C a simplicial category, and $\phi:\mathscr{C}[S]^{op}\rightarrow \C$ a simplicial functor. We introduced the straightening and unstraightening functors
 \[(\SSet^+)_{/S}\adj{St^+_\phi}{Un^+_\phi} (\SSet^+)^\C.\]
-Provided that $\phi$ is a categorical equivalence and $S$ is a simplex, we can prove that $(St^+_\phi, Un^+_\phi)$ is a Quillen equivalence.
+Provided that $\phi$ is a categorical equivalence and $S$ is a simplex, we can prove that $(St^+_\phi, Un^+_\phi)$ is a Quillen equivalence.  
 
-The rest of this subsection will be devoted to constructing these straightening and unstraightening functors and setting up what we need to prove the theorem.
+First, let's look at what happens when $S$ is a point and $\phi$ is an isomorphism of simplicial categories. In this case, the straightening functor $St^+_{\Delta^0}$ is actually the functor $T:\SSet^+\rightarrow \SSet^+$ defined by: \[T(X,\mathcal{E}) = (\vert X\vert_{Q^\dot},\mathcal{E}'),\] where $Q$ is a specific cosimplicial object of $\SSet$ defined in the unmarked case.
 
-Let $S$ be a simplicial set and $\phi: \mathfrak{C}[S] \rightarrow \op\C$ be a functor between simplicial categories, which we regard as fixed throughout this section. We're going to define the straightening functor $St_\phi^+: (\SSet^+)_{/S} \rightarrow (\SSet^+)^\C$ and its right adjoint $Un_\phi^+$. What is the intuition behind the name of straightening functor? An object $X$ of $(\SSet^+)_{/S}$ associates \8-categories to vertices of $S$ in a way that is coherent up to homotopy, and the functor $St_\phi^+$ straightens this diagram to get a functor on \C that takes values in \8-categories. Conversely, the unstraightening functor $Un_\phi^+$ takes a diagram that is strictly commutative and only retains the commutativity \emph{up to homotopy}.
+
+
 
 \subsection{Relative nerve}
 \subsection{Some applications}
