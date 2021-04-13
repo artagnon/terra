@@ -1,5 +1,4 @@
 \documentclass[12pt]{amsart}
-
 \usepackage{latexsym, amsmath, amsthm, mathrsfs, hyperref, url, verbatim, lmodern}
 \usepackage{tikz-cd}
 \usepackage[all]{xy}
@@ -221,45 +220,82 @@ The difficult part of this proposition if proving that the adjunction is a Quill
 
 \subsubsection{Straightening over a point}
 
-Let's look at the simplicial set $X = \{x\}$. In this case, we can view $St_X$ as a colimit-preserving functor from $\SSet$ to itself. Let's look at the specific properties of such a functor: if \C is a category that admits small colimits, then any functor $f:\Delta \rightarrow \C$ extends to a colimit-preserving functor $F:\SSet\rightarrow \C$. So the functor $F$ is represented by a cosimplicial object, which we take to be $f$: $F:S\mapsto \vert S\vert_{C^\dot}$ (defined by taking a coend). The functor $S\mapsto\vert S\vert_{C^\dot}$ has a right adjoint that we denote by $Sing_{C^\dot}$ and that we describe by the formula:
-\[Sin_{C^\dot}(X)_n = \Hom_\C(C^n,X).\] . 
+Let's look at the simplicial set $X = \{x\}$. In this case, we can view $St_X$ as a colimit-preserving functor from $\SSet$ to itself. Let's look at the specific properties of such a functor: if \C is a category that admits small colimits, then any functor $f:\Delta \rightarrow \C$ extends to a colimit-preserving functor $F:\SSet\rightarrow \C$. So the functor $F$ is represented by a cosimplicial object, which we take to be $f$: $F:S\mapsto \vert S\vert_{C^\cdot}$ (defined by taking a coend). The functor $S\mapsto\vert S\vert_{C^\cdot}$ has a right adjoint that we denote by $Sing_{C^\cdot}$ and that we describe by the formula:
+\[Sing_{C^\cdot}(X)_n = \Hom_\C(C^n,X).\] . 
 
-SO in the case of a point, $St_X$ can be identified with the geometric realization functor $\vert\dot\vert_{Q^\dot}:\SSet\rightarrow \SSet$ for some cosimplicial object $Q^\dot$ in $\SSet$. Let's describe $Q^\dot$ explicitly. Let's describe a cosimplicial simplicial set $J^\dot$ by the formula \[J^n = \displaystyle (\Delta^n\star \{y\})\cup_{\Delta^n}\{x\}.\]
-The cosimplicial simplicial set $Q^\dot$ can then be described by the formula $Q^n=\Map_{\mathfrak{C}[J^n]}(x,y)$.\\
-$Q^\dot$ admits the following description: for each $n\geq 0$, let $P_[n]$ denote the partially ordered set of nonempty subsets of $[n]$, and $K_{[n]}$ the simplicial set $N(P)$ (which may be identified with a simplicial subset of the $(n+1)$-cube $(\Delta^1)^{n+1}$. The simplicial set $Q^n$ is obtained by collapsing, for each $0\leq i\leq n$, the subset  \[(\Delta^1)^{\{j:0\leq j<i\}\times \{1\}\times (\Delta^1)^{\{j:i<j\leq n\}\subset K_{[n]}\] to its quotient $(\Delta^1)^{\{j:i<j\leq n\}}\subset K_{[n]}$ to its quotient $(\Delta^1)^{\{J:i<j\leq n\}}$\\
+SO in the case of a point, $St_X$ can be identified with the geometric realization functor $\vert\cdot\vert_{Q^\cdot}:\SSet\rightarrow \SSet$ for some cosimplicial object $Q^\cdot$ in $\SSet$. Let's describe $Q^\cdot$ explicitly. Let's describe a cosimplicial simplicial set $J^\cdot$ by the formula \[J^n = \displaystyle (\Delta^n\star \{y\})\cup_{\Delta^n}\{x\}.\]
+The cosimplicial simplicial set $Q^\cdot$ can then be described by the formula $Q^n=\Map_{\mathfrak{C}[J^n]}(x,y)$.\\
+$Q^\cdot$ admits the following description: for each $n\geq 0$, let $P_[n]$ denote the partially ordered set of nonempty subsets of $[n]$, and $K_{[n]}$ the simplicial set $N(P)$ (which may be identified with a simplicial subset of the $(n+1)$-cube $(\Delta^1)^{n+1}$. The simplicial set $Q^n$ is obtained by collapsing, for each $0\leq i\leq n$, the subset  $(\Delta^1)^{\{j:0\leq j<i\}\times \{1\}\times (\Delta^1)^{\{j:i<j\leq n\}\subset K_{[n]}$ to its quotient $(\Delta^1)^{\{j:i<j\leq n\}}\subset K_{[n]}$.
 A map $f:[n]\rightarrow[m]$ determines a map $P_f:P_{[n]}\rightarrow P_{[m]}$ by setting $P_f(I) = f(I)$. The map $P_f$ in turn induces a map of simplicial sets $K_{[n]}\rightarrow K_{[m]}$, whcih determines a map of quotients $Q^n\rightarrow Q^m$ when $f$ is order-preserving. 
-In other words, if we look at $\mathscr{Q}$, the geometric realization of $Q^\dot$, then $\mathscr{Q}^n$ is a quotient of the cube of all functions $p:[n]\rightarrow[0,1]$ satisfying $p(0) = 1$. We quotient by the following relation: $p\simeq p'$ if there exists an integer $0\leq i\leq n$ such that $p_{\vert\{i,\dots,n\}} = p'_{\vert\{i,\dots,n\}}$ and $p(i) = p'(i) = 1$. SO each $\mathscr{Q}^n$ is homeomorphic to an $n$-simplex in a way that's compatible with the face maps of the cosimplicial space $\mathscr{Q}^\dot$. However, the degeneracies are very different from the degeneracies of the standard simplex. For instance, the product of the degeneracy mapping $\mathscr{Q}^n\rightarrow (\mathscr{Q}^1)^n$ is not injective for $n\geq 2$.\\
-Now that we have a better understanding of $Q^\dot$, let's study the functors $Sing_{Q^\dot}$ and $\vert \dot \vert_{Q^\dot}$. There is a map $\pi:Q^\dot\rightarrow\Delta^\dot$ of cosimplicial objects of $\SSet$. It is induced by a map $K_{[n]}\rightarrow \Delta^n$, which is the nerve of the map of partially ordered sets $P_{[n]}\mapsto[n]$ that carries each nonempty subset of $[n]$ to its largest element. 
+In other words, if we look at $\mathscr{Q}$, the geometric realization of $Q^\cdot$, then $\mathscr{Q}^n$ is a quotient of the cube of all functions $p:[n]\rightarrow[0,1]$ satisfying $p(0) = 1$. We quotient by the following relation: $p\simeq p'$ if there exists an integer $0\leq i\leq n$ such that $p_{\vert\{i,\dots,n\}} = p'_{\vert\{i,\dots,n\}}$ and $p(i) = p'(i) = 1$. SO each $\mathscr{Q}^n$ is homeomorphic to an $n$-simplex in a way that's compatible with the face maps of the cosimplicial space $\mathscr{Q}^\cdot$. However, the degeneracies are very different from the degeneracies of the standard simplex. For instance, the product of the degeneracy mapping $\mathscr{Q}^n\rightarrow (\mathscr{Q}^1)^n$ is not injective for $n\geq 2$.\\
+Now that we have a better understanding of $Q^\cdot$, let's study the functors $Sing_{Q^\cdot}$ and $\vert \cdot \vert_{Q^\cdot}$. There is a map $\pi:Q^\cdot\rightarrow\Delta^\cdot$ of cosimplicial objects of $\SSet$. It is induced by a map $K_{[n]}\rightarrow \Delta^n$, which is the nerve of the map of partially ordered sets $P_{[n]}\mapsto[n]$ that carries each nonempty subset of $[n]$ to its largest element. 
 
 \begin{proposition}
-  Let $S$ be a simplicial set. The map $p_S:\vert S\vert_{Q^\dot}\rightarrow S$ induced by $\pi$ is a weak homotopy equivalence.
+  Let $S$ be a simplicial set. The map $p_S:\vert S\vert_{Q^\cdot}\rightarrow S$ induced by $\pi$ is a weak homotopy equivalence.
 \end{proposition}
 
 \begin{proof}
   Basically, we're going to prove that the collection $A$ of simplicial sets $S$ for which the proposition is true contains every simplicial set $S$ having only finitely many nondegenerate simplices. Since $A$ is stable under filtered colimits, this will prove the proposition. \\
   We therefore proveed by induction on the dimension $n$ of $S$ and the number of nondegenerate simplices of $S$ of dimension $n$. If $S=\emtyset$< there is nothing to prove. Otherwise, let's write $$S\simeq S'\displaystyle \cup_{\partial \Delta^n}\Delta^n$$
-  $$\vert S\vert_{Q^\dot}\simeq \vert S'\vert_{Q^\dot}\displaystyle \cup_{\vert \partial \Delta^n\vert_{Q^\dot}}\vert\Delta^n\vert_{Q^\dot}.$$
-  These pushouts are homotopy pushouts, so all we have to do is prove that $p_{S'}, p_{\partial\Delta^n},$, and $p_{\Delta^n}$ are weak homotopy equivalences. This follows from the inductive hypothesis for $p_{S'}$ and $p_{\partial\Delta^n}$. For $p_{\Delta^n}$, it is true because $\Delta^n$ and $\vert\Delta^n\vert_{Q^\dot}=\mathscr{Q}^n$ are weakly contractible.
+  $$\vert S\vert_{Q^\cdot}\simeq \vert S'\vert_{Q^\cdot}\displaystyle \cup_{\vert \partial \Delta^n\vert_{Q^\cdot}}\vert\Delta^n\vert_{Q^\cdot}.$$
+  These pushouts are homotopy pushouts, so all we have to do is prove that $p_{S'}, p_{\partial\Delta^n},$, and $p_{\Delta^n}$ are weak homotopy equivalences. This follows from the inductive hypothesis for $p_{S'}$ and $p_{\partial\Delta^n}$. For $p_{\Delta^n}$, it is true because $\Delta^n$ and $\vert\Delta^n\vert_{Q^\cdot}=\mathscr{Q}^n$ are weakly contractible.
 \end{proof}
 
 \begin{proposition}
-  The adjoint functors $\SSet\adj{\vert \dot \vert_{Q^\dot}}{Sing_{Q^\dot}}\SSet$ determine a Quillen equivalence from the category $\SSet$ to itself.
+  The adjoint functors $\SSet\adj{\vert \cdot \vert_{Q^\cdot}}{Sing_{Q^\cdot}}\SSet$ determine a Quillen equivalence from the category $\SSet$ to itself.
 \end{proposition}
 
 This directly entails the following proposition:
 
 \begin{proposition}
-  Let $X$ be a Kan complex. Then the counit map\[v:\vert Sing_{Q^\dot}X\vert_{Q^\dot}\rightarrow X\] is a weak homotopy equivalence.
+  Let $X$ be a Kan complex. Then the counit map\[v:\vert Sing_{Q^\cdot}X\vert_{Q^\cdot}\rightarrow X\] is a weak homotopy equivalence.
 \end{proposition}
 
-Let $S$ be a simplicial set containing a vertex $s$. Let $\C$ be a simplicial category, $\phi:\mathfrak{C}[S]^{op}\rightarrow \C$ a simplicial functor, and $C=\phi(s)\in\C$. For every simplicial functor $\mathcal{F}:\C\rightarrow \SSet$, there is a canonical isomorphism \[(Un_\phi\mathcal{F})\times_S\{s\}\simeq \Sing_{Q^\dot}\mathcal{F}(C).\]
+Let $S$ be a simplicial set containing a vertex $s$. Let $\C$ be a simplicial category, $\phi:\mathfrak{C}[S]^{op}\rightarrow \C$ a simplicial functor, and $C=\phi(s)\in\C$. For every simplicial functor $\mathcal{F}:\C\rightarrow \SSet$, there is a canonical isomorphism \[(Un_\phi\mathcal{F})\times_S\{s\}\simeq \Sing_{Q^\cdot}\mathcal{F}(C).\]
 In particular, we have a canonical map from $\mathcal{F}(C)$ to the fiber $(Un_\phi\mathcal{F})_s$, which is a homotopy equivalence if $\mathcal{F}(C)$ is fibrant.\\
 
 Now let's look at the straightening of right fibrations. We take $\phi:\mathfrak{C}[S]\rightarrow \C^{op}$ to be an equivalence of simplicial categories. Let's first consider $S$ to be a simplex.\\
 
 \begin{lemma}
   Let $n$ be a nonnegative integer, let $[n]$ denote the linearly ordered set $\{0,\dots,n\}$, regarded as a discrete simplicial category, and let $\phi:\mathfrak{C}[\Delta^n]\rightarrow [n]$ be the canonical functor. Then the Quillen adjunction 
+  \[(\SSet)_{/\Delta^n}\adj{St_\phi}{Un_\phi}\SSet^{[n]}\] is a Quillen equivalence.
 \end{lemma}
+
+There's another way to state this lemma. If we are given a commutative diagram of simplicial sets 
+\begin{tikzcd}
+  X\arrow[rr,"f"]\arrow[dr,"p"]&&Y\arrow[dl,"q"]\\
+  &S
+\end{tikzcd}
+where $p$ and $q$ are right fibrations. $f$ is a pointwise equivalence if for each vertex $s\inS$, the induced map $X_s\rightarrow Y_s$ is a homotopy equivalence of Kan complexes.
+
+\begin{lemma}
+  Suppose we are given a commutative diagram of simplicial sets 
+  \begin{tikzcd}
+    X\arrow[rr,"f"]\arrow[dr,"p"]&&Y\arrow[dl,"q"]\\
+    &S
+  \end{tikzcd}
+  where $p$ and $q$ are right fibrations. The following conditions are equivalent:
+  \begin{itemize}
+    \item The map $f$ is a pointwise equivalence.
+    \item The map $f$ is an equivalence in the simplicial category $(\SSet)_{/S}$ (That is, $f$ admits a homotopy inverse).
+    \item For every object $A\in(\SSet)_{/S}$, composition with $f$ induced a homotopy equivalence of Kan complexes \[\Map_{{\SSet}_{/S}}(A,X)\rightarrow \Map_{{\SSet}_{/S}}(A,Y)\]
+  \end{itemize}
+\end{lemma}
+
+\begin{proposition}
+  For every simplicial set $S$, the unstraightening functor $Un_S$ induces an equivalence of simplicial categories \[(\SSet^{\mathfrak{C}[S]^{op}})^\circ\rightarrow \text{RFib}(S).\]
+  
+\end{proposition}
+This implies that for $p:X\rightarrow S$ a map of simplicial sets, $p$ is a right fibration iff the map $p$ exhibits $X$ as a fibrant object of $(\SSet)_{/S}$ (with respect to the contravariant model structure).
+
+\begin{proposition}
+  Suppose that we are given a diagram of simplicial sets 
+  \begin{tikzcd}
+    X\arrow[rr,"f"]\arrow[dr,"p"]&&Y\arrow[dl,"q"]\\
+    &S
+  \end{tikzcd}
+  where $p$ and $q$ are right fibrations. Then $f$ is a contravariant fibration in $(\SSet)_{/S}$ if and only if $f$ is a right fibration.
+\end{proposition}
 
 
 
@@ -489,7 +525,7 @@ We're going to show that this adjunction is actually a Quillen adjunction.
 \end{proposition}
 
 \subsubsection{Cartesian fibrations over a simplex}
-Let us now look more closely at cartesian fibrations over a simplex. A map of simplicial sets $p:X\rightarrow S$ is a cartesian fibrations if and only if the pullback map $X\times_S \Delta^n \rightarrow \Delta^n$ is a Cartesian fibration for each simplex of $S$. The Cartesian fibrations $X\rightarrow \Delta^n$ are the "basic fibrations" out of which other Cartesian fibrations are built. We're now looking to prove a structure theorem on these "basic fibrations".\\
+Let us now look more closely at cartesian fibrations over a simplex. A map of simplicial sets $p:X\rightarrow S$ is a cartesian fibration if and only if the pullback map $X\times_S \Delta^n \rightarrow \Delta^n$ is a Cartesian fibration for each simplex of $S$. The Cartesian fibrations $X\rightarrow \Delta^n$ are the "basic fibrations" out of which other Cartesian fibrations are built. We're now looking to prove a structure theorem on these "basic fibrations".\\
 $\Delta^n$ is the nerve of the category associated to the linearly ordered set $[n] = \{0<1<\dots <n\}.$ A cartesian fibration $p:X\rightarrow S$ can be thought of as giving a contravariant functor from $S$ to $\8$-categories. So we can expect to have a close relationship between cartesian fibrations $X\rightarrow \Delta^n$ and composable sequences of maps between \8-categories \[A^0\leftarrow A^1\leftarrow \dots \leftarrow A^n.\]\\
 Suppose that we are given a composable sequence of maps\[\phi:A^0\leftarrow A^1\leftarrow \dots \leftarrow A^n\] of simplicial sets. Let us define the mapping simplex $M(\phi)$ of $\phi$: if $J$ is a nonempty finite linearly ordered set with greatest element $j$, then specifying a map $\Delta^J\rightarrow M(\phi)$ is like specifying an order-preserving map $f:J\rightarrow [n]$ and a map $\sigma:\Delta^J\rightarrow A^{f(j)}$. Given an order-preserving map $p:J\rightarrow J'$ of partially ordered sets containing largest elements $j$ and $j'$, there is a natural map $M(\phi)(\Delta^{J'})\rightarrow M(\phi)(\Delta^J)$ which carries $(f,\sigma)$ to $(f\circ p, e\circ\sigma)$, where $e:A^{f(j')}\rightarrow A^{f(p(j))}$ is obtained from $\phi$ in the obvious way.
 
@@ -581,7 +617,20 @@ Let's now examine what straightening looks like over a simplex. Let $S$ be a sim
 \[(\SSet^+)_{/S}\adj{St^+_\phi}{Un^+_\phi} (\SSet^+)^\C.\]
 Provided that $\phi$ is a categorical equivalence and $S$ is a simplex, we can prove that $(St^+_\phi, Un^+_\phi)$ is a Quillen equivalence.  
 
-First, let's look at what happens when $S$ is a point and $\phi$ is an isomorphism of simplicial categories. In this case, the straightening functor $St^+_{\Delta^0}$ is actually the functor $T:\SSet^+\rightarrow \SSet^+$ defined by: \[T(X,\mathcal{E}) = (\vert X\vert_{Q^\dot},\mathcal{E}'),\] where $Q$ is a specific cosimplicial object of $\SSet$ defined in the unmarked case.
+First, let's look at what happens when $S$ is a point and $\phi$ is an isomorphism of simplicial categories. In this case, the straightening functor $St^+_{\Delta^0}$ is actually the functor $T:\SSet^+\rightarrow \SSet^+$ defined by: \[T(X,\mathcal{E}) = (\vert X\vert_{Q^\cdot},\mathcal{E}'),\] where $Q$ is the specific cosimplicial object of $\SSet$ defined in the unmarked case.
+
+Then $T$ has a right adjoint $U$, and the pair $(T,U)$ is a Quillen equivalence from $(\SSet)^+$ to itself.
+Now, if we return to the case of a general equivalence $\phi:\mathfrak{C}[S]\rightarrow \C^{op}$, we know we have a Quillen adjunction, so to prove the equivalence, we want to show that the unit and counit 
+\begin{align*}
+  u:id &\rightarrow RUn_\phi^+\circ LSt_\phi^+\\
+  v:LSt_\phi^+\circ RUn_\phi^+&\rightarrow id
+\end{align*}
+are weak equivalences.\\
+
+  
+
+
+
 
 
 
