@@ -7,4 +7,6 @@
 *.gz
 *.toc
 *.pdf
+*.nav
+*.snm
 __latexindent*
