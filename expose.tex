@@ -9,6 +9,7 @@
 \newcommand{\8}{\ensuremath{\infty}}
 \newcommand{\C}{\ensuremath{\mathfrak{C}}}
 \newcommand{\D}{\ensuremath{\mathscr{D}}}
+\newcommand{\J}{\ensuremath{\mathscr{J}}}
 \renewcommand{\H}{\ensuremath{\mathcal{H}}}
 \newcommand{\Horn}[2]{\ensuremath{\Lambda^{#1}_{#2}}}
 \newcommand{\Simplex}[1][n]{\ensuremath{\boldsymbol{\Delta^{#1}}}}
@@ -575,6 +576,19 @@ whenever $\phi: \mathfrak{C}[S] \rightarrow \op\C$ is a weak equivalence of simp
 \begin{example}
   Let \C be a small category, and regard $N(\C)$ as an object of $(\SSet)_{/N(\C)}$ via the identity map. Then, $\mathfrak{F}_{N(\C)} \in (\SSet)^\C$ can be identified with the functor $C \mapsto N(\C_{/C})$.
 \end{example}
+
+\begin{lemma}
+  Let \J be a category and $\alpha : f \rightarrow f'$ be a natural transformation of functors $f, f' : \C \rightarrow \SSet$.
+  \begin{itemize}
+    \item Suppose that, for each $I \in \C$, the map $\alpha(I) : f(I) \rightarrow f'(I)$ is an inner fibration of simplicial sets. Then, the induced map $N_f(\C) \rightarrow N_{f'}(\C)$ is an inner fibration.
+    \item Suppose that, for each $I \in \J$, the simplicial set $f(I)$ is an \8-category. Then, $N_f(\C)$ is an \8-category.
+    \item Suppose that, for each $I \in \C$, the map $\alpha(I) : f(I) \rightarrow f'(I)$ is a categorical fibration of \8-categories. Then the induced map $N_f(\C) \rightarrow N_{f'}(\C)$ is a categorical fibration of \8-categories.~
+  \end{itemize}
+\end{lemma}
+
+\begin{definition}[Marked relative nerve]
+  Let \C be a small category, and $\mathcal{F}: \C \rightarrow \SSet^+$ a functor. We let $N_\mathcal{F}^+(\C)$ denote the marked simplicial set $(N_f(\C), M)$, where $f$ denotes the composition $\C \overset{\mathcal{F}}{\rightarrow} \SSet^+ \rightarrow \SSet$, and $M$ denotes the ollection of all edges $\bar{e}$ of $N_f(\C)$ with the following property: if $e: C \rightarrow C'$ is the image of $\bar{e}$ in $N(\C)$ and $\sigma$ denotes the edge of $f(C')$ determined by $\bar{e}$, then $\sigma$ is a marked edge of $\mathcal{F}(C')$, and we will refer to $N_f^+(\C)$ as the marked relative nerve functor.
+\end{definition}
 
 \subsection{Some applications}
 
