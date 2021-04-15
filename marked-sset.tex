@@ -9,7 +9,7 @@
 \usepackage[T1]{fontenc}
 
 \newcommand{\8}{\ensuremath{\infty}}
-\newcommand{\C}{\ensuremath{\mathfrak{C}}}
+\newcommand{\C}{\ensuremath{\mathscr{C}}}
 \newcommand{\D}{\ensuremath{\mathscr{D}}}
 \newcommand{\J}{\ensuremath{\mathscr{J}}}
 \renewcommand{\H}{\ensuremath{\mathcal{H}}}
@@ -53,42 +53,32 @@
 
 \section{\texorpdfstring{\Catinf}{Cat∞}}
 
-\begin{frame}{Motivation for \texorpdfstring{\Catinf}{Cat∞}}
-\end{frame}
-
 \begin{frame}{The definition of \texorpdfstring{\Catinf}{Cat∞}}
-  \begin{definition}[\texorpdfstring{\Catinf}{Cat∞}]
-    The simplicial category \Catinfdel is defined as follows:
-    \begin{itemize}
-      \item The objects are small \8-categories.
-      \item Given two \8-categories \C and \D, we define $\Map_{\Catinfdel}(\C, \D)$ to be the largest Kan complex contained in the \8-cateogry $\Fun(\C, \D)$.
-    \end{itemize}
-  \end{definition}
+  The simplicial category \Catinfdel is defined as follows:
+  \begin{itemize}
+    \item The objects are small \8-categories.
+    \item Given two \8-categories \C and \D, we define $\Map_{\Catinfdel}(\C, \D)$ to be the largest Kan complex contained in the \8-cateogry $\Fun(\C, \D)$.
+  \end{itemize}
 
   \Catinf denotes the simplicial nerve $\text{N}(\Catinfdel)$, and is referred to as the \8-category of small \8-categories whose mapping spaces are Kan complexes, and composition is strictly associative.
 \end{frame}
 
-\section{Marked Simplicial Sets}
+\section{\texorpdfstring{$\SSet^+$}{Marked simplicial sets}}
 
 \begin{frame}{Motivation}
   The Joyal model structure on \SSet is not compatible with the usual simplicial structure. We will introduce marked simplicial sets $\SSet^+$ as a remedy to the problem, so that we obtain an equivalance of simplicial categories $\Catinfdel \simeq (\SSet^+)^\circ$.
 \end{frame}
 
-
 \begin{frame}{Definition}
-  \begin{definition}[Marked simplicial set]
-    A marked simplicial set is a pair $(X, \epsilon)$, where $X$ is a simplicial set and $\epsilon$ is a set of edges of $X$, which contains every degenerate edge. We will say that $X$ is marked if it belongs to $\epsilon$. A morphism $(X, \epsilon) \rightarrow (X', \epsilon')$ is a map $f : X \rightarrow X'$ having the property that $f(\epsilon) \subseteq \epsilon'$.
-  \end{definition}
+  A marked simplicial set is a pair $(X, \epsilon)$, where $X$ is a simplicial set and $\epsilon$ is a set of edges of $X$, which contains every degenerate edge. We will say that $X$ is marked if it belongs to $\epsilon$. A morphism $(X, \epsilon) \rightarrow (X', \epsilon')$ is a map $f : X \rightarrow X'$ having the property that $f(\epsilon) \subseteq \epsilon'$.
 \end{frame}
 
-\begin{frame}{The extreme cases}
-  The two extreme cases of marked simplicial sets:
+\begin{frame}{$S^\sharp$ and $S^\flat$}
+  The two extreme cases of marked simplicial sets are:
   \begin{itemize}
     \item<1-> $S^\sharp = (S, S_1)$ denotes the marked simplicial set in whic every edge of $S$ is marked.
-    \item<2-> $S^\flat = (S, s_0(S_0)$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked
+    \item<2-> $S^\flat = (S, s_0(S_0))$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked
   \end{itemize}
-
-  \pause
 
   \onslide<3>{We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\sharp}$.
 
@@ -98,28 +88,26 @@
 \section{Marked Anodyne Morphisms}
 
 \begin{frame}{Definition}
-  \begin{definition}{Marked anodyne morphism}
-    The class of marked anodyne morphisms in $\SSet^+$ is the smallest weakly saturated class of morphisms with the following properties:
+  The class of marked anodyne morphisms in $\SSet^+$ is the smallest weakly saturated class of morphisms with the following properties:
 
-    \begin{itemize}
-      \item[(1)] For each $0 < i < n$, the inclusion $(\Horn{n}{i})^\flat \subseteq (\Simplex)^\flat$ is marked anodyne.
-      \item[(2)] For every $n > 0$ the inclusion
-            $$
-              (\Horn{n}{n}, \epsilon \cap (\Horn{n}{n})_1) \subseteq (\Simplex, \epsilon)
-            $$
-            is marked anodyne, where $\epsilon$ denotes the set of all degenerate deges of \Simplex, together with the final edge \Simplex{\{n - 1, n\}}.
-    \end{itemize}
-  \end{definition}
+  \begin{itemize}
+    \item[(1)]<1-> For each $0 < i < n$, the inclusion $(\Horn{n}{i})^\flat \subseteq (\Simplex)^\flat$ is marked anodyne.
+    \item[(2)]<2> For every $n > 0$ the inclusion
+          $$
+            (\Horn{n}{n}, \epsilon \cap (\Horn{n}{n})_1) \subseteq (\Simplex, \epsilon)
+          $$
+          is marked anodyne, where $\epsilon$ denotes the set of all degenerate deges of \Simplex, together with the final edge \Simplex{\{n - 1, n\}}.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \begin{itemize}
-    \item[(3)] The inclusion
+    \item[(3)]<1-> The inclusion
           $$
-            (\Horn{2}{1})^\sharp \bigcup_(\Horn{2}{1})^\flat (\Simplex{2})^\flat \rightarrow (\Simplex{2})^\sharp
+            (\Horn{2}{1})^\sharp \bigsqcup_{(\Horn{2}{1})^\flat} (\Simplex{2})^\flat \rightarrow (\Simplex{2})^\sharp
           $$
           is marked anodyne.
-    \item[(4)] For every Kan complex $K$, the map $K^\flat \rightarrow K^\sharp$ is marked anodyne.
+    \item[(4)]<2> For every Kan complex $K$, the map $K^\flat \rightarrow K^\sharp$ is marked anodyne.
   \end{itemize}
 \end{frame}
 
@@ -131,6 +119,8 @@
     \Hom_{\SSet}(K, \Map^\sharp(X, Y)) & \simeq \Hom_{\SSet^+}(K^\sharp\times X, Y)
   \end{align*}
 
+  \pause
+
   If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let
 
   \begin{align*}
@@ -139,7 +129,7 @@
   \end{align*}
 \end{frame}
 
-\section{Cartesian Model Structure}
+\section{Cartesian model structure}
 
 \begin{frame}{Groundwork}
   Let $S$ be a simplicial set. In this section, the goal is to define the Cartesian model structure on the category $(\SSet^+)_{/S}$ of marked simplicial sets over $S$. The ultimate goal is to prove that the fibrant objects of $(\SSet^+)_{/S}$ correspond precisely to cartesian fibrations $X \rightarrow S$ and that they encode contravariant functors from $S$ into the \8-category \Catinfdel.
@@ -177,6 +167,7 @@
 
 \begin{frame}{Cartesian equivalences}
   Let $S$ be a simplicial set. And let $p: X \rightarrow Y$ be a morphism in $(\SSet^+)_{/S}$. $p$ is a cartesian equivalence if it satisfies either of the following equivalent conditions:
+
   \begin{itemize}
     \item[(1)] For every cartesian fibration $Z \rightarrow S$, the induced map
           $$
@@ -196,7 +187,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Trivial Fibrations}
+\begin{frame}
   Let's take $f: X \rightarrow Y$ to be a morphism in $(\SSet^+)_{/S}$ which is marked anodyne when regarded as a map of marked simplicial sets. Since the smash product of $f$ with any inclusion $A^\flat\subset B^\flat$ is also marked anodyne, we deduce that the map
 
   $$
@@ -206,7 +197,35 @@
   is a trivial fibration for every cartesian fibration $Z \rightarrow S$, which makes $f$ a cartesian equivalence.
 \end{frame}
 
-\begin{frame}{Properties of the Cartesian Model Structure}
+\begin{frame}{Strong homotopy in $(\SSet^+)_{/S}$}
+  $X, Y \in (\SSet^+)_{/S}$ for $S$ a simplicial set. We say that a pair of morphisms $f, g: X \rightarrow Y$ are strongly homotopic if there exists a contractible Kan complex $K$ and a map $rightarrow \Map^\flat_S(X, Y)$ whose image contains both of the vertices $f$ and $g$. If $Y = Z^\natural$, where $Z \rightarrow S$ is a cartesian fibration, then this just means that $f$ and $g$ are equivalent when viewed as objects of the \8-category $\Map_S^\flat(X, Y)$.
+\end{frame}
+
+\begin{frame}
+  Let $X \xrightarrow{p} Y \xrightarrow{q} S$ be a diagram of simplicial sets, where both $q$ and $q\circ p$ are cartesian fibrations. The following assertions are equivalent:
+
+  \begin{itemize}
+    \item[(1)]<1-> the map $p$ induces a cartesian equivalence $X^\natural \rightarrow Y^\natural$ in $(\SSet^+)_{/S}$.
+    \item[(2)]<2-> there exists a map $r: Y \rightarrow X$ which is a strong homotopy inverse to $p$, in the sense that $p\circ r$ and $r\circ p$ are both strongly homotopic to the identity.
+    \item[(3)]<3> the map $p$ induces a categorical quivalence $X_s \rightarrow Y_s$ for each vertex $s$ of $S$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Model structure on $(\SSet^+)_{/S}$}
+  Let us now define the model structure we want on $(\SSet^+)_{/S}$:
+
+  There exists a left proper combinatorial model structure on $(\SSet^+)_{/S}$ which can be described as follows:
+  \begin{itemize}
+    \item[(C)]<1-> The cofibrations in $(\SSet^+)_{/S}$ are the morphisms $p: X \rightarrow Y$ in $(\SSet^+)_{/S}$ which are cofibrations when regarded as morphisms of simplicial sets.
+    \item[(W)]<2-> The weak equivalences in $(\SSet^+)_{/S}$ are the cartesian equivalences.
+    \item[(F)]<3> The fibrations in $(\SSet^+)_{/S}$ are the maps which have the right lifting property with respect to every map which is simultaneously a cofibration and a weak equivalence.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  Let $S$ be a simplicial set. Let's regard $(\SSet^+)_{/S}$ as a simplicial category with mapping objects given by $\Map^\sharp_S(X, Y)$. Then $(\SSet^+)_{/S}$ is a simplicial model category.
+
+  Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, where the simplicial mapping spaces are given by $\Map^\flat_S(X, Y)$. This simplicial structure is not compatible with the Cartesian model structure: for fixed $X \in (\SSet^+)_{/S}$ the functor $A\mapsto A^\flat\times X$ does not carry weak homotopy equivalences to Cartesian equivalences. But it does carry categorical equivalences to Cartesian equivalences, and consequently $(\SSet^+)_{/S}$ is endowed with the structure of a \SSet-enriched model category, where we regard \SSet as equipped with the Joyal model structure. It's actually closer to the truth to say that $(\SSet^+)_{/S}$ is a model for an \8-bicategory.
 \end{frame}
 
 \section{Comparison of model structures}
@@ -229,17 +248,16 @@
 \end{frame}
 
 \begin{frame}{The Quillen adjunctions}
-  \begin{theorem}
-    There exists a sequence of Quillen adjunctions:
+  There exists a sequence of Quillen adjunctions:
 
-    $$
-      \C_0 \adj{F_0}{G_0} \C_1 \adj{F_1}{G_1} C_2 \adj{F_2}{G_2} \C_3 \adj{F_3}{G_3} \C_4
-    $$
-  \end{theorem}
+  $$
+    \C_0 \adj{F_0}{G_0} \C_1 \adj{F_1}{G_1} C_2 \adj{F_2}{G_2} \C_3 \adj{F_3}{G_3} \C_4
+  $$
 \end{frame}
 
 \begin{frame}{Description of adjunction functors}
   The functors may be described as follows:
+
   \begin{itemize}
     \item<1->[(A0)] $G_0$ is the forgetful functor from $(\SSet^+)_{/S}$ to $(\SSet)_{/S}$, which igonres the collection of marked edges. $F_0$ is left adjoint to $G_0$, given by $X \mapsto X^\flat$. The Quillen adjunction $(F_0, G_0)$ is a Quillen equivalance if $S$ is a Kan complex.
     \item<2->[(A1)] $F_1$ and $G_1$ are identity functors on $(\SSet^+)_{/S}$.
