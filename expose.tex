@@ -7,7 +7,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[a4paper, inner=25mm, outer=25mm]{geometry}
 \newcommand{\8}{\ensuremath{\infty}}
-\newcommand{\C}{\ensuremath{\mathfrak{C}}}
+\newcommand{\C}{\ensuremath{\mathscr{C}}}
 \newcommand{\D}{\ensuremath{\mathscr{D}}}
 \newcommand{\J}{\ensuremath{\mathscr{J}}}
 \renewcommand{\H}{\ensuremath{\mathcal{H}}}
@@ -247,7 +247,7 @@ The Joyal model structure on \SSet is not compatible with the usual simplicial s
 \begin{definition}[Marked simplicial set]
   A marked simplicial set is a pair $(X, \epsilon)$, where $X$ is a simplicial set and $\epsilon$ is a set of edges of $X$, which contains every degenerate edge. We will say that $X$ is marked if it belongs to $\epsilon$. A morphism $(X, \epsilon) \rightarrow (X', \epsilon')$ is a map $f : X \rightarrow X'$ having the property that $f(\epsilon) \subseteq \epsilon'$.
 
-  Every simplicial set may be regarded as a marked simplicial set, with two extreme cases deserving special mention: $S^\sharp = (S, S_1)$ denotes the marked simplicial set in whic every edge of $S$ is marked, and $S^\flat = (S, s_0(S_0)$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked. We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\sharp}$.
+  Every simplicial set may be regarded as a marked simplicial set, with two extreme cases deserving special mention: $S^\sharp = (S, S_1)$ denotes the marked simplicial set in whic every edge of $S$ is marked, and $S^\flat = (S, s_0(S_0))$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked. We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\sharp}$.
 \end{definition}
 
 We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in particular see that each $(\SSet^+)_{/S}$ is a simplicial model category whose fibrant objets are the Cartesian fibrations $X \rightarrow S$.
@@ -266,7 +266,7 @@ We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in
           is marked anodyne, where $\epsilon$ denotes the set of all degenerate deges of \Simplex, together with the final edge \Simplex{\{n - 1, n\}}.
     \item The inclusion
           $$
-            (\Horn{2}{1})^\sharp \bigcup_(\Horn{2}{1})^\flat (\Simplex{2})^\flat \rightarrow (\Simplex{2})^\sharp
+            (\Horn{2}{1})^\sharp \bigsqcup_{(\Horn{2}{1})^\flat} (\Simplex{2})^\flat \rightarrow (\Simplex{2})^\sharp
           $$
           is marked anodyne.
     \item For every Kan complex $K$, the map $K^\flat \rightarrow K^\sharp$ is marked anodyne.
