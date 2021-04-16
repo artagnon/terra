@@ -247,10 +247,10 @@ The Joyal model structure on \SSet is not compatible with the usual simplicial s
 \begin{definition}[Marked simplicial set]
   A marked simplicial set is a pair $(X, \epsilon)$, where $X$ is a simplicial set and $\epsilon$ is a set of edges of $X$, which contains every degenerate edge. We will say that $X$ is marked if it belongs to $\epsilon$. A morphism $(X, \epsilon) \rightarrow (X', \epsilon')$ is a map $f : X \rightarrow X'$ having the property that $f(\epsilon) \subseteq \epsilon'$.
 
-  Every simplicial set may be regarded as a marked simplicial set, with two extreme cases deserving special mention: $S^\sharp = (S, S_1)$ denotes the marked simplicial set in whic every edge of $S$ is marked, and $S^\flat = (S, s_0(S_0))$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked. We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\sharp}$.
+  Every simplicial set may be regarded as a marked simplicial set, with two extreme cases deserving special mention: $S^\sharp = (S, S_1)$ denotes the marked simplicial set in which every edge of $S$ is marked, and $S^\flat = (S, s_0(S_0))$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked. We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\sharp}$.
 \end{definition}
 
-We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in particular see that each $(\SSet^+)_{/S}$ is a simplicial model category whose fibrant objets are the Cartesian fibrations $X \rightarrow S$.
+We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in particular see that each $(\SSet^+)_{/S}$ is a simplicial model category whose fibrant objects are the Cartesian fibrations $X \rightarrow S$.
 
 \subsection{Marked anodyne morphisms}
 
@@ -263,10 +263,10 @@ We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in
           $$
             (\Horn{n}{n}, \epsilon \cap (\Horn{n}{n})_1) \subseteq (\Simplex, \epsilon)
           $$
-          is marked anodyne, where $\epsilon$ denotes the set of all degenerate deges of \Simplex, together with the final edge \Simplex{\{n - 1, n\}}.
+          is marked anodyne, where $\epsilon$ denotes the set of all degenerate deges of \Simplex, together with the final edge \Simplex[\{n - 1, n\}].
     \item The inclusion
           $$
-            (\Horn{2}{1})^\sharp \bigsqcup_{(\Horn{2}{1})^\flat} (\Simplex{2})^\flat \rightarrow (\Simplex{2})^\sharp
+            (\Horn{2}{1})^\sharp \bigsqcup_{(\Horn{2}{1})^\flat} (\Simplex[2])^\flat \rightarrow (\Simplex[2])^\sharp
           $$
           is marked anodyne.
     \item For every Kan complex $K$, the map $K^\flat \rightarrow K^\sharp$ is marked anodyne.
@@ -674,16 +674,16 @@ $$
 whenever $\phi: \mathfrak{C}[S] \rightarrow \op\C$ is a weak equivalence of simplicial categories. Suppose $\mathcal{F} : \C \rightarrow \SSet^{+}$ is a weakly fibrant diagram , so that $Un_\phi^+(\mathcal{F})$ is a fibrant object of $(\SSet^+)_{/S}$ corresponding to a Cartesian fibration of simplicial sets $X \rightarrow S$. For every vertex $s \in S$, the fiber $X_s$ is an \8-category which is equivalent to $\mathfrak{F}(\phi(s))$, but usually not isomorphic to $\mathcal{F}(\phi(s))$. In the special case when \C is an ordinary category, and $\phi: \mathfrak{C}[\op{N(\C)}] \rightarrow \op\C$ is the counit map, there is another version of unstraightening construction $Un_\phi^+$, which does not share this defect. Now, we introduce the marked relative nerve $\mathcal{F} \mapsto N_\mathfrak{F}^+(\C)$ to study its basic properties.
 
 \begin{definition}
-  Let \C be a small category and $f : \C \rightarrow \SSet$ be a functor. We define a simplicial set $N_f(\C)$, the nerve of \C relative to $f$, as follows. For every nonempty finite linearly ordered set $J$, a map $\Simplex{J} \rightarrow N_f(\C)$ consists of the following data:
+  Let \C be a small category and $f : \C \rightarrow \SSet$ be a functor. We define a simplicial set $N_f(\C)$, the nerve of \C relative to $f$, as follows. For every nonempty finite linearly ordered set $J$, a map $\Simplex[J] \rightarrow N_f(\C)$ consists of the following data:
   \begin{itemize}
     \item A functor $\sigma$ from $J$ to \C.
-    \item For every nonempty subset $J' \subseteq J$ having a maximal element $j'$, a map $\tau(J') : \Simplex{J'} \rightarrow f(\sigma(j'))$.
+    \item For every nonempty subset $J' \subseteq J$ having a maximal element $j'$, a map $\tau(J') : \Simplex[J'] \rightarrow f(\sigma(j'))$.
     \item For nonemtpy substes $J'' \subseteq J' \subseteq J$, with maximal elements $j'' \in J''$, $j' \in J'$, the following diagram is commutative:
           $$
             \begin{xy}
               \xymatrix{
-                \Simplex{J''}\ar[r]^{\tau(J'')}\ar@{(->}[d] & f(\sigma(j''))\ar[d] \\
-                \Simplex{J'}\ar[r]^{\tau(J')} & f(\sigma(j'))
+                \Simplex[J'']\ar[r]^{\tau(J'')}\ar@{(->}[d] & f(\sigma(j''))\ar[d] \\
+                \Simplex[J']\ar[r]^{\tau(J')} & f(\sigma(j'))
               }
             \end{xy}
           $$
@@ -691,7 +691,7 @@ whenever $\phi: \mathfrak{C}[S] \rightarrow \op\C$ is a weak equivalence of simp
 \end{definition}
 
 \begin{remark}
-  The simplicial set $N_f(\C)$ depends funcorially on $f$. When $f$ takes a constant value \Simplex{0}, there is a canonical isomorphism $N_f(\C) \simeq N(\C)$. In particula, for any functor $f$, there is a canonical map $N_f(\C) \rightarrow N(\C)$; the fiber of this map over an object $C \in \C$ can be identified with a simplicial set $f(C)$.
+  The simplicial set $N_f(\C)$ depends funcorially on $f$. When $f$ takes a constant value \Simplex[0], there is a canonical isomorphism $N_f(\C) \simeq N(\C)$. In particula, for any functor $f$, there is a canonical map $N_f(\C) \rightarrow N(\C)$; the fiber of this map over an object $C \in \C$ can be identified with a simplicial set $f(C)$.
 \end{remark}
 
 \begin{example}
