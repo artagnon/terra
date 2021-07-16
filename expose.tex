@@ -245,12 +245,12 @@ The straightening functor has a right adjoint, the unstraightening functor, deno
 The Joyal model structure on \SSet is not compatible with the usual simplicial structure. We will introduce marked simplicial sets $\SSet^+$ as a remedy to the problem, so that we obtain an equivalance of simplicial categories $\Catinfdel \simeq (\SSet^+)^\circ$.
 
 \begin{definition}[Marked simplicial set]
-  A marked simplicial set is a pair $(X, \epsilon)$, where $X$ is a simplicial set and $\epsilon$ is a set of edges of $X$, which contains every degenerate edge. We will say that $X$ is marked if it belongs to $\epsilon$. A morphism $(X, \epsilon) \rightarrow (X', \epsilon')$ is a map $f : X \rightarrow X'$ having the property that $f(\epsilon) \subseteq \epsilon'$.
+  A marked simplicial set is a pair $(X, \mathcal{E})$, where $X$ is a simplicial set and $\mathcal{E}$ is a set of edges of $X$, which contains every degenerate edge. We will say that $X$ is marked if it belongs to $\mathcal{E}$. A morphism $(X, \mathcal{E}) \rightarrow (X', \mathcal{E}')$ is a map $f : X \rightarrow X'$ having the property that $f(\mathcal{E}) \subseteq \mathcal{E}'$.
 
   Every simplicial set may be regarded as a marked simplicial set, with two extreme cases deserving special mention: $S^\sharp = (S, S_1)$ denotes the marked simplicial set in which every edge of $S$ is marked, and $S^\flat = (S, s_0(S_0))$ denotes the marked simplicial set in which only the degerate edges of $S$ are marked. We let $(\SSet^+)_{/S}$ denote the category which might otherwise be denoted as $(\SSet^+)_{/S^\sharp}$.
 \end{definition}
 
-We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in particular see that each $(\SSet^+)_{/S}$ is a simplicial model category whose fibrant objects are the Cartesian fibrations $X \rightarrow S$.
+We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in particular see that each $(\SSet^+)_{/S}$ is a simplicial model category whose fibrant objects are the cartesian fibrations $X \rightarrow S$.
 
 \subsection{Marked anodyne morphisms}
 
@@ -261,9 +261,9 @@ We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in
     \item For each $0 < i < n$, the inclusion $(\Horn{n}{i})^\flat \subseteq (\Simplex)^\flat$ is marked anodyne.
     \item For every $n > 0$ the inclusion
           $$
-            (\Horn{n}{n}, \epsilon \cap (\Horn{n}{n})_1) \subseteq (\Simplex, \epsilon)
+            (\Horn{n}{n}, \mathcal{E} \cap (\Horn{n}{n})_1) \subseteq (\Simplex, \mathcal{E})
           $$
-          is marked anodyne, where $\epsilon$ denotes the set of all degenerate deges of \Simplex, together with the final edge \Simplex[\{n - 1, n\}].
+          is marked anodyne, where $\mathcal{E}$ denotes the set of all degenerate deges of \Simplex, together with the final edge \Simplex[\{n - 1, n\}].
     \item The inclusion
           $$
             (\Horn{2}{1})^\sharp \bigsqcup_{(\Horn{2}{1})^\flat} (\Simplex[2])^\flat \rightarrow (\Simplex[2])^\sharp
@@ -273,8 +273,8 @@ We will soon introduce the cartesian model structure on $(\SSet^+)_{/S}$, and in
   \end{itemize}
 \end{definition}
 
-\subsection{The Cartesian model structure}
-Let $S$ be a simplicial set. In this section, the goal is to define the Cartesian model structure on the category $(\SSet^+)_{/S}$ of marked simplicial sets over $S$. The ultimate goal is to prove that the fibrant objects of $(\SSet^+)_{/S}$ correspond precisely to cartesian fibrations $X \rightarrow S$ and that they encode contravariant functors from $S$ into the \8-category \Catinfdel.
+\subsection{The cartesian model structure}
+Let $S$ be a simplicial set. In this section, the goal is to define the cartesian model structure on the category $(\SSet^+)_{/S}$ of marked simplicial sets over $S$. The ultimate goal is to prove that the fibrant objects of $(\SSet^+)_{/S}$ correspond precisely to cartesian fibrations $X \rightarrow S$ and that they encode contravariant functors from $S$ into the \8-category \Catinfdel.
 First of all, the category $\SSet^+$ is cartesian-closed. This means that for any two objects $X, Y\in \SSet^+$, there exists an internal mapping object $Y^X$ equipped with an evaluation map $Y^X\times X \rightarrow Y$ which induces bijections
 
 $$
@@ -297,25 +297,25 @@ If $X$ and $Y$ are objects of $(\SSet)^+_{/S}$, then we let
   \Map_S^\flat(X, Y)  & \subset \Map^\flat(X, Y)
 \end{align*}
 
-denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X \in (\SSet^+)_{/S}$ and $P: c Y \rightarrow S$ is a cartesian fibration, then $\Map^\flat_S(X, Y^\natural)$ is an \8-category and $\Map^\sharp_S(X, Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X, Y^\natural)$.
+denote the simplicial subsets classifying those maps compatible with the projections to $S$. For instance, in the case where $X \in (\SSet^+)_{/S}$ and $P: Y \rightarrow S$ is a cartesian fibration, then $\Map^\flat_S(X, Y^\natural)$ is an \8-category and $\Map^\sharp_S(X, Y^\natural)$ is the largest Kan complex contained in $\Map^\flat_S(X, Y^\natural)$.
 
 \begin{proposition}
   Let $S$ be a simplicial set. And let $p: X \rightarrow Y$ be a morphism in $(\SSet^+)_{/S}$. $p$ is a cartesian equivalence if it satisfies either of the following equivalent conditions:
   \begin{itemize}
     \item[(1)] For every cartesian fibration $Z \rightarrow S$, the induced map
 
-          $$
-            \Map^\flat_S(Y, Z^\natural) \rightarrow \Map_S^\flat(X, Z^\natural)
-          $$
+      $$
+        \Map^\flat_S(Y, Z^\natural) \rightarrow \Map_S^\flat(X, Z^\natural)
+      $$
 
-          is an equivalence of \8-categories.
+      is an equivalence of \8-categories.
     \item[(2)] For every cartesian fibration $Z \rightarrow S$, the induced map
 
-          $$
-            \Map^\sharp_S(Y, Z^\natural) \rightarrow \Map_S^\sharp(X, Z^\natural)
-          $$
+      $$
+        \Map^\sharp_S(Y, Z^\natural) \rightarrow \Map_S^\sharp(X, Z^\natural)
+      $$
 
-          is a homotopy equivalence of Kan complexes.
+      is a homotopy equivalence of Kan complexes.
   \end{itemize}
 \end{proposition}
 
@@ -334,9 +334,9 @@ is a trivial fibration for every cartesian fibration $Z \rightarrow S$, which ma
 \begin{proposition}
   Let $X \xrightarrow{p} Y \xrightarrow{q} S$ be a diagram of simplicial sets, where both $q$ and $q\circ p$ are cartesian fibrations. The following assertions are equivalent:
   \begin{itemize}
-    \item[(1)] the map $p$ induces a cartesian equivalence $X^\natural \rightarrow Y^\natural$ in $(\SSet^+)_{/S}$.
-    \item[(2)] there exists a map $r: Y \rightarrow X$ which is a strong homotopy inverse to $p$, in the sense that $p\circ r$ and $r\circ p$ are both strongly homotopic to the identity.
-    \item[(3)] the map $p$ induces a categorical quivalence $X_s \rightarrow Y_s$ for each vertex $s$ of $S$.
+    \item[(1)] The map $p$ induces a cartesian equivalence $X^\natural \rightarrow Y^\natural$ in $(\SSet^+)_{/S}$.
+    \item[(2)] There exists a map $r: Y \rightarrow X$ which is a strong homotopy inverse to $p$, in the sense that $p\circ r$ and $r\circ p$ are both strongly homotopic to the identity.
+    \item[(3)] The map $p$ induces a categorical quivalence $X_s \rightarrow Y_s$ for each vertex $s$ of $S$.
   \end{itemize}
 \end{proposition}
 
@@ -351,7 +351,7 @@ Let us now define the model structure we want on $(\SSet^+)_{/S}$:
 \end{proposition}
 
 \begin{remark}
-  Let $S$ be a simplicial set. It is important to be aware of the difference between Cartesian fibrations of simplicial sets and fibrations with respect to the Cartesian model structure on $(\SSet^+)_{/S}$. They are related, though: it turns out that the fibrant objects of $(\SSet^+)_{/S}$ are exactly the objects of the form $X^\natural$, where $X \rightarrow S$ is a Cartesian fibration.
+  Let $S$ be a simplicial set. It is important to be aware of the difference between cartesian fibrations of simplicial sets and fibrations with respect to the cartesian model structure on $(\SSet^+)_{/S}$. They are related, though: it turns out that the fibrant objects of $(\SSet^+)_{/S}$ are exactly the objects of the form $X^\natural$, where $X \rightarrow S$ is a cartesian fibration.
 \end{remark}
 
 Let's now look at some properties of the cartesian model structure.
@@ -363,7 +363,7 @@ First, the cartesian model structure behaves nicely with respect to products. If
   X              & \mapsto X\times Z
 \end{align*}
 
-preserves Cartesian equivalences.
+preserves cartesian equivalences.
 
 This entails that if we have $f: A \rightarrow B$ a cofibration in $(\SSet^+)_{/S}$ and $f': A' \rightarrow B'$ a cofibration in $(\SSet^+)_{/T}$, then the smash product map
 
@@ -377,11 +377,11 @@ is a cofibration in $(\SSet^+)_{/S\times T}$, which is trivial if either $f$ or 
   Let $S$ be a simplicial set. Let's regard $(\SSet^+)_{/S}$ as a simplicial category with mapping objects given by $\Map^\sharp_S(X, Y)$. Then $(\SSet^+)_{/S}$ is a simplicial model category.
 \end{proposition}
 
-Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, where the simplicial mapping spaces are given by $\Map^\flat_S(X, Y)$. This simplicial structure is not compatible with the Cartesian model structure: for fixed $X \in (\SSet^+)_{/S}$ the functor $A\mapsto A^\flat\times X$ does not carry weak homotopy equivalences to Cartesian equivalences. But it does carry categorical equivalences to Cartesian equivalences, and consequently $(\SSet^+)_{/S}$ is endowed with the structure of a \SSet-enriched model category, where we regard \SSet as equipped with the Joyal model structure. It's actually closer to the truth to say that $(\SSet^+)_{/S}$ is a model for an \8-bicategory.
+Of course, we can define a second simplicial structure on $(\SSet^+)_{/S}$, where the simplicial mapping spaces are given by $\Map^\flat_S(X, Y)$. This simplicial structure is not compatible with the cartesian model structure: for fixed $X \in (\SSet^+)_{/S}$ the functor $A\mapsto A^\flat\times X$ does not carry weak homotopy equivalences to cartesian equivalences. But it does carry categorical equivalences to cartesian equivalences, and consequently $(\SSet^+)_{/S}$ is endowed with the structure of a \SSet-enriched model category, where we regard \SSet as equipped with the Joyal model structure. It's actually closer to the truth to say that $(\SSet^+)_{/S}$ is a model for an \8-bicategory.
 
 
 \begin{proposition}
-  An object $X \in (\SSet^+)_{/S}$ is fibrant with respect to the cartesian model structure if and only if $X\simeq Y^\natural$< where $Y \rightarrow S$ is a Cartesian fibration.
+  An object $X \in (\SSet^+)_{/S}$ is fibrant with respect to the cartesian model structure if and only if $X\simeq Y^\natural$< where $Y \rightarrow S$ is a cartesian fibration.
 \end{proposition}
 
 \subsection{Quillen adjunctions between model structures}
@@ -390,9 +390,9 @@ We have a plethora of model structures on categories of simplicial sets over the
 
 \begin{itemize}
   \item[(0)] Let $\C_0$ denote $(\SSet)_{/S}$ endowed with the Joyal model structure. Cofibrations are monomorphisms of simplicial sets, and weak equivalences are categorical equivalences.
-  \item[(1)]  Let $\C_1$ denote $(\SSet^+)_{/S}$ endowed with the marked model structure. Cofibrations are maps $(X, \epsilon_X) \rightarrow (Y, \epsilon_Y)$ which induce monomorphisms $X \rightarrow Y$, and the weak equivalences are Cartesian equivalences.
-  \item[(2)]  Let $\C_2$ denote $(\SSet^+)_{/S}$ endowed with the following localization of the Cartesian model structure: $f : (X, \epsilon_X) \rightarrow (Y, \epsilon_Y)$ is a cofibration if $X \rightarrow Y$ is a monomorphism, and a weak equivalence if $f : X^\sharp \rightarrow Y^\sharp$ is a marked equivalence in $(\SSet^+)_{/S}$.
-  \item[(3)]  Let $\C_3$ denote $(\SSet)_{/S}$ endowed with the covariant model structure. The cofibrations are monomorphisms and the weak equivalcnes are contravariant equivalences.
+  \item[(1)]  Let $\C_1$ denote $(\SSet^+)_{/S}$ endowed with the marked model structure. Cofibrations are maps $(X, \mathcal{E}_X) \rightarrow (Y, \mathcal{E}_Y)$ which induce monomorphisms $X \rightarrow Y$, and the weak equivalences are cartesian equivalences.
+  \item[(2)]  Let $\C_2$ denote $(\SSet^+)_{/S}$ endowed with the following localization of the cartesian model structure: $f : (X, \mathcal{E}_X) \rightarrow (Y, \mathcal{E}_Y)$ is a cofibration if $X \rightarrow Y$ is a monomorphism, and a weak equivalence if $f : X^\sharp \rightarrow Y^\sharp$ is a marked equivalence in $(\SSet^+)_{/S}$.
+  \item[(3)]  Let $\C_3$ denote $(\SSet)_{/S}$ endowed with the covariant model structure. The cofibrations are monomorphisms and the weak equivalences are contravariant equivalences.
   \item[(4)] Let $\C_4$ denote $(\SSet)_{/S}$ endowed with the usual homotopic-theoretic model structure. The cofibrations are monomorphisms of simplicial sets, and the weak equivalences are weak homotopy equivalences of simplicial sets.
 \end{itemize}
 
@@ -400,12 +400,12 @@ We have a plethora of model structures on categories of simplicial sets over the
   There exists a sequence of Quillen adjunctions:
 
   $$
-    \C_0 \adj{F_0}{G_0} \C_1 \adj{F_1}{G_1} C_2 \adj{F_2}{G_2} \C_3 \adj{F_3}{G_3} \C_4
+    \C_0 \adj{F_0}{G_0} \C_1 \adj{F_1}{G_1} \C_2 \adj{F_2}{G_2} \C_3 \adj{F_3}{G_3} \C_4
   $$
 
   The functors may be described as follows:
   \begin{itemize}
-    \item[(A0)] $G_0$ is the forgetful functor from $(\SSet^+)_{/S}$ to $(\SSet)_{/S}$, which igonres the collection of marked edges. $F_0$ is left adjoint to $G_0$, given by $X \mapsto X^\flat$. The Quillen adjunction $(F_0, G_0)$ is a Quillen equivalance if $S$ is a Kan complex.
+    \item[(A0)] $G_0$ is the forgetful functor from $(\SSet^+)_{/S}$ to $(\SSet)_{/S}$, which ignores the collection of marked edges. $F_0$ is left adjoint to $G_0$, given by $X \mapsto X^\flat$. The Quillen adjunction $(F_0, G_0)$ is a Quillen equivalance if $S$ is a Kan complex.
     \item[(A1)] $F_1$ and $G_1$ are identity functors on $(\SSet^+)_{/S}$.
     \item[(A2)]  $F_2$ is the forgetful functor from $(\SSet^+)_{/S}$ to $(\SSet)_{/S}$ which ignores the collection of marked edges. $G_2$ is right adjoint to $F_2$ given by $X \mapsto X^\sharp$. The Quillen adjunction $(F_2, G_2)$ is a Quillen equivalence for every simplicial set $S$.
     \item[(A3)]  $F_3$ and $G_3$ are identity functors on $(\SSet)_{/S}$. The Quillen adjunction $(F_3, G_3)$ is Quillen equivalence whenever $S$ is a Kan complex.
@@ -420,9 +420,9 @@ Let \C be a category and let $\xi: \op\C\text{Cat}$ be a functor from \C to the 
   \item A morphism from $(C, \eta)$ to $(C', \eta')$ is a pair $(f, \alpha)$, where $f: C \rightarrow C'$ is a morphism in the category \C and $\alpha: \eta \rightarrow \xi(f)(\eta')$ is a morphism in the category $\xi(C)$.
 \end{itemize}
 
-This construction establishes an equivalence between Cat-valued functors on $\op\C$ and categories which are fibered over $\C$. We will try to establish an \8-categorical version of the equivalence described above. We will replace the category \C by a simplicial set $S$, the category Cat by the \8-category $\text{Cat}_{\8}$, and the notion of fibered category with the notion of Cartesian fibration. This is going to give us an equivalence of \8-categories, which arises from a Quillen equivalence of simplicial model categories.
+This construction establishes an equivalence between Cat-valued functors on $\op\C$ and categories which are fibered over $\C$. We will try to establish an \8-categorical version of the equivalence described above. We will replace the category \C by a simplicial set $S$, the category Cat by the \8-category $\text{Cat}_{\8}$, and the notion of fibered category with the notion of cartesian fibration. This is going to give us an equivalence of \8-categories, which arises from a Quillen equivalence of simplicial model categories.
 
-On one side, we have the category $(\SSet^+)_{/S}$, equipped with the Cartesian model structure. On the other hand, we have the category of simplicial functors
+On one side, we have the category $(\SSet^+)_{/S}$, equipped with the cartesian model structure. On the other hand, we have the category of simplicial functors
 
 $$
   \op{\mathfrak{C}[S]} \rightarrow \SSet^+
@@ -440,7 +440,7 @@ equipped with the projective model structure whose underlying \8-category is equ
   with the following properties:
 
   \begin{itemize}
-    \item[(1)] The functors $(St_\phi^+, Un_\phi^+)$ determine a Quillen adjunction between the category $(\SSet^+)_{/S}$ with the Cartesian model structure and the category $(\SSet^+)^\C$ with the projective model structure.
+    \item[(1)] The functors $(St_\phi^+, Un_\phi^+)$ determine a Quillen adjunction between the category $(\SSet^+)_{/S}$ with the cartesian model structure and the category $(\SSet^+)^\C$ with the projective model structure.
     \item[(2)] If $\phi$ is an equivalence of simplicial categories, then $(St_\phi^+, Un_\phi^+)$ is a Quillen equivalence.
   \end{itemize}
 \end{theorem}
@@ -512,8 +512,8 @@ We're going to show that this adjunction is actually a Quillen adjunction.
   TO DO: maybe detail this later.
 \end{proposition}
 
-\subsubsection{Cartesian fibrations over a simplex}
-Let us now look more closely at cartesian fibrations over a simplex. A map of simplicial sets $p:X\rightarrow S$ is a cartesian fibrations if and only if the pullback map $X\times_S \Delta^n \rightarrow \Delta^n$ is a Cartesian fibration for each simplex of $S$. The Cartesian fibrations $X\rightarrow \Delta^n$ are the "basic fibrations" out of which other Cartesian fibrations are built. We're now looking to prove a structure theorem on these "basic fibrations".\\
+\subsubsection{cartesian fibrations over a simplex}
+Let us now look more closely at cartesian fibrations over a simplex. A map of simplicial sets $p:X\rightarrow S$ is a cartesian fibrations if and only if the pullback map $X\times_S \Delta^n \rightarrow \Delta^n$ is a cartesian fibration for each simplex of $S$. The cartesian fibrations $X\rightarrow \Delta^n$ are the "basic fibrations" out of which other cartesian fibrations are built. We're now looking to prove a structure theorem on these "basic fibrations".\\
 $\Delta^n$ is the nerve of the category associated to the linearly ordered set $[n] = \{0<1<\dots <n\}.$ A cartesian fibration $p:X\rightarrow S$ can be thought of as giving a contravariant functor from $S$ to $\8$-categories. So we can expect to have a close relationship between cartesian fibrations $X\rightarrow \Delta^n$ and composable sequences of maps between \8-categories
 
 $$
@@ -563,14 +563,14 @@ Let $\phi:A^0\leftarrow \dots\leftarrow A^n$ be a composable sequence of maps of
             &\Delta^n
           \end{tikzcd}
           is commutative.
-    \item The map $q$ carries marked edges of $M(\phi)$ to $p$-Cartesian edges of $S$; in other words, $q$ induces a map $M^\natural(\phi)\rightarrow X^\natural$ of marked simplicial sets.
+    \item The map $q$ carries marked edges of $M(\phi)$ to $p$-cartesian edges of $S$; in other words, $q$ induces a map $M^\natural(\phi)\rightarrow X^\natural$ of marked simplicial sets.
     \item For $0\leq i\leq n$, the induced map $A^i\rightarrow p^{-1}\{i\}$ is a categorical equivalence.
   \end{itemize}
 \end{definition}
 
 Our goal is to prove the following proposition:
 \begin{proposition}
-  Let $p:X\rightarrow \Delta^n$ be a Cartesian fibration.
+  Let $p:X\rightarrow \Delta^n$ be a cartesian fibration.
   \begin{itemize}
     \item There exists a composable sequence of maps
 
@@ -596,7 +596,7 @@ Suppose that we are given a diagram $X\rightarrow Y\rightarrow Z$ of simplicial 
   \item For any $n\geq 0$ and any map $\Delta^n\rightarrow Z$, the induced map $X_{\Delta^n}\rightarrow Y_{\Delta^n}$ is a categorical equivalence.
 \end{itemize}
 
-Suppose $p:X\rightarrow\Delta^n$ is a Cartesian fibraion and $q:M(\phi)\rightarrow X$ is a quasi-equivalence. Let $f:\Delta^m\rightarrow \Delta^n$ be any map. We note that $M(\phi)\times_{\Delta^n}\Delta^m$ may be identified with a mapping simplex $M(\phi')$ and that the induced map $M(\phi')\rightarrow X\times_{\Delta^n}\Delta^m$ is again a quasi-equivalence. Therefore, it suffices to prove that every quasi-equivalence is a categorical equivalence. First, we need the following lemma:
+Suppose $p:X\rightarrow\Delta^n$ is a cartesian fibraion and $q:M(\phi)\rightarrow X$ is a quasi-equivalence. Let $f:\Delta^m\rightarrow \Delta^n$ be any map. We note that $M(\phi)\times_{\Delta^n}\Delta^m$ may be identified with a mapping simplex $M(\phi')$ and that the induced map $M(\phi')\rightarrow X\times_{\Delta^n}\Delta^m$ is again a quasi-equivalence. Therefore, it suffices to prove that every quasi-equivalence is a categorical equivalence. First, we need the following lemma:
 
 \begin{lemma}
   Let $\phi:A^0\leftarrow\dots\leftarrow A^n$ be a composable sequence of maps between simplicial sets, where $n>0$. Let $y$ be a vertex of $A^n$ and let the edge $e:y'\rightarrow y$ be the image of $\Delta^{\{n-1,n\}}\times \{y\}$ under the map $\Delta^n\times A^n\rightarrow M(\phi)$. Let $x$ be any vertex of $M(\phi)$ which does not belong to the fiber $A^n$.Then composition with $e$ induces a weak homotopy equivalence of simplicial sets
@@ -608,13 +608,13 @@ Suppose $p:X\rightarrow\Delta^n$ is a Cartesian fibraion and $q:M(\phi)\rightarr
 
 This brings us to the following result:
 \begin{proposition}
-  Let $p:X\rightarrow \Delta^n$ be a Cartesian fibration, let $\phi:A^0\leftarrow\dots\leftarrow A^n$ be a composable sequence of maps of simplicial sets and let $q:M(\phi)\rightarrow X$ be a quasi-equivalence. Then $q$ is a categorical equivalence.
+  Let $p:X\rightarrow \Delta^n$ be a cartesian fibration, let $\phi:A^0\leftarrow\dots\leftarrow A^n$ be a composable sequence of maps of simplicial sets and let $q:M(\phi)\rightarrow X$ be a quasi-equivalence. Then $q$ is a categorical equivalence.
 \end{proposition}
 
-Now, the last thing we need to prove is that for any Cartesian fibration $p:X\rightarrow \Delta^n$, there exists a quasi-equivalence $M(\phi)\rightarrow X$. We are actually going to prove something a little stronger:
+Now, the last thing we need to prove is that for any cartesian fibration $p:X\rightarrow \Delta^n$, there exists a quasi-equivalence $M(\phi)\rightarrow X$. We are actually going to prove something a little stronger:
 
 \begin{proposition}
-  Let $p:X\rightarrow \Delta^n$ be a Cartesian fibration of simplicial sets and $A$ another simplicial set. Suppose that we are given a commutative diagram of marked simplicial sets \begin{tikzcd}
+  Let $p:X\rightarrow \Delta^n$ be a cartesian fibration of simplicial sets and $A$ another simplicial set. Suppose that we are given a commutative diagram of marked simplicial sets \begin{tikzcd}
     A^\flat\times(\Delta^n)^\sharp \arrow[rr,"s"]\arrow[rd] &&X^\natural \arrow[dl]\\
     &(\Delta^n)^\sharp.
   \end{tikzcd}
@@ -642,13 +642,13 @@ Now, the last thing we need to prove is that for any Cartesian fibration $p:X\ri
 
 Let's note that
 \begin{proposition}
-  Let $S=\Delta^n$, let $p:X\rightarrow S$ be a Cartesian fibration, let
+  Let $S=\Delta^n$, let $p:X\rightarrow S$ be a cartesian fibration, let
 
   $$
     \phi:A^0\leftarrow\dots\leftarrow A^n
   $$
 
-  be a composable sequence of maps, and let $q:M(\phi)\rightarrow X$ be a quasi-equivalence. The induced map $M^\natural(\phi)\rightarrow X^\natural$ is a Cartesian equivalence in $(\SSet^+)_{/S}$.
+  be a composable sequence of maps, and let $q:M(\phi)\rightarrow X$ be a quasi-equivalence. The induced map $M^\natural(\phi)\rightarrow X^\natural$ is a cartesian equivalence in $(\SSet^+)_{/S}$.
 \end{proposition}
 
 Let's now examine what straightening looks like over a simplex. Let $S$ be a simplicial set, \C a simplicial category, and $\phi:\mathscr{C}[S]^{op}\rightarrow \C$ a simplicial functor. We introduced the straightening and unstraightening functors
@@ -671,7 +671,7 @@ $$
   (\SSet^+)_{/S} \adj{St^+_\phi}{Un^+_\phi} (\SSet^+)^\C
 $$
 
-whenever $\phi: \mathfrak{C}[S] \rightarrow \op\C$ is a weak equivalence of simplicial categories. Suppose $\mathcal{F} : \C \rightarrow \SSet^{+}$ is a weakly fibrant diagram , so that $Un_\phi^+(\mathcal{F})$ is a fibrant object of $(\SSet^+)_{/S}$ corresponding to a Cartesian fibration of simplicial sets $X \rightarrow S$. For every vertex $s \in S$, the fiber $X_s$ is an \8-category which is equivalent to $\mathfrak{F}(\phi(s))$, but usually not isomorphic to $\mathcal{F}(\phi(s))$. In the special case when \C is an ordinary category, and $\phi: \mathfrak{C}[\op{N(\C)}] \rightarrow \op\C$ is the counit map, there is another version of unstraightening construction $Un_\phi^+$, which does not share this defect. Now, we introduce the marked relative nerve $\mathcal{F} \mapsto N_\mathfrak{F}^+(\C)$ to study its basic properties.
+whenever $\phi: \mathfrak{C}[S] \rightarrow \op\C$ is a weak equivalence of simplicial categories. Suppose $\mathcal{F} : \C \rightarrow \SSet^{+}$ is a weakly fibrant diagram , so that $Un_\phi^+(\mathcal{F})$ is a fibrant object of $(\SSet^+)_{/S}$ corresponding to a cartesian fibration of simplicial sets $X \rightarrow S$. For every vertex $s \in S$, the fiber $X_s$ is an \8-category which is equivalent to $\mathfrak{F}(\phi(s))$, but usually not isomorphic to $\mathcal{F}(\phi(s))$. In the special case when \C is an ordinary category, and $\phi: \mathfrak{C}[\op{N(\C)}] \rightarrow \op\C$ is the counit map, there is another version of unstraightening construction $Un_\phi^+$, which does not share this defect. Now, we introduce the marked relative nerve $\mathcal{F} \mapsto N_\mathfrak{F}^+(\C)$ to study its basic properties.
 
 \begin{definition}
   Let \C be a small category and $f : \C \rightarrow \SSet$ be a functor. We define a simplicial set $N_f(\C)$, the nerve of \C relative to $f$, as follows. For every nonempty finite linearly ordered set $J$, a map $\Simplex[J] \rightarrow N_f(\C)$ consists of the following data:
